@@ -19,7 +19,7 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 let g:coc_global_extensions = [
-    \ 'coc-pyright',
+    \ 'coc-python',
     \ 'coc-snippets',
     \ 'coc-json'
     \ ]

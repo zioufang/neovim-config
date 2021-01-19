@@ -148,7 +148,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'hashivim/vim-terraform'
 Plug 'unblevable/quick-scope'
-Plug 'kkoomen/vim-doge', { 'for': 'python' }							" documentation generator
+Plug 'kkoomen/vim-doge', {'do': { -> doge#install() }, 'for': 'python' }							" documentation generator
 " Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
