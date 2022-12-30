@@ -39,12 +39,11 @@ require("packer").startup(function(use)
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
-			{ "j-hui/fidget.nvim" }, --lsp progress
+			{ "j-hui/fidget.nvim" }, --lsp progress, for rust-analyzer
 			{ "folke/neodev.nvim" },
 		},
 	})
 
-	-- Essentials
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
@@ -52,32 +51,75 @@ require("packer").startup(function(use)
 		end,
 	})
 	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+	})
+
+	-- gc for comment
+	use({
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
 		end,
 	})
+
+	-- telescope
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } })
-	use("mbbill/undotree")
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	})
+	use("nvim-telescope/telescope-live-grep-args.nvim")
+	use("nvim-telescope/telescope-project.nvim")
+
+	-- movement
+	use("ggandor/leap.nvim")
+
+	-- better file explorer
 	use({ "tamago324/lir.nvim", requires = { "nvim-lua/plenary.nvim" } })
+
+	-- auto formatter
 	use("sbdchd/neoformat")
 
+	-- terminal
+	use("akinsho/toggleterm.nvim")
+
+	-- used for auto change working directory
 	use({
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		after = "nvim-treesitter",
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("project_nvim").setup({ patterns = { ".git" }, detection_methods = { "pattern", "lsp" } })
+		end,
 	})
+
+	-- better substitution + case coercion
+	use("tpope/vim-abolish")
+	use("markonm/traces.vim") -- preview support for abolish
 
 	-- Git related plugins
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb")
-	use("lewis6991/gitsigns.nvim")
 
 	-- Language Specific
 
 	-- Eye Candy
 	use("kyazdani42/nvim-web-devicons")
 	use("sainnhe/gruvbox-material")
+	use("folke/tokyonight.nvim")
 	use({ "rose-pine/neovim", as = "rose-pine" })
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+	use("petertriho/nvim-scrollbar") -- also shows git (with gitsigns) & search (with hlslens)
+	use("kevinhwang91/nvim-hlslens")
+	use({
+		"anuvyklack/windows.nvim",
+		requires = {
+			"anuvyklack/middleclass",
+			"anuvyklack/animation.nvim",
+		},
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()
