@@ -7,7 +7,7 @@ require("scrollbar").setup({
 		diagnostic = true,
 		gitsigns = false, -- Requires gitsigns
 		handle = true,
-		search = true, -- Requires hlslens
+		search = false, -- Requires hlslens
 	},
 	handle = {
 		color = colors.bg_highlight,

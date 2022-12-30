@@ -17,7 +17,7 @@ require("lir").setup({
 
 		["K"] = actions.mkdir,
 		["N"] = actions.newfile,
-		["R"] = actions.rename,
+		["r"] = actions.rename,
 		["@"] = actions.cd,
 		["Y"] = actions.yank_path,
 		["."] = actions.toggle_show_hidden,
@@ -27,9 +27,9 @@ require("lir").setup({
 			mark_actions.toggle_mark()
 			vim.cmd("normal! j")
 		end,
-		["C"] = clipboard_actions.copy,
-		["X"] = clipboard_actions.cut,
-		["P"] = clipboard_actions.paste,
+		["y"] = clipboard_actions.copy,
+		["c"] = clipboard_actions.cut,
+		["p"] = clipboard_actions.paste,
 	},
 	float = {
 		winblend = 0,

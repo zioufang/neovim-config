@@ -20,3 +20,24 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = false,
 	},
 })
+
+require("nvim-treesitter.configs").setup({
+	textobjects = {
+		move = {
+			enable = true,
+			set_jumps = false, -- whether to set jumps in the jumplist
+			goto_next_start = {
+				["]]"] = "@function.outer",
+			},
+			goto_next_end = {
+				["]["] = "@function.outer",
+			},
+			goto_previous_start = {
+				["[["] = "@function.outer",
+			},
+			goto_previous_end = {
+				["[]"] = "@function.outer",
+			},
+		},
+	},
+})

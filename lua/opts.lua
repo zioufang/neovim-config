@@ -5,14 +5,14 @@ vim.opt.relativenumber = true
 vim.opt.showmode = false -- disable the redundant show mode on the last line
 vim.opt.cursorline = true
 vim.opt.lazyredraw = true -- better macro performance
+vim.opt.clipboard = "unnamedplus"
 
 vim.opt.wildmode = "longest,list,full"
--- Set highlight on search with the remapped '/'
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
--- Enable mouse mode
-vim.opt.mouse = "a"
+-- mouse is disabled in insert mode
+vim.opt.mouse = "nv"
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -61,6 +61,3 @@ vim.opt.undofile = true
 -- see |netrw-noload|
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
--- enable subsitute preview for abolish via trace
-vim.g.traces_abolish_integration = 1

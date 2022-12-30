@@ -1,22 +1,5 @@
-local builtin = require("telescope.builtin")
 local lga_actions = require("telescope-live-grep-args.actions")
-
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fd", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fr", builtin.oldfiles, {})
-vim.keymap.set("n", "<leader>fc", builtin.command_history, {})
-vim.keymap.set("n", "<leader>fj", builtin.jumplist, {})
-vim.keymap.set("n", "<leader>ft", builtin.resume, {})
-vim.keymap.set("n", "<leader>fs", builtin.spell_suggest, {})
-vim.keymap.set("n", "<leader>fp", builtin.registers, {})
-
--- lsp + diagnostics starting
-vim.keymap.set("n", "<leader>fe", builtin.diagnostics, {})
-vim.keymap.set("n", "<leader>jr", builtin.lsp_references, {})
-
--- vim.keymap.set("n", "<leader>r", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>r", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-vim.keymap.set("n", "<leader>R", builtin.current_buffer_fuzzy_find, {})
+local command_center = require("command_center")
 
 require("telescope").setup({
 	defaults = {
@@ -87,17 +70,31 @@ require("telescope").setup({
 				},
 			},
 		},
-		project = {
-			base_dirs = {
-				{ "~/projects", max_depth = 3 },
+		command_center = {
+			components = {
+				command_center.component.DESC,
+				-- command_center.component.KEYS,
+				-- command_center.component.CMD,
+				-- command_center.component.CATEGORY,
 			},
-			theme = "ivy",
+
+			-- Spcify by what components the commands is sorted
+			-- Order does not matter
+			sort_by = {
+				command_center.component.DESC,
+				-- command_center.component.KEYS,
+				-- command_center.component.CMD,
+				-- command_center.component.CATEGORY,
+			},
+			separator = " ",
+			theme = require("telescope.themes").get_ivy,
 		},
 	},
 })
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("live_grep_args")
+require("telescope").load_extension("command_center")
 
-require("telescope").load_extension("project")
-vim.keymap.set("n", "<leader>p", ":Telescope project display_type=full<Cr>")
+-- ahmedkhalf/project.nvim
+require("telescope").load_extension("projects")

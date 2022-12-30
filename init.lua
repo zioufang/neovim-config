@@ -1,3 +1,4 @@
 require("plugins")
 require("opts")
-require("remaps")
+require("keymaps")
+require("terminal")

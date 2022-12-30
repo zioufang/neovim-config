@@ -39,9 +39,15 @@ require("packer").startup(function(use)
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
-			{ "j-hui/fidget.nvim" }, --lsp progress, for rust-analyzer
-			{ "folke/neodev.nvim" },
 		},
+	})
+
+	-- neovim  dev
+	use({
+		"folke/neodev.nvim",
+		config = function()
+			require("neodev").setup({})
+		end,
 	})
 
 	use({
@@ -70,19 +76,54 @@ require("packer").startup(function(use)
 		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	})
 	use("nvim-telescope/telescope-live-grep-args.nvim")
-	use("nvim-telescope/telescope-project.nvim")
+	use("FeiyouG/command_center.nvim") -- flat list of customized commands
 
 	-- movement
-	use("ggandor/leap.nvim")
+	use({
+		"ggandor/leap.nvim",
+		config = function()
+			require("leap").opts.safe_labels = {}
+			require("leap").opts.labels =
+				{ "f", "d", "s", "g", "j", "k", "l", "h", "r", "t", "v", "b", "y", "u", "n", "a" }
+			require("leap").opts.case_sensitive = true
+			require("leap").add_default_mappings()
+		end,
+	})
 
 	-- better file explorer
 	use({ "tamago324/lir.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	-- backup explorer for whole project view
+	use({
+		"nvim-tree/nvim-tree.lua",
+		requires = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup({
+				hijack_netrw = false, -- using lir.nvim
+				respect_buf_cwd = true,
+				sync_root_with_cwd = true,
+				update_focused_file = {
+					enable = true,
+					update_root = true,
+				},
+				git = { enable = true },
+				filters = { dotfiles = false },
+			})
+			vim.keymap.set("n", "<leader>t", "<Cmd>NvimTreeToggle<Cr>", {})
+		end,
+	})
+	-- aerial
+	use({
+		"stevearc/aerial.nvim",
+		config = function()
+			require("aerial").setup()
+			vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+		end,
+	})
 
-	-- auto formatter
-	use("sbdchd/neoformat")
-
-	-- terminal
-	use("akinsho/toggleterm.nvim")
+	use("sbdchd/neoformat") -- auto formatter
+	use({ "kevinhwang91/nvim-bqf" }) -- better quickfix
 
 	-- used for auto change working directory
 	use({
@@ -92,34 +133,130 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	-- surround
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	})
+
 	-- better substitution + case coercion
 	use("tpope/vim-abolish")
-	use("markonm/traces.vim") -- preview support for abolish
+	use({
+		"markonm/traces.vim",
+		config = function()
+			vim.g.traces_abolish_integration = 1
+		end,
+	}) -- preview support for abolish
 
 	-- Git related plugins
-	use("tpope/vim-fugitive")
-	use("tpope/vim-rhubarb")
+	use({
+		"TimUntersberger/neogit",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+		},
+	})
+	use({
+		"dinhhuy258/git.nvim",
+		config = function()
+			require("git").setup({
+				default_mappings = true,
+				keymaps = {
+					browse = "<leader>gg",
+				},
+			})
+		end,
+	})
 
 	-- Language Specific
+	-- Rust
+	use("simrat39/rust-tools.nvim") -- mostly for inlayHints
 
-	-- Eye Candy
-	use("kyazdani42/nvim-web-devicons")
-	use("sainnhe/gruvbox-material")
-	use("folke/tokyonight.nvim")
-	use({ "rose-pine/neovim", as = "rose-pine" })
+	-- markdown preview
 	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		"ellisonleao/glow.nvim",
+		config = function()
+			require("glow").setup({
+				width_ratio = 0.9,
+				height_ratio = 0.9,
+			})
+		end,
 	})
-	use("petertriho/nvim-scrollbar") -- also shows git (with gitsigns) & search (with hlslens)
-	use("kevinhwang91/nvim-hlslens")
+
+	-- window management
 	use({
 		"anuvyklack/windows.nvim",
 		requires = {
 			"anuvyklack/middleclass",
 			"anuvyklack/animation.nvim",
 		},
+		config = function()
+			vim.o.winwidth = 5
+			vim.o.winminwidth = 5
+			vim.o.equalalways = false
+			require("windows").setup({
+				autowidth = {
+					enable = false,
+				},
+			})
+			vim.keymap.set("n", "<F11>", "<Cmd>WindowsMaximizeVertically<Cr>")
+		end,
 	})
+	use({
+		"declancm/maximize.nvim",
+		config = function()
+			require("maximize").setup()
+			vim.keymap.set({ "n", "t" }, "<F12>", "<Cmd>lua require('maximize').toggle()<CR>")
+		end,
+	})
+	use({
+		"sindrets/winshift.nvim",
+		config = function()
+			require("winshift").setup({
+				window_picker = function()
+					return require("winshift.lib").pick_window({
+						picker_chars = "SDFGHJKL1234567890",
+					})
+				end,
+			})
+			-- vim.keymap.set("n", "<C-W>M", "<Cmd>WinShift<Cr>")
+			vim.keymap.set("n", "<C-W>m", "<Cmd>WinShift swap<Cr>")
+		end,
+	}) -- swapping windows
+
+	-----------------
+	-- Eye Candies --
+	-----------------
+	use("stevearc/dressing.nvim") -- better default vim ui
+	use("kyazdani42/nvim-web-devicons") -- pretty icons
+	use("sainnhe/gruvbox-material") -- default colorscheme
+	use("folke/tokyonight.nvim") -- colorscheme, used by scrollbar.lua
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+	use("petertriho/nvim-scrollbar")
+	-- get lsp status out of status line
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup()
+		end,
+	})
+	use({
+		"ziontee113/icon-picker.nvim",
+		config = function()
+			require("icon-picker").setup({
+				disable_legacy_commands = true,
+			})
+		end,
+	})
+
+	-- TODO: check the below
+	-- Pocco81/AbbrevMan.nvim
 
 	if packer_bootstrap then
 		require("packer").sync()

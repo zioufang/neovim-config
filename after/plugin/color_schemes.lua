@@ -1,7 +1,4 @@
--- rose-pine
 vim.o.background = "dark"
-
-require("rose-pine").setup({})
 
 vim.g.gruvbox_material_background = "hard"
 

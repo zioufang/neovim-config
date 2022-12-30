@@ -85,6 +85,12 @@ _G.packer_plugins = {
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["aerial.nvim"] = {
+    config = { "\27LJ\2\n‚\1\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0B\0\4\1K\0\1\0\27<cmd>AerialToggle!<CR>\14<leader>a\6n\bset\vkeymap\bvim\nsetup\vaerial\frequire\0" },
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/aerial.nvim",
+    url = "https://github.com/stevearc/aerial.nvim"
+  },
   ["animation.nvim"] = {
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/animation.nvim",
@@ -115,7 +121,23 @@ _G.packer_plugins = {
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["command_center.nvim"] = {
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/command_center.nvim",
+    url = "https://github.com/FeiyouG/command_center.nvim"
+  },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
+  },
+  ["dressing.nvim"] = {
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/dressing.nvim",
+    url = "https://github.com/stevearc/dressing.nvim"
+  },
   ["fidget.nvim"] = {
+    config = { "\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vfidget\frequire\0" },
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/fidget.nvim",
     url = "https://github.com/j-hui/fidget.nvim"
@@ -125,12 +147,31 @@ _G.packer_plugins = {
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["git.nvim"] = {
+    config = { "\27LJ\2\no\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\1\vbrowse\15<leader>gg\1\0\1\21default_mappings\2\nsetup\bgit\frequire\0" },
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/git.nvim",
+    url = "https://github.com/dinhhuy258/git.nvim"
+  },
+  ["glow.nvim"] = {
+    config = { "\27LJ\2\nh\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\16width_ratio\4Í™³æ\fÌ™³ÿ\3\17height_ratio\4Í™³æ\fÌ™³ÿ\3\nsetup\tglow\frequire\0" },
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/glow.nvim",
+    url = "https://github.com/ellisonleao/glow.nvim"
+  },
   ["gruvbox-material"] = {
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/gruvbox-material",
     url = "https://github.com/sainnhe/gruvbox-material"
   },
+  ["icon-picker.nvim"] = {
+    config = { "\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\28disable_legacy_commands\2\nsetup\16icon-picker\frequire\0" },
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/icon-picker.nvim",
+    url = "https://github.com/ziontee113/icon-picker.nvim"
+  },
   ["leap.nvim"] = {
+    config = { "\27LJ\2\nÔ\1\0\0\3\0\b\0\0246\0\0\0'\2\1\0B\0\2\0029\0\2\0004\1\0\0=\1\3\0006\0\0\0'\2\1\0B\0\2\0029\0\2\0005\1\5\0=\1\4\0006\0\0\0'\2\1\0B\0\2\0029\0\2\0+\1\2\0=\1\6\0006\0\0\0'\2\1\0B\0\2\0029\0\a\0B\0\1\1K\0\1\0\25add_default_mappings\19case_sensitive\1\17\0\0\6f\6d\6s\6g\6j\6k\6l\6h\6r\6t\6v\6b\6y\6u\6n\6a\vlabels\16safe_labels\topts\tleap\frequire\0" },
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/leap.nvim",
     url = "https://github.com/ggandor/leap.nvim"
@@ -160,12 +201,19 @@ _G.packer_plugins = {
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["maximize.nvim"] = {
+    config = { "\27LJ\2\n™\1\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0009\0\5\0005\2\6\0'\3\a\0'\4\b\0B\0\4\1K\0\1\0.<Cmd>lua require('maximize').toggle()<CR>\n<F12>\1\3\0\0\6n\6t\bset\vkeymap\bvim\nsetup\rmaximize\frequire\0" },
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/maximize.nvim",
+    url = "https://github.com/declancm/maximize.nvim"
+  },
   middleclass = {
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/middleclass",
     url = "https://github.com/anuvyklack/middleclass"
   },
   ["neodev.nvim"] = {
+    config = { "\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneodev\frequire\0" },
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
@@ -175,15 +223,20 @@ _G.packer_plugins = {
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/neoformat",
     url = "https://github.com/sbdchd/neoformat"
   },
+  neogit = {
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/TimUntersberger/neogit"
+  },
+  ["nvim-bqf"] = {
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/nvim-bqf",
+    url = "https://github.com/kevinhwang91/nvim-bqf"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-hlslens"] = {
-    loaded = true,
-    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/nvim-hlslens",
-    url = "https://github.com/kevinhwang91/nvim-hlslens"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -194,6 +247,18 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/nvim-scrollbar",
     url = "https://github.com/petertriho/nvim-scrollbar"
+  },
+  ["nvim-surround"] = {
+    config = { "\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0" },
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
+  },
+  ["nvim-tree.lua"] = {
+    config = { "\27LJ\2\n¬\2\0\0\6\0\16\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\0016\0\n\0009\0\v\0009\0\f\0'\2\r\0'\3\14\0'\4\15\0004\5\0\0B\0\5\1K\0\1\0\28<Cmd>NvimTreeToggle<Cr>\14<leader>t\6n\bset\vkeymap\bvim\ffilters\1\0\1\rdotfiles\1\bgit\1\0\1\venable\2\24update_focused_file\1\0\2\venable\2\16update_root\2\1\0\3\20respect_buf_cwd\2\17hijack_netrw\1\23sync_root_with_cwd\2\nsetup\14nvim-tree\frequire\0" },
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -228,10 +293,10 @@ _G.packer_plugins = {
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
   },
-  ["rose-pine"] = {
+  ["rust-tools.nvim"] = {
     loaded = true,
-    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/rose-pine",
-    url = "https://github.com/rose-pine/neovim"
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
@@ -243,20 +308,10 @@ _G.packer_plugins = {
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/telescope-live-grep-args.nvim",
     url = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim"
   },
-  ["telescope-project.nvim"] = {
-    loaded = true,
-    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/telescope-project.nvim",
-    url = "https://github.com/nvim-telescope/telescope-project.nvim"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["toggleterm.nvim"] = {
-    loaded = true,
-    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
-    url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["tokyonight.nvim"] = {
     loaded = true,
@@ -264,6 +319,7 @@ _G.packer_plugins = {
     url = "https://github.com/folke/tokyonight.nvim"
   },
   ["traces.vim"] = {
+    config = { "\27LJ\2\n<\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\1\0=\1\2\0K\0\1\0\31traces_abolish_integration\6g\bvim\0" },
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/traces.vim",
     url = "https://github.com/markonm/traces.vim"
@@ -273,32 +329,81 @@ _G.packer_plugins = {
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/vim-abolish",
     url = "https://github.com/tpope/vim-abolish"
   },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-rhubarb"] = {
-    loaded = true,
-    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
-    url = "https://github.com/tpope/vim-rhubarb"
-  },
   ["windows.nvim"] = {
+    config = { "\27LJ\2\n‚\2\0\0\5\0\16\0\0286\0\0\0009\0\1\0)\1\5\0=\1\2\0006\0\0\0009\0\1\0)\1\5\0=\1\3\0006\0\0\0009\0\1\0+\1\1\0=\1\4\0006\0\5\0'\2\6\0B\0\2\0029\0\a\0005\2\t\0005\3\b\0=\3\n\2B\0\2\0016\0\0\0009\0\v\0009\0\f\0'\2\r\0'\3\14\0'\4\15\0B\0\4\1K\0\1\0'<Cmd>WindowsMaximizeVertically<Cr>\n<F11>\6n\bset\vkeymap\14autowidth\1\0\0\1\0\1\venable\1\nsetup\fwindows\frequire\16equalalways\16winminwidth\rwinwidth\6o\bvim\0" },
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/windows.nvim",
     url = "https://github.com/anuvyklack/windows.nvim"
+  },
+  ["winshift.nvim"] = {
+    config = { "\27LJ\2\nc\0\0\3\0\4\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0D\0\2\0\1\0\1\17picker_chars\23SDFGHJKL1234567890\16pick_window\17winshift.lib\frequireŸ\1\1\0\5\0\f\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\1K\0\1\0\27<Cmd>WinShift swap<Cr>\v<C-W>m\6n\bset\vkeymap\bvim\18window_picker\1\0\0\0\nsetup\rwinshift\frequire\0" },
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/winshift.nvim",
+    url = "https://github.com/sindrets/winshift.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: project.nvim
-time([[Config for project.nvim]], true)
-try_loadstring("\27LJ\2\n…\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\22detection_methods\1\3\0\0\fpattern\blsp\rpatterns\1\0\0\1\2\0\0\t.git\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
-time([[Config for project.nvim]], false)
+-- Config for: maximize.nvim
+time([[Config for maximize.nvim]], true)
+try_loadstring("\27LJ\2\n™\1\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0009\0\5\0005\2\6\0'\3\a\0'\4\b\0B\0\4\1K\0\1\0.<Cmd>lua require('maximize').toggle()<CR>\n<F12>\1\3\0\0\6n\6t\bset\vkeymap\bvim\nsetup\rmaximize\frequire\0", "config", "maximize.nvim")
+time([[Config for maximize.nvim]], false)
+-- Config for: windows.nvim
+time([[Config for windows.nvim]], true)
+try_loadstring("\27LJ\2\n‚\2\0\0\5\0\16\0\0286\0\0\0009\0\1\0)\1\5\0=\1\2\0006\0\0\0009\0\1\0)\1\5\0=\1\3\0006\0\0\0009\0\1\0+\1\1\0=\1\4\0006\0\5\0'\2\6\0B\0\2\0029\0\a\0005\2\t\0005\3\b\0=\3\n\2B\0\2\0016\0\0\0009\0\v\0009\0\f\0'\2\r\0'\3\14\0'\4\15\0B\0\4\1K\0\1\0'<Cmd>WindowsMaximizeVertically<Cr>\n<F11>\6n\bset\vkeymap\14autowidth\1\0\0\1\0\1\venable\1\nsetup\fwindows\frequire\16equalalways\16winminwidth\rwinwidth\6o\bvim\0", "config", "windows.nvim")
+time([[Config for windows.nvim]], false)
+-- Config for: glow.nvim
+time([[Config for glow.nvim]], true)
+try_loadstring("\27LJ\2\nh\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\16width_ratio\4Í™³æ\fÌ™³ÿ\3\17height_ratio\4Í™³æ\fÌ™³ÿ\3\nsetup\tglow\frequire\0", "config", "glow.nvim")
+time([[Config for glow.nvim]], false)
+-- Config for: traces.vim
+time([[Config for traces.vim]], true)
+try_loadstring("\27LJ\2\n<\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\1\0=\1\2\0K\0\1\0\31traces_abolish_integration\6g\bvim\0", "config", "traces.vim")
+time([[Config for traces.vim]], false)
+-- Config for: aerial.nvim
+time([[Config for aerial.nvim]], true)
+try_loadstring("\27LJ\2\n‚\1\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0B\0\4\1K\0\1\0\27<cmd>AerialToggle!<CR>\14<leader>a\6n\bset\vkeymap\bvim\nsetup\vaerial\frequire\0", "config", "aerial.nvim")
+time([[Config for aerial.nvim]], false)
+-- Config for: nvim-surround
+time([[Config for nvim-surround]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
+time([[Config for nvim-surround]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: neodev.nvim
+time([[Config for neodev.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneodev\frequire\0", "config", "neodev.nvim")
+time([[Config for neodev.nvim]], false)
+-- Config for: fidget.nvim
+time([[Config for fidget.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vfidget\frequire\0", "config", "fidget.nvim")
+time([[Config for fidget.nvim]], false)
+-- Config for: icon-picker.nvim
+time([[Config for icon-picker.nvim]], true)
+try_loadstring("\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\28disable_legacy_commands\2\nsetup\16icon-picker\frequire\0", "config", "icon-picker.nvim")
+time([[Config for icon-picker.nvim]], false)
+-- Config for: winshift.nvim
+time([[Config for winshift.nvim]], true)
+try_loadstring("\27LJ\2\nc\0\0\3\0\4\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0D\0\2\0\1\0\1\17picker_chars\23SDFGHJKL1234567890\16pick_window\17winshift.lib\frequireŸ\1\1\0\5\0\f\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\1K\0\1\0\27<Cmd>WinShift swap<Cr>\v<C-W>m\6n\bset\vkeymap\bvim\18window_picker\1\0\0\0\nsetup\rwinshift\frequire\0", "config", "winshift.nvim")
+time([[Config for winshift.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\n¬\2\0\0\6\0\16\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\0016\0\n\0009\0\v\0009\0\f\0'\2\r\0'\3\14\0'\4\15\0004\5\0\0B\0\5\1K\0\1\0\28<Cmd>NvimTreeToggle<Cr>\14<leader>t\6n\bset\vkeymap\bvim\ffilters\1\0\1\rdotfiles\1\bgit\1\0\1\venable\2\24update_focused_file\1\0\2\venable\2\16update_root\2\1\0\3\20respect_buf_cwd\2\17hijack_netrw\1\23sync_root_with_cwd\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: leap.nvim
+time([[Config for leap.nvim]], true)
+try_loadstring("\27LJ\2\nÔ\1\0\0\3\0\b\0\0246\0\0\0'\2\1\0B\0\2\0029\0\2\0004\1\0\0=\1\3\0006\0\0\0'\2\1\0B\0\2\0029\0\2\0005\1\5\0=\1\4\0006\0\0\0'\2\1\0B\0\2\0029\0\2\0+\1\2\0=\1\6\0006\0\0\0'\2\1\0B\0\2\0029\0\a\0B\0\1\1K\0\1\0\25add_default_mappings\19case_sensitive\1\17\0\0\6f\6d\6s\6g\6j\6k\6l\6h\6r\6t\6v\6b\6y\6u\6n\6a\vlabels\16safe_labels\topts\tleap\frequire\0", "config", "leap.nvim")
+time([[Config for leap.nvim]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+try_loadstring("\27LJ\2\n…\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\22detection_methods\1\3\0\0\fpattern\blsp\rpatterns\1\0\0\1\2\0\0\t.git\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
+time([[Config for project.nvim]], false)
+-- Config for: git.nvim
+time([[Config for git.nvim]], true)
+try_loadstring("\27LJ\2\no\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\1\vbrowse\15<leader>gg\1\0\1\21default_mappings\2\nsetup\bgit\frequire\0", "config", "git.nvim")
+time([[Config for git.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
