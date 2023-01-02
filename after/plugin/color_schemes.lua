@@ -1,8 +1,7 @@
 vim.o.background = "dark"
 
 vim.g.gruvbox_material_background = "hard"
-
-vim.cmd([[colorscheme gruvbox-material]])
+vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 
 -- Custom color needs to be placed after the colorscheme
 -- https://jonasjacek.github.io/colors/

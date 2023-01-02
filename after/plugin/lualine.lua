@@ -1,3 +1,7 @@
+local function maximize_status()
+	return vim.t.maximized and "   " or ""
+end
+
 require("lualine").setup({
 	options = {
 		component_separators = { left = "", right = "" },
@@ -25,6 +29,7 @@ require("lualine").setup({
 		}, -- full path
 		lualine_c = { { "aerial", dense = true } },
 		lualine_x = {
+			maximize_status,
 			"diagnostics",
 			"diff",
 			{

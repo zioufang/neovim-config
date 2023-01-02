@@ -17,13 +17,13 @@ require("lir").setup({
 
 		["K"] = actions.mkdir,
 		["N"] = actions.newfile,
-		["r"] = actions.rename,
+		["R"] = actions.rename,
 		["@"] = actions.cd,
 		["Y"] = actions.yank_path,
 		["."] = actions.toggle_show_hidden,
 		["D"] = actions.delete,
 
-		["J"] = function()
+		["m"] = function()
 			mark_actions.toggle_mark()
 			vim.cmd("normal! j")
 		end,

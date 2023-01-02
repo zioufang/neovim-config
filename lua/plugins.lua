@@ -42,14 +42,6 @@ require("packer").startup(function(use)
 		},
 	})
 
-	-- neovim  dev
-	use({
-		"folke/neodev.nvim",
-		config = function()
-			require("neodev").setup({})
-		end,
-	})
-
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
@@ -123,7 +115,12 @@ require("packer").startup(function(use)
 	})
 
 	use("sbdchd/neoformat") -- auto formatter
-	use({ "kevinhwang91/nvim-bqf" }) -- better quickfix
+	use({
+		"kevinhwang91/nvim-bqf",
+		config = function()
+			require("bqf").setup({ auto_resize_height = true })
+		end,
+	}) -- better quickfix
 
 	-- used for auto change working directory
 	use({
@@ -171,9 +168,19 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- Language Specific
+	-----------------------
+	-- Language Specific --
+	-----------------------
 	-- Rust
 	use("simrat39/rust-tools.nvim") -- mostly for inlayHints
+
+	-- neovim  dev
+	use({
+		"folke/neodev.nvim",
+		config = function()
+			require("neodev").setup({})
+		end,
+	})
 
 	-- markdown preview
 	use({
@@ -203,12 +210,15 @@ require("packer").startup(function(use)
 				},
 			})
 			vim.keymap.set("n", "<F11>", "<Cmd>WindowsMaximizeVertically<Cr>")
+			vim.keymap.set("n", "<F10>", "<Cmd>WindowsMaximize<Cr>")
 		end,
 	})
 	use({
 		"declancm/maximize.nvim",
 		config = function()
-			require("maximize").setup()
+			require("maximize").setup({
+				default_keymaps = false,
+			})
 			vim.keymap.set({ "n", "t" }, "<F12>", "<Cmd>lua require('maximize').toggle()<CR>")
 		end,
 	})
@@ -232,7 +242,12 @@ require("packer").startup(function(use)
 	-----------------
 	use("stevearc/dressing.nvim") -- better default vim ui
 	use("kyazdani42/nvim-web-devicons") -- pretty icons
-	use("sainnhe/gruvbox-material") -- default colorscheme
+	use({
+		"sainnhe/gruvbox-material",
+		config = function()
+			vim.cmd("colorscheme gruvbox-material")
+		end,
+	})
 	use("folke/tokyonight.nvim") -- colorscheme, used by scrollbar.lua
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -252,6 +267,13 @@ require("packer").startup(function(use)
 			require("icon-picker").setup({
 				disable_legacy_commands = true,
 			})
+		end,
+	})
+	-- prettier qf
+	use({
+		"https://gitlab.com/yorickpeterse/nvim-pqf.git",
+		config = function()
+			require("pqf").setup()
 		end,
 	})
 

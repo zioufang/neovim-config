@@ -3,6 +3,10 @@ local noremap = { noremap = true }
 
 command_center.add({
 	{
+		desc = "PackerSync",
+		cmd = "<Cmd>PackerSync<Cr>",
+	},
+	{
 		desc = "RustSetInlayHints",
 		cmd = "<Cmd>RustSetInlayHints<Cr>",
 	},
@@ -25,9 +29,5 @@ command_center.add({
 	{
 		desc = "Telescope quickfixhistory",
 		cmd = "<Cmd>Telescope quickfixhistory<Cr>",
-	},
-	{
-		desc = "",
-		cmd = "<Cmd><Cr>",
 	},
 }, command_center.mode.ADD)

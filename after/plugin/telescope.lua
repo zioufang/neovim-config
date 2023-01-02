@@ -98,3 +98,24 @@ require("telescope").load_extension("command_center")
 
 -- ahmedkhalf/project.nvim
 require("telescope").load_extension("projects")
+
+-- open qf in vertical
+-- local telescope_actions = require("telescope.actions")
+--
+-- local function send_to_quickfix(promtbufnr)
+--    telescope_actions.smart_send_to_qflist(promtbufnr)
+--    vim.cmd([[botright copen]])
+-- end
+--
+-- telescope.setup({
+--   defaults = {
+--     mappings = {
+--       ["n"] = {
+--         ["<C-q>"] = send_to_quickfix,
+--       },
+--        ["i"] = {
+--          ["<C-q>"] = send_to_quickfix,
+--        },
+--      },
+--   },
+-- })

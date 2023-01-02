@@ -22,6 +22,7 @@ vim.keymap.set("n", "<A-x>", "<Cmd>Telescope command_center<Cr>")
 --lsp
 vim.keymap.set("n", "<leader>fe", telescope.diagnostics, {})
 
+vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>jj", vim.diagnostic.open_float, {})
 vim.keymap.set("n", "<leader>jk", vim.diagnostic.goto_next, {})
@@ -55,6 +56,7 @@ vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
 vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
 vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
 vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
+vim.keymap.set("n", "<leader>w", "<C-W>=")
 
 vim.keymap.set("n", "\\", ":vert sb<Cr>")
 --
@@ -79,3 +81,28 @@ vim.keymap.set("i", '""', '""<Left>')
 
 vim.keymap.set("v", ">", "^o^><Esc>gv")
 vim.keymap.set("v", "<", "0o0<<Esc>gv")
+
+-- quickfix
+vim.cmd([[
+function! ToggleQuickfix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+]])
+vim.cmd([[
+function! ToggleVertQuickfix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        vert copen
+    else
+        cclose
+    endif
+endfunction
+]])
+vim.keymap.set("n", "<leader>q", "<Cmd>call ToggleQuickfix()<Cr>")
+vim.keymap.set("n", "<leader>Q", "<Cmd>call ToggleVertQuickfix()<Cr>")
+
+-- closing all buffers referenced in the qf list (after doing search replace etc.)
+-- cdo bd
