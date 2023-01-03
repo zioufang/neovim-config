@@ -1,7 +1,5 @@
 local lspconfig = require("lspconfig")
-
 local mason_lspconfig = require("mason-lspconfig")
-local cmp = require("cmp")
 
 vim.diagnostic.config({
 	virtual_text = true,

@@ -4,12 +4,11 @@ end
 
 local function lsp_provider()
 	local clients = {}
-	for _, client in pairs(vim.lsp.get_active_clients()) do
+	for _, client in pairs(vim.lsp.buf_get_clients()) do
 		if client.name == "pyright" then
-			-- Check if lsp was initialized with py_lsp
+			-- add (venv) if customized python path is detected
 			if client.config.settings.python["pythonPath"] ~= nil then
-				local venv_name = client.config.settings.python.pythonPath
-				clients[#clients + 1] = client.name .. "(" .. venv_name .. ")"
+				clients[#clients + 1] = client.name .. "(venv)"
 			end
 		else
 			clients[#clients + 1] = client.name
