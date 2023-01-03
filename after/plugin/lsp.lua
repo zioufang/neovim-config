@@ -1,40 +1,71 @@
-local lsp = require("lsp-zero")
-lsp.preset("recommended")
+local lspconfig = require("lspconfig")
 
-lsp.ensure_installed({
-	"sumneko_lua",
-	"rust_analyzer",
-	"pyright",
-})
-
+local mason_lspconfig = require("mason-lspconfig")
 local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-	["<Tab>"] = cmp.mapping.confirm({ select = true }),
-	-- ["<C-Space>"] = cmp.mapping.complete(),
-})
-
-lsp.setup_nvim_cmp({
-	mapping = cmp_mappings,
-})
-
-lsp.on_attach(function(client, bufnr)
-	local opts = { buffer = bufnr, remap = false }
-
-	-- disable certain lsp
-	-- if client.name == "eslint" then
-	-- 	vim.cmd.LspStop("eslint")
-	-- 	return
-	-- end
-
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- use default gd if lsp is not detected, since this is in a on_attach block
-	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-end)
-
-lsp.setup()
 
 vim.diagnostic.config({
 	virtual_text = true,
+})
+
+local on_attach = function(client, bufnr)
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+	-- See `:h vim.lsp.*`
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("n", "<leader>ja", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "<leader>jR", vim.lsp.buf.rename, bufopts)
+	vim.keymap.set("n", "<leader>je", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>", bufopts) -- TOOD: might be a better way
+	vim.keymap.set("n", "<leader>ji", ":LspInfo<Cr>", bufopts)
+
+	-- Create a command `:Format` local to the LSP buffer
+	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+		vim.lsp.buf.format()
+	end, { desc = "Format current buffer with LSP" })
+end
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+require("mason").setup()
+mason_lspconfig.setup({
+	ensure_installed = {
+		"sumneko_lua",
+		"rust_analyzer",
+		"pyright",
+		"gopls",
+		"tsserver", -- js + ts
+		"marksman", -- markdown
+	},
+})
+
+mason_lspconfig.setup_handlers({
+	function(server_name)
+		require("lspconfig")[server_name].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+	end,
+
+	-- python
+	["pyright"] = function()
+		lspconfig.pyright.setup({
+			-- assume there is always an `.venv` virtualenv in every python project root
+			before_init = function(_, config)
+				local Path = require("plenary.path")
+				local venv = Path:new((config.root_dir:gsub("/", Path.path.sep)), ".venv")
+				if venv:joinpath("bin"):is_dir() then
+					config.settings.python.pythonPath = tostring(venv:joinpath("bin", "python"))
+				else
+					config.settings.python.pythonPath = tostring(venv:joinpath("Scripts", "python.exe"))
+				end
+			end,
+		})
+	end,
+
+	-- default lua lsp to neovim variant
+	["sumneko_lua"] = function()
+		require("neodev").setup({})
+		lspconfig.sumneko_lua.setup({})
+	end,
 })

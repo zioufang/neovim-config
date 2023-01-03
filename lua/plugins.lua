@@ -20,28 +20,31 @@ require("packer").startup(function(use)
 		plugins(use)
 	end
 
+	-- lsp
 	use({
-		"VonHeikemen/lsp-zero.nvim",
+		"neovim/nvim-lspconfig",
 		requires = {
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-nvim-lua" },
-
-			-- Snippets
-			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets" },
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 		},
 	})
 
+	-- auto completion
+	use({ -- Autocompletion
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lua", -- cmpl src for neovim lua api
+			"saadparwaiz1/cmp_luasnip",
+			"L3MON4D3/LuaSnip",
+			--  "rafamadriz/friendly-snippets" ,
+		},
+	})
+
+	-- tree sitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
@@ -114,15 +117,18 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	use("sbdchd/neoformat") -- auto formatter
+	-- auto formatter
+	use("sbdchd/neoformat")
+
+	-- better quickfix
 	use({
 		"kevinhwang91/nvim-bqf",
 		config = function()
 			require("bqf").setup({ auto_resize_height = true })
 		end,
-	}) -- better quickfix
+	})
 
-	-- used for auto change working directory
+	-- switch project + (more importantly) auto change working directory
 	use({
 		"ahmedkhalf/project.nvim",
 		config = function()
@@ -156,6 +162,8 @@ require("packer").startup(function(use)
 			"sindrets/diffview.nvim",
 		},
 	})
+
+	-- running git in cmd mode
 	use({
 		"dinhhuy258/git.nvim",
 		config = function()
@@ -175,12 +183,7 @@ require("packer").startup(function(use)
 	use("simrat39/rust-tools.nvim") -- mostly for inlayHints
 
 	-- neovim  dev
-	use({
-		"folke/neodev.nvim",
-		config = function()
-			require("neodev").setup({})
-		end,
-	})
+	use({ "folke/neodev.nvim" })
 
 	-- markdown preview
 	use({
@@ -193,7 +196,9 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- window management
+	-----------------------
+	-- Window Management --
+	-----------------------
 	use({
 		"anuvyklack/windows.nvim",
 		requires = {
@@ -242,12 +247,8 @@ require("packer").startup(function(use)
 	-----------------
 	use("stevearc/dressing.nvim") -- better default vim ui
 	use("kyazdani42/nvim-web-devicons") -- pretty icons
-	use({
-		"sainnhe/gruvbox-material",
-		config = function()
-			vim.cmd("colorscheme gruvbox-material")
-		end,
-	})
+	use({ "sainnhe/gruvbox-material" })
+	use({ "sainnhe/sonokai" })
 	use("folke/tokyonight.nvim") -- colorscheme, used by scrollbar.lua
 	use({
 		"nvim-lualine/lualine.nvim",

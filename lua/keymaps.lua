@@ -3,6 +3,8 @@ vim.g.mapleader = " "
 -- telescope
 local telescope = require("telescope.builtin")
 
+vim.keymap.set("n", "<A-x>", "<Cmd>Telescope command_center<Cr>")
+
 vim.keymap.set("n", "<leader>ff", telescope.find_files, {})
 vim.keymap.set("n", "<leader>fd", telescope.buffers, {})
 vim.keymap.set("n", "<leader>fr", telescope.oldfiles, {})
@@ -11,26 +13,20 @@ vim.keymap.set("n", "<leader>fj", telescope.jumplist, {})
 vim.keymap.set("n", "<leader>ft", telescope.resume, {})
 -- vim.keymap.set("n", "<leader>fs", telescope.spell_suggest, {})
 vim.keymap.set("n", "<leader>fy", telescope.registers, {})
+-- some keymaps are defined in lsp.lua, to utilize on_attach
+vim.keymap.set("n", "<leader>fe", telescope.diagnostics, {})
 
 vim.keymap.set("n", "<leader>p", ":Telescope projects<Cr>")
 
 vim.keymap.set("n", "<leader>r", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set("n", "<leader>b", telescope.current_buffer_fuzzy_find, {})
 
-vim.keymap.set("n", "<A-x>", "<Cmd>Telescope command_center<Cr>")
-
 --lsp
-vim.keymap.set("n", "<leader>fe", telescope.diagnostics, {})
-
-vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>jj", vim.diagnostic.open_float, {})
 vim.keymap.set("n", "<leader>jk", vim.diagnostic.goto_next, {})
-vim.keymap.set("n", "<leader>ja", vim.lsp.buf.code_action, {})
-vim.keymap.set("n", "<leader>jR", vim.lsp.buf.rename, {})
-vim.keymap.set("n", "<leader>je", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>", {}) -- TOOD: might be a better way
-vim.keymap.set("n", "<leader>ji", ":LspInfo<Cr>", {})
 vim.keymap.set("n", "<leader>jr", telescope.lsp_references, {})
+
+vim.keymap.set("n", "<leader>gc", telescope.git_branches, {})
 
 -- rust tools
 vim.keymap.set("n", "<leader>lh", "<Cmd>RustSetInlayHints<Cr>")

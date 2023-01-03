@@ -2,7 +2,24 @@ local function maximize_status()
 	return vim.t.maximized and "   " or ""
 end
 
+local function lsp_provider()
+	local clients = {}
+	for _, client in pairs(vim.lsp.get_active_clients()) do
+		if client.name == "pyright" then
+			-- Check if lsp was initialized with py_lsp
+			if client.config.settings.python["pythonPath"] ~= nil then
+				local venv_name = client.config.settings.python.pythonPath
+				clients[#clients + 1] = client.name .. "(" .. venv_name .. ")"
+			end
+		else
+			clients[#clients + 1] = client.name
+		end
+	end
+	return table.concat(clients, " ")
+end
+
 require("lualine").setup({
+	theme = "auto",
 	options = {
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
@@ -36,6 +53,7 @@ require("lualine").setup({
 				"filetype",
 				icon_only = true,
 			},
+			{ lsp_provider, color = { fg = "Purple", bg = "InactiveGray" } },
 		},
 		lualine_y = {},
 		lualine_z = {},
