@@ -9,10 +9,9 @@ vim.keymap.set("n", "<leader>ff", telescope.find_files, {})
 vim.keymap.set("n", "<leader>fd", telescope.buffers, {})
 vim.keymap.set("n", "<leader>fr", telescope.oldfiles, {})
 vim.keymap.set("n", "<leader>fc", telescope.command_history, {})
-vim.keymap.set("n", "<leader>fj", telescope.jumplist, {})
 vim.keymap.set("n", "<leader>ft", telescope.resume, {})
--- vim.keymap.set("n", "<leader>fs", telescope.spell_suggest, {})
 vim.keymap.set("n", "<leader>fy", telescope.registers, {})
+vim.keymap.set("n", "<leader>fh", telescope.help_tags, {})
 -- some keymaps are defined in lsp.lua, to utilize on_attach
 vim.keymap.set("n", "<leader>fe", telescope.diagnostics, {})
 
@@ -71,9 +70,6 @@ vim.keymap.set("n", "c", '"_c')
 vim.keymap.set("n", "C", '"_C')
 vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("n", "X", '"_X')
-
-vim.keymap.set("i", "{{", "{<Cr>}<Esc>O")
-vim.keymap.set("i", '""', '""<Left>')
 
 vim.keymap.set("v", ">", "^o^><Esc>gv")
 vim.keymap.set("v", "<", "0o0<<Esc>gv")

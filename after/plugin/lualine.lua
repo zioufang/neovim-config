@@ -1,5 +1,5 @@
 local function maximize_status()
-	return vim.t.maximized and "   " or ""
+	return vim.t.maximized and " " or ""
 end
 
 local function lsp_provider()
@@ -22,14 +22,10 @@ require("lualine").setup({
 	options = {
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
+		globalstatus = true,
 	},
 	sections = {
-		lualine_a = { {
-			"mode",
-			fmt = function(str)
-				return str:sub(1, 1)
-			end,
-		} },
+		lualine_a = { "mode" },
 		lualine_b = {
 			{
 				"filename",
@@ -37,39 +33,40 @@ require("lualine").setup({
 				-- 1: Relative path
 				-- 2: Absolute path
 				-- 3: Absolute path, with tilde as the home directory
-				path = 1,
+				path = 3,
 				symbols = {
 					unnamed = "[Home]", -- Text to show for unnamed buffers.
 				},
 			},
 		}, -- full path
-		lualine_c = { { "aerial", dense = true } },
+		lualine_c = { { "branch", padding = { left = 1, right = 0 } }, { "diff", separator = "|" } },
 		lualine_x = {
-			maximize_status,
-			"diagnostics",
-			"diff",
+			{ maximize_status, separator = "|" },
+			{ "aerial", dense = true, separator = "|" },
+			{ "diagnostics", separator = "|" },
 			{
 				"filetype",
 				icon_only = true,
+				padding = { left = 1, right = 0 },
 			},
-			{ lsp_provider, color = { fg = "Purple", bg = "InactiveGray" } },
+			{ lsp_provider, color = { fg = "Orange" } },
 		},
 		lualine_y = {},
 		lualine_z = {},
 	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = {
-			{
-				"filename",
-				symbols = {
-					unnamed = "[Home]",
-				},
-			},
-		},
-		lualine_x = {},
-		lualine_y = {},
-		lualine_z = {},
-	},
+	-- inactive_sections = {
+	-- 	lualine_a = {},
+	-- 	lualine_b = {},
+	-- 	lualine_c = {
+	-- 		{
+	-- 			"filename",
+	-- 			symbols = {
+	-- 				unnamed = "[Home]",
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	lualine_x = {},
+	-- 	lualine_y = {},
+	-- 	lualine_z = {},
+	-- },
 })

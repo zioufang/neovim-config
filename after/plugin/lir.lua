@@ -55,7 +55,12 @@ require("lir").setup({
 })
 
 -- press `-` to visit current path
-vim.api.nvim_set_keymap("n", "-", [[<Cmd>execute 'e ' .. expand('%:p:h')<CR>]], { noremap = true })
+vim.api.nvim_set_keymap("n", "-", [[<Cmd>silent! execute 'e ' .. expand('%:p:h')<CR>]], { noremap = true })
 
 -- press '_' to split open dir
-vim.api.nvim_set_keymap("n", "_", [[:vert sb<Cr>:execute 'e ' .. expand('%:p:h')<CR>]], { noremap = true })
+vim.api.nvim_set_keymap(
+	"n",
+	"_",
+	[[<Cmd>silent! vert sb<Cr>:silent! execute 'e ' .. expand('%:p:h')<CR>]],
+	{ noremap = true }
+)

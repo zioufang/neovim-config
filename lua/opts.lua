@@ -25,8 +25,8 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 
--- Save undo history
-vim.opt.undofile = true
+-- auto shrink cmd
+vim.opt.cmdheight = 0
 
 -- ignorecase while searching, use \C in the end to enforce case-sensitivity
 vim.opt.ignorecase = true
@@ -45,7 +45,7 @@ vim.opt.sidescrolloff = 5
 -- Set colorscheme
 vim.opt.termguicolors = true
 vim.opt.completeopt = "menu,noinsert" -- autoselect the first entry in autocompletion
-vim.opt.iskeyword:remove({ "_" }) -- _ will be treated as a word('w' not 'W') boundry  check :help word
+-- vim.opt.iskeyword:remove({ "_" }) -- _ will be treated as a word('w' not 'W') boundry  check :help word
 
 -- DEBUG: run `:verbose set formatoptions`
 -- showed ftplugin rust/lua.vim etc. was overwriting this

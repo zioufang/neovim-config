@@ -120,6 +120,13 @@ require("packer").startup(function(use)
 	-- auto formatter
 	use("sbdchd/neoformat")
 
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
+
 	-- better quickfix
 	use({
 		"kevinhwang91/nvim-bqf",
@@ -184,6 +191,7 @@ require("packer").startup(function(use)
 
 	-- neovim  dev
 	use({ "folke/neodev.nvim" })
+	use("rafcamlet/nvim-luapad")
 
 	-- markdown preview
 	use({

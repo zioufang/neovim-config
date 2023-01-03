@@ -14,9 +14,9 @@ vim.cmd("colorscheme gruvbox-material")
 
 -- Custom color needs to be placed after the colorscheme
 -- https://jonasjacek.github.io/colors/
-vim.cmd([[highlight CursorLine ctermbg=240 guibg=#333333]])
-vim.cmd([[autocmd InsertEnter * highlight CursorLine ctermbg=235 guibg=#222222]])
-vim.cmd([[autocmd InsertLeave * highlight CursorLine ctermbg=237 guibg=#333333]])
+vim.cmd([[highlight CursorLine ctermbg=240 guibg=#292929]])
+vim.cmd([[autocmd InsertEnter * highlight CursorLine ctermbg=235 guibg=#200000]])
+vim.cmd([[autocmd InsertLeave * highlight CursorLine ctermbg=237 guibg=#292929]])
 vim.cmd([[
 augroup NoCursorLine
     autocmd!
