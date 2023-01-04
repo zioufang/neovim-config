@@ -258,7 +258,8 @@ require("packer").startup(function(use)
 				end,
 			})
 			-- vim.keymap.set("n", "<C-W>M", "<Cmd>WinShift<Cr>")
-			vim.keymap.set("n", "<C-W>m", "<Cmd>WinShift swap<Cr>")
+			-- need to set cmdheight to non-zero, so the selection shows up. set it back to one afterwards (:set ch=0)
+			vim.keymap.set("n", "<C-W>m", "<Cmd>set cmdheight=1<Cr><Cmd>WinShift swap<Cr>")
 		end,
 	}) -- swapping windows
 

@@ -67,9 +67,15 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s", "c" }),
-		["<C-y>"] = cmp.mapping.confirm({ -- confirm without replacement
-			select = true,
-		}),
+		["<C-y>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.confirm({ -- confirm without replacement
+					select = true,
+				})
+			else
+				fallback()
+			end
+		end, { "i", "s", "c" }),
 		["<S-Tab>"] = cmp.mapping.complete(),
 		["<C-n>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
