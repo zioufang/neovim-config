@@ -1,33 +1,43 @@
-vim.cmd([[
-function! ToggleTerm(termname)
-	let pane = bufwinnr(a:termname)
-	let buf = bufexists(a:termname)
-	if pane > 0
-		exe pane . "wincmd c"
-	elseif buf > 0
-		exe "botright new"
-		exe "resize 25"
-		exe "buffer " . a:termname
-		exe "normal! i"
-	else
-		" if is a git repo, then use project root folder
-		" else use original vim path
-		try
-			exe ":cd %:h | exe 'cd ' . fnameescape(get(systemlist('git rev-parse --show-toplevel'), 0))"
-		catch
-			echo "This is NOT a git repo"
-		endtry
-		exe "botright new"
-		exe "resize 25"
-		:terminal
-		exe "f " a:termname
-		exe "normal! i"
-	endif
-endfunction
-]])
-vim.cmd([[autocmd TermOpen * setlocal nonumber norelativenumber]])
+local fn = vim.fn
+local api = vim.api
+local cmd = vim.cmd
+local fmt = string.format
+-- toggle term with a specific buf name
+local function toggle_term(buf_name)
+	local window_id = fn.win_getid(fn.bufwinnr(buf_name))
+	local existed = fn.bufexists(buf_name)
 
-vim.keymap.set({ "n", "t" }, "<C-space>", "<Cmd>call ToggleTerm('main')<Cr>")
+	if window_id > 0 then
+		api.nvim_win_hide(window_id)
+	else
+		if existed < 1 then -- if no existing term
+			cmd(fmt("botright new")) -- create a new buffer
+			cmd("terminal")
+			-- rename the buffer to buf_name
+			cmd(fmt("file %s", buf_name))
+		else
+			cmd(fmt("botright split %s", buf_name)) -- bring back the term buffer
+		end
+		cmd("resize 30")
+		cmd("normal! i") -- enter insert mode
+	end
+end
+
+local function split_str(input, sep)
+	local t = {}
+	for str in string.gmatch(input, "([^" .. sep .. "]+)") do
+		table.insert(t, str)
+	end
+	return t
+end
+
+-- toggle term based on dir name of the current working directory
+vim.keymap.set({ "n", "t" }, "<C-space>", function()
+	local cwd = fn.getcwd()
+	local names = split_str(cwd, "/")
+	local name = names[#names]
+	toggle_term("term_" .. name)
+end)
 
 function _G.set_terminal_keymaps()
 	local opts = { buffer = 0 }
@@ -39,3 +49,4 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+vim.cmd([[autocmd TermOpen * setlocal nonumber norelativenumber]])
