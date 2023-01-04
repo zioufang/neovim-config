@@ -12,15 +12,16 @@ vim.g.sonokai_diagnostic_virtual_text = "colored"
 vim.cmd("colorscheme gruvbox-material")
 -- vim.cmd("colorscheme sonokai")
 
+-- replaced by nvim-cursorline
 -- Custom color needs to be placed after the colorscheme
 -- https://jonasjacek.github.io/colors/
-vim.cmd([[highlight CursorLine ctermbg=240 guibg=#292929]])
-vim.cmd([[autocmd InsertEnter * highlight CursorLine ctermbg=235 guibg=#200000]])
-vim.cmd([[autocmd InsertLeave * highlight CursorLine ctermbg=237 guibg=#292929]])
-vim.cmd([[
-augroup NoCursorLine
-    autocmd!
-    autocmd WinEnter * set cursorline
-    autocmd WinLeave * set nocursorline
-augroup END
-]])
+-- vim.cmd([[highlight CursorLine ctermbg=240 guibg=#292929]])
+-- vim.cmd([[autocmd InsertEnter * highlight CursorLine ctermbg=235 guibg=#200000]])
+-- vim.cmd([[autocmd InsertLeave * highlight CursorLine ctermbg=237 guibg=#292929]])
+-- vim.cmd([[
+-- augroup NoCursorLine
+--     autocmd!
+--     autocmd WinEnter * set cursorline
+--     autocmd WinLeave * set nocursorline
+-- augroup END
+-- ]])

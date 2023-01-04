@@ -5,7 +5,7 @@ vim.diagnostic.config({
 	virtual_text = true,
 })
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
 	-- See `:h vim.lsp.*`
@@ -67,3 +67,5 @@ mason_lspconfig.setup_handlers({
 		lspconfig.sumneko_lua.setup({})
 	end,
 })
+
+-- TODO: change diagnostics underline to wavy + pretty sign

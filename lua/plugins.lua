@@ -127,6 +127,9 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	-- better clilpboard management
+	use("AckslD/nvim-neoclip.lua")
+
 	-- better quickfix
 	use({
 		"kevinhwang91/nvim-bqf",
@@ -183,6 +186,10 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	-- iv + av for subwords in snake/camel cases
+	use("kana/vim-textobj-user")
+	use("Julian/vim-textobj-variable-segment")
+
 	-----------------------
 	-- Language Specific --
 	-----------------------
@@ -190,8 +197,10 @@ require("packer").startup(function(use)
 	use("simrat39/rust-tools.nvim") -- mostly for inlayHints
 
 	-- neovim  dev
-	use({ "folke/neodev.nvim" })
+	use("folke/neodev.nvim")
 	use("rafcamlet/nvim-luapad")
+	use("nvim-lua/plenary.nvim")
+	use("rcarriga/nvim-notify")
 
 	-- markdown preview
 	use({
@@ -283,6 +292,21 @@ require("packer").startup(function(use)
 		"https://gitlab.com/yorickpeterse/nvim-pqf.git",
 		config = function()
 			require("pqf").setup()
+		end,
+	})
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("indent_blankline").setup({
+				vim.cmd([[let g:indent_blankline_enabled = v:false]]), -- disable by default for toggle
+				vim.keymap.set("n", "<leader>i", "<Cmd>IndentBlanklineToggle<Cr>"),
+			})
+		end,
+	})
+	use({
+		"yamatsum/nvim-cursorline",
+		config = function()
+			require("nvim-cursorline").setup({})
 		end,
 	})
 

@@ -10,10 +10,13 @@ vim.keymap.set("n", "<leader>fd", telescope.buffers, {})
 vim.keymap.set("n", "<leader>fr", telescope.oldfiles, {})
 vim.keymap.set("n", "<leader>fc", telescope.command_history, {})
 vim.keymap.set("n", "<leader>ft", telescope.resume, {})
-vim.keymap.set("n", "<leader>fy", telescope.registers, {})
+vim.keymap.set("n", "<leader>fy", "<Cmd>Telescope neoclip<Cr>", {})
 vim.keymap.set("n", "<leader>fh", telescope.help_tags, {})
 -- some keymaps are defined in lsp.lua, to utilize on_attach
-vim.keymap.set("n", "<leader>fe", telescope.diagnostics, {})
+vim.keymap.set("n", "<leader>fe", function()
+	telescope.diagnostics({ bufnr = 0 })
+end, {})
+vim.keymap.set("n", "<leader>fE", telescope.diagnostics, {})
 
 vim.keymap.set("n", "<leader>p", ":Telescope projects<Cr>")
 

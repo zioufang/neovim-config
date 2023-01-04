@@ -61,3 +61,9 @@ vim.opt.undofile = true
 -- see |netrw-noload|
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+---------------------
+-- Tracking Issues --
+---------------------
+-- changing cursor shape in terminal
+-- https://github.com/neovim/neovim/issues/3681
