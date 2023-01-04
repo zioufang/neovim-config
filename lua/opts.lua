@@ -27,7 +27,6 @@ vim.opt.breakindent = true
 
 -- auto shrink cmd
 vim.opt.cmdheight = 0
-
 -- ignorecase while searching, use \C in the end to enforce case-sensitivity
 vim.opt.ignorecase = true
 -- noignorecase in insert for autocompletion
@@ -38,7 +37,7 @@ vim.opt.smartcase = true
 
 -- Decrease update time
 vim.opt.updatetime = 250
-vim.opt.signcolumn = "no" -- sign in nvim-scrollbar
+vim.opt.signcolumn = "auto:1" -- sign in nvim-scrollbar
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 5
 

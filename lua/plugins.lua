@@ -172,7 +172,10 @@ require("packer").startup(function(use)
 			"sindrets/diffview.nvim",
 		},
 	})
-
+	use({
+		"lewis6991/gitsigns.nvim",
+		tag = "release",
+	})
 	-- running git in cmd mode
 	use({
 		"dinhhuy258/git.nvim",
