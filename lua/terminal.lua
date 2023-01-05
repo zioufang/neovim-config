@@ -23,18 +23,10 @@ local function toggle_term(buf_name)
 	end
 end
 
-local function split_str(input, sep)
-	local t = {}
-	for str in string.gmatch(input, "([^" .. sep .. "]+)") do
-		table.insert(t, str)
-	end
-	return t
-end
-
 -- toggle term based on dir name of the current working directory
 vim.keymap.set({ "n", "t" }, "<C-space>", function()
 	local cwd = fn.getcwd()
-	local names = split_str(cwd, "/")
+	local names = vim.split(cwd, "/")
 	local name = names[#names]
 	toggle_term("term_" .. name)
 end)

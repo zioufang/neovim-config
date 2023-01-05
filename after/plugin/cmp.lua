@@ -1,14 +1,7 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local has_words_before = function()
-	unpack = unpack or table.unpack
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
---   פּ ﯟ    some other good icons
+--   פּ    some other good icons
 local kind_icons = {
 	Text = "",
 	Method = "m",
@@ -37,7 +30,14 @@ local kind_icons = {
 	TypeParameter = "",
 }
 
--- TODO: set up snippet
+-- default selection behaviour is select only, and with Tab or C-j (Replacement) to confirm
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local has_words_before = function()
+	unpack = unpack or table.unpack
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -55,8 +55,7 @@ cmp.setup({
 		["<C-c>"] = cmp.mapping.abort(),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
+				cmp.confirm({ -- confirm without replacement
 					select = false,
 				})
 			elseif luasnip.expand_or_jumpable() then
@@ -67,43 +66,55 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s", "c" }),
-		["<C-y>"] = cmp.mapping(function(fallback)
+		["<C-j>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.confirm({ -- confirm without replacement
+				cmp.confirm({ -- confirm with replacement
+					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
 				})
 			else
 				fallback()
 			end
 		end, { "i", "s", "c" }),
-		["<Enter>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.confirm({ -- confirm without replacement
-					select = true,
-				})
-			else
-				fallback()
-			end
-		end, { "c" }),
 		["<S-Tab>"] = cmp.mapping.complete(),
-		["<C-n>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item(cmp_select)
-			elseif luasnip.jumpable() then
-				luasnip.jump()
-			else
-				fallback()
-			end
-		end, { "i", "s", "c" }),
-		["<C-p>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item(cmp_select)
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { "i", "s", "c" }),
+		["<C-n>"] = cmp.mapping({
+			s = function(fallback)
+				if cmp.visible() then
+					cmp.select_next_item(cmp_select)
+				elseif luasnip.jumpable() then
+					luasnip.jump()
+				else
+					fallback()
+				end
+			end,
+			-- more intuitive to do select insert in cmdline
+			c = function(fallback)
+				if cmp.visible() then
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+				else
+					fallback()
+				end
+			end,
+		}),
+		["<C-p>"] = cmp.mapping({
+			s = function(fallback)
+				if cmp.visible() then
+					cmp.select_prev_item(cmp_select)
+				elseif luasnip.jumpable(-1) then
+					luasnip.jump(-1)
+				else
+					fallback()
+				end
+			end,
+			-- more intuitive to do select insert in cmdline
+			c = function(fallback)
+				if cmp.visible() then
+					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+				else
+					fallback()
+				end
+			end,
+		}),
 	}),
 	formatting = {
 		fields = { "abbr", "kind", "menu" },
@@ -128,9 +139,12 @@ cmp.setup({
 
 -- cmd completion
 cmp.setup.cmdline(":", {
+	completion = {
+		completeopt = "menu,noinsert",
+		keyword_length = 1,
+	},
 	sources = cmp.config.sources({
 		{ name = "cmdline" },
-		{ name = "buffer" },
 		{ name = "path" },
 	}),
 })
@@ -142,9 +156,9 @@ cmp.setup.cmdline("/", {
 	}),
 })
 
--- loading snippets
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
-
 -- insert `(` after select function or method item
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+-- loading snippets
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })

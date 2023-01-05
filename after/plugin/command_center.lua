@@ -30,4 +30,12 @@ command_center.add({
 		desc = "Telescope quickfixhistory",
 		cmd = "<Cmd>Telescope quickfixhistory<Cr>",
 	},
+	{
+		desc = "Luapad (Scratch)",
+		cmd = "<Cmd>Luapad<Cr>",
+	},
+	{
+		desc = "Glow (Markdown Preview)",
+		cmd = "<Cmd>Glow<Cr>",
+	},
 }, command_center.mode.ADD)
