@@ -1,0 +1,25 @@
+{
+  "name": "zi-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "plaintext",
+          "markdown",
+          "tex",
+          "html",
+          "global",
+          "all"
+        ],
+        "path": "./zi/global.json"
+      },
+      {
+        "language": "python",
+        "path": "./zi/python.json"
+      }
+    ]
+  }
+}

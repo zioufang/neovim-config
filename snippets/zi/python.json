@@ -1,0 +1,7 @@
+{
+  "from ... import ...": {
+    "prefix": "frim",
+    "body": "from ${1:package/module} import ${2:names}$0",
+    "description": "Import statement that allows individual objects from the module to be imported directly into the caller’s symbol table."
+  }
+}
