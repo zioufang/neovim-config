@@ -303,14 +303,15 @@ require("packer").startup(function(use)
 		config = function()
 			require("indent_blankline").setup({
 				vim.cmd([[let g:indent_blankline_enabled = v:false]]), -- disable by default for toggle
-				vim.keymap.set("n", "<leader>i", "<Cmd>IndentBlanklineToggle<Cr>"),
+				vim.keymap.set("n", "<leader>vi", "<Cmd>IndentBlanklineToggle<Cr>"),
 			})
 		end,
 	})
 	use({
-		"yamatsum/nvim-cursorline",
+		"xiyaowong/nvim-cursorword",
 		config = function()
-			require("nvim-cursorline").setup({})
+			vim.cmd([[let g:cursorword_disable_at_startup = v:true]])
+			vim.keymap.set("n", "<leader>vc", "<Cmd>CursorWordToggle<Cr>")
 		end,
 	})
 

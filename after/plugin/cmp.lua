@@ -8,7 +8,7 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
---   פּ ﯟ   some other good icons
+--   פּ ﯟ    some other good icons
 local kind_icons = {
 	Text = "",
 	Method = "m",
@@ -16,7 +16,7 @@ local kind_icons = {
 	Constructor = "",
 	Field = "",
 	Variable = "",
-	Class = "",
+	Class = "ﯟ",
 	Interface = "",
 	Module = "",
 	Property = "",
@@ -76,12 +76,21 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s", "c" }),
+		["<Enter>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.confirm({ -- confirm without replacement
+					select = true,
+				})
+			else
+				fallback()
+			end
+		end, { "c" }),
 		["<S-Tab>"] = cmp.mapping.complete(),
 		["<C-n>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item(cmp_select)
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
+			elseif luasnip.jumpable() then
+				luasnip.jump()
 			else
 				fallback()
 			end
@@ -112,7 +121,7 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
+		{ name = "luasnip", option = { show_autosnippets = false } },
 		{ name = "path" },
 	},
 })
@@ -132,6 +141,9 @@ cmp.setup.cmdline("/", {
 		{ name = "buffer" },
 	}),
 })
+
+-- loading snippets
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
 
 -- insert `(` after select function or method item
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
