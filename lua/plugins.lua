@@ -315,9 +315,6 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- TODO: check the below
-	-- Pocco81/AbbrevMan.nvim
-
 	if packer_bootstrap then
 		require("packer").sync()
 	end

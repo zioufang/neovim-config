@@ -15,6 +15,7 @@ vim.opt.mouse = "nv"
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.splitkeep = "screen" -- keep screen after split
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

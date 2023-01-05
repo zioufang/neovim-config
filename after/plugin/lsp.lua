@@ -66,6 +66,10 @@ mason_lspconfig.setup({
 		"gopls",
 		"tsserver", -- js + ts
 		"marksman", -- markdown
+		"bashls",
+		"jsonls",
+		"yamlls",
+		"taplo", -- toml
 	},
 })
 

@@ -15,6 +15,10 @@ command_center.add({
 		cmd = "<Cmd>RustUnsetInlayHints<Cr>",
 	},
 	{
+		desc = "RustExpandMacro",
+		cmd = "<Cmd>RustExpandMacro<Cr>",
+	},
+	{
 		desc = "IconPickerInsert",
 		cmd = "<Cmd>IconPickerInsert<Cr>",
 	},

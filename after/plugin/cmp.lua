@@ -140,7 +140,7 @@ cmp.setup({
 -- cmd completion
 cmp.setup.cmdline(":", {
 	completion = {
-		completeopt = "menu,noinsert",
+		completeopt = "menu,menuone",
 		keyword_length = 1,
 	},
 	sources = cmp.config.sources({
@@ -151,6 +151,10 @@ cmp.setup.cmdline(":", {
 
 -- search completion
 cmp.setup.cmdline("/", {
+	completion = {
+		completeopt = "menu,menuone",
+		keyword_length = 2,
+	},
 	sources = cmp.config.sources({
 		{ name = "buffer" },
 	}),

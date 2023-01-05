@@ -31,8 +31,12 @@ vim.keymap.set("n", "<leader>jr", telescope.lsp_references, {})
 vim.keymap.set("n", "<leader>gc", telescope.git_branches, {})
 
 -- rust tools
-vim.keymap.set("n", "<leader>lh", "<Cmd>RustSetInlayHints<Cr>")
-vim.keymap.set("n", "<leader>lH", "<Cmd>RustUnsetInlayHints<Cr>")
+vim.keymap.set("n", "<leader>lh", function()
+	require("rust-tools").inlay_hints.set()
+end, {})
+vim.keymap.set("n", "<leader>lh", function()
+	require("rust-tools").inlay_hints.unset()
+end, {})
 
 -- custom commands
 vim.cmd([[:command! Ve e ~/.config/nvim/init.lua]])
@@ -49,6 +53,7 @@ vim.keymap.set("n", "/", ":set hls<Cr>/")
 
 -- vim.keymap.set("n", "<leader>s", ":.,$s///gc<Left><Left><Left><Left>")
 vim.keymap.set("n", "<leader>s", ":set hls<Cr>:.,$S///gc<Left><Left><Left><Left>") -- Subvert from vim-abolish
+vim.keymap.set("n", "<leader>S", ":set hls<Cr>:cdo! .,$S///gc<Left><Left><Left><Left> | update")
 
 vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
 vim.keymap.set("n", "<C-K>", "<C-W><C-K>")

@@ -10,8 +10,8 @@ require("dressing").setup({
 		i = {
 			["<C-c>"] = "Close",
 			["<CR>"] = "Confirm",
-			["<Up>"] = "HistoryPrev",
-			["<Down>"] = "HistoryNext",
+			["<C-Up>"] = "HistoryPrev",
+			["<C-Down>"] = "HistoryNext",
 		},
 	},
 })
