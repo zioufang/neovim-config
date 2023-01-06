@@ -88,7 +88,7 @@ require("lualine").setup({
 			{
 				"filetype",
 				icon_only = true,
-				padding = { left = 1, right = 0 },
+				padding = { left = 1, right = 1 },
 			},
 			{ lsp_provider },
 		},

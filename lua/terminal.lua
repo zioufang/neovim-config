@@ -31,14 +31,14 @@ vim.keymap.set({ "n", "t" }, "<C-space>", function()
 	toggle_term("term_" .. name)
 end)
 
-function _G.set_terminal_keymaps()
-	local opts = { buffer = 0 }
-	vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-W><C-h>", opts)
-	vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-W><C-j>", opts)
-	vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-W><C-k>", opts)
-	vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-W><C-l>", opts)
-end
-
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+-- function _G.set_terminal_keymaps()
+-- 	local opts = { buffer = 0 }
+-- 	vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-W><C-h>", opts)
+-- 	vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-W><C-j>", opts)
+-- 	vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-W><C-k>", opts)
+-- 	vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-W><C-l>", opts)
+-- end
+--
+-- -- if you only want these mappings for toggle term use term://*toggleterm#* instead
+-- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 vim.cmd([[autocmd TermOpen * setlocal nonumber norelativenumber]])

@@ -174,7 +174,7 @@ require("packer").startup(function(use)
 	})
 	use({
 		"lewis6991/gitsigns.nvim",
-		tag = "release",
+		tag = "v0.6",
 	})
 	-- running git in cmd mode
 	use({
@@ -192,6 +192,14 @@ require("packer").startup(function(use)
 	-- iv + av for subwords in snake/camel cases
 	use("kana/vim-textobj-user")
 	use("Julian/vim-textobj-variable-segment")
+
+	-- tmux
+	use({
+		"numToStr/Navigator.nvim",
+		config = function()
+			require("Navigator").setup()
+		end,
+	})
 
 	-----------------------
 	-- Language Specific --

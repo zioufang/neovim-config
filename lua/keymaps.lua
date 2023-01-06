@@ -5,7 +5,8 @@ local telescope = require("telescope.builtin")
 
 vim.keymap.set("n", "<A-x>", "<Cmd>Telescope command_center<Cr>")
 
-vim.keymap.set("n", "<leader>ff", telescope.find_files, {})
+vim.keymap.set("n", "<leader>ff", telescope.git_files, {})
+vim.keymap.set("n", "<leader>fF", telescope.find_files, {})
 vim.keymap.set("n", "<leader>fd", telescope.buffers, {})
 vim.keymap.set("n", "<leader>fr", telescope.oldfiles, {})
 vim.keymap.set("n", "<leader>fc", telescope.command_history, {})
@@ -24,9 +25,9 @@ vim.keymap.set("n", "<leader>r", ":lua require('telescope').extensions.live_grep
 vim.keymap.set("n", "<leader>b", telescope.current_buffer_fuzzy_find, {})
 
 --lsp
-vim.keymap.set("n", "<leader>jj", vim.diagnostic.open_float, {})
-vim.keymap.set("n", "<leader>jk", vim.diagnostic.goto_next, {})
-vim.keymap.set("n", "<leader>jr", telescope.lsp_references, {})
+-- vim.keymap.set("n", "<leader>jl", vim.diagnostic.open_float, {})
+vim.keymap.set("n", "<leader>ll", vim.diagnostic.goto_next, {})
+vim.keymap.set("n", "<leader>lr", telescope.lsp_references, {})
 
 vim.keymap.set("n", "<leader>gc", telescope.git_branches, {})
 
@@ -46,7 +47,7 @@ vim.cmd([[:command! Vs so ~/.config/nvim/init.lua]])
 vim.keymap.set("n", "<C-s>", ":update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do
 vim.keymap.set("i", "<C-s>", "<Esc>:update<Cr>")
 
-vim.keymap.set("n", "<C-c>", ":close<Cr>", { silent = true }) -- close will not close the last window
+-- vim.keymap.set("n", "<C-c>", ":close<Cr>", { silent = true }) -- close will not close the last window
 
 -- hit '/' highlights then enter search mode
 vim.keymap.set("n", "/", ":set hls<Cr>/")
@@ -55,10 +56,16 @@ vim.keymap.set("n", "/", ":set hls<Cr>/")
 vim.keymap.set("n", "<leader>s", ":set hls<Cr>:.,$S///gc<Left><Left><Left><Left>") -- Subvert from vim-abolish
 vim.keymap.set("n", "<leader>S", ":set hls<Cr>:cdo! .,$S///gc<Left><Left><Left><Left> | update")
 
-vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
-vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
-vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
-vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
+-- vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
+-- vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
+-- vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
+-- vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
+--
+vim.keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
+vim.keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
+vim.keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
+vim.keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
+
 vim.keymap.set("n", "<leader>w", "<C-W>=")
 
 vim.keymap.set("n", "\\", ":vert sb<Cr>")

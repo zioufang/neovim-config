@@ -16,7 +16,7 @@ require("lir").setup({
 		["q"] = actions.quit,
 
 		["K"] = actions.mkdir,
-		["N"] = actions.newfile,
+		["T"] = actions.newfile,
 		["R"] = actions.rename,
 		["@"] = actions.cd,
 		["Y"] = actions.yank_path,
@@ -44,7 +44,7 @@ require("lir").setup({
 		vim.api.nvim_buf_set_keymap(
 			0,
 			"x",
-			"J",
+			"m",
 			':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
 			{ noremap = true, silent = true }
 		)

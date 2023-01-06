@@ -1,7 +1,9 @@
 vim.cmd([[
+let blacklist = ['fish']
+
 augroup fmt
   autocmd!
-  autocmd BufWritePre * Neoformat
+  autocmd BufWritePre * if index(blacklist, &ft) < 0 | Neoformat | endif
 augroup END
 ]])
 

@@ -1,6 +1,12 @@
 local lspconfig = require("lspconfig")
 local mason_lspconfig = require("mason-lspconfig")
 
+-- Show line diagnostics automatically in hover window
+-- You will likely want to reduce updatetime which affects CursorHold
+-- note: this setting is global and should be set only once
+vim.o.updatetime = 250
+vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+
 local signs = {
 
 	{ name = "DiagnosticSignError", text = "" },
@@ -44,11 +50,11 @@ local bufopts = { noremap = true, silent = true }
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-vim.keymap.set("n", "<leader>ja", vim.lsp.buf.code_action, bufopts)
-vim.keymap.set("n", "<leader>js", vim.lsp.buf.signature_help, bufopts)
-vim.keymap.set("n", "<leader>jR", vim.lsp.buf.rename, bufopts)
-vim.keymap.set("n", "<leader>je", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>", bufopts) -- TOOD: might be a better way
-vim.keymap.set("n", "<leader>ji", ":LspInfo<Cr>", bufopts)
+vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, bufopts)
+vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, bufopts)
+vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, bufopts)
+vim.keymap.set("n", "<leader>le", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>", bufopts) -- TOOD: might be a better way
+vim.keymap.set("n", "<leader>li", ":LspInfo<Cr>", bufopts)
 
 -- Create a command `:Format` local to the LSP buffer
 -- vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
@@ -68,7 +74,6 @@ mason_lspconfig.setup({
 		"marksman", -- markdown
 		"bashls",
 		"jsonls",
-		"yamlls",
 		"taplo", -- toml
 	},
 })
