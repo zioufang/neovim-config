@@ -44,17 +44,15 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 })
 
-local bufopts = { noremap = true, silent = true }
-
--- See `:h vim.lsp.*`
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, bufopts)
-vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, bufopts)
-vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, bufopts)
-vim.keymap.set("n", "<leader>le", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>", bufopts) -- TOOD: might be a better way
-vim.keymap.set("n", "<leader>li", ":LspInfo<Cr>", bufopts)
+-- TODO: try on_attach (defined in keymaps for now)
+-- local bufopts = { noremap = true, silent = true }
+-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+-- vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+-- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+-- vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, bufopts)
+-- vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, bufopts)
+-- vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, bufopts)
+-- vim.keymap.set("n", "<leader>le", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>", bufopts) -- TOOD: might be a better way
 
 -- Create a command `:Format` local to the LSP buffer
 -- vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)

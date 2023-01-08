@@ -24,28 +24,33 @@ vim.keymap.set("n", "<leader>p", ":Telescope projects<Cr>")
 vim.keymap.set("n", "<leader>r", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set("n", "<leader>b", telescope.current_buffer_fuzzy_find, {})
 
---lsp
+-- lsp
+-- See `:h vim.lsp.*`
+local bufopts = { noremap = true, silent = true }
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, bufopts)
+vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, bufopts)
+vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, bufopts)
+vim.keymap.set("n", "<leader>le", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>", bufopts) -- TOOD: might be a better way
 -- vim.keymap.set("n", "<leader>jl", vim.diagnostic.open_float, {})
 vim.keymap.set("n", "<leader>ll", vim.diagnostic.goto_next, {})
 vim.keymap.set("n", "<leader>lr", telescope.lsp_references, {})
+-- rust tools specific defined in rust_tools.lua
+vim.keymap.set("n", "<leader>lh", "<Cmd>RustSetInlayHints<Cr>", {})
+vim.keymap.set("n", "<leader>lH", "<Cmd>RustUnsetInlayHints<Cr>", {})
 
+-- git, more keymaps defined in gitsigns
 vim.keymap.set("n", "<leader>gc", telescope.git_branches, {})
-
--- rust tools
-vim.keymap.set("n", "<leader>lh", function()
-	require("rust-tools").inlay_hints.set()
-end, {})
-vim.keymap.set("n", "<leader>lh", function()
-	require("rust-tools").inlay_hints.unset()
-end, {})
 
 -- custom commands
 vim.cmd([[:command! Ve e ~/.config/nvim/init.lua]])
 vim.cmd([[:command! Vs so ~/.config/nvim/init.lua]])
 
 -- save file
-vim.keymap.set("n", "<C-s>", ":update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do
-vim.keymap.set("i", "<C-s>", "<Esc>:update<Cr>")
+vim.keymap.set("n", "<C-s>", "<Cmd>silent! update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do
+vim.keymap.set("i", "<C-s>", "<Esc>:silent! update<Cr>")
 
 -- vim.keymap.set("n", "<C-c>", ":close<Cr>", { silent = true }) -- close will not close the last window
 
@@ -68,15 +73,23 @@ vim.keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
 
 vim.keymap.set("n", "<leader>w", "<C-W>=")
 
-vim.keymap.set("n", "\\", ":vert sb<Cr>")
+vim.keymap.set("n", "\\", ":vert sb<Cr><C-w>=")
 --
 vim.keymap.set("n", "Q", "@q")
 vim.keymap.set("n", "H", "^")
 vim.keymap.set("n", "L", "$")
 
 -- toggle highlight
-vim.keymap.set("n", "<leader>h", ":set hls!<Cr>")
-vim.keymap.set("n", "<leader>cd", ":cd %:p:h<Cr>")
+vim.keymap.set("n", "<leader>h", "<Cmd>set hls!<Cr>")
+
+vim.keymap.set("n", "<leader>cd", "<Cmd>cd %:p:h<Cr>")
+-- copy correct dir to clipboard
+vim.keymap.set("n", "<leader>cp", '<Cmd>let @+ = expand("%:p:h")<Cr>')
+-- chmod a+x on current buffer
+vim.keymap.set("n", "<leader>cx", "<Cmd>:!chmod a+x %<Cr>")
+
+-- replacing gx, open url in browser, since netrw is generally disabled
+vim.keymap.set("n", "gx", [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]])
 
 vim.keymap.set("n", "Y", '"+y$')
 

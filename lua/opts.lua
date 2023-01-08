@@ -37,7 +37,7 @@ vim.opt.smartcase = true
 
 -- Decrease update time
 vim.opt.updatetime = 250
-vim.opt.signcolumn = "auto:1" -- sign in nvim-scrollbar
+vim.opt.signcolumn = "auto:1"
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 5
 
@@ -45,6 +45,11 @@ vim.opt.sidescrolloff = 5
 vim.opt.termguicolors = true
 vim.opt.completeopt = "menu,noinsert" -- autoselect the first entry in autocompletion
 -- vim.opt.iskeyword:remove({ "_" }) -- _ will be treated as a word('w' not 'W') boundry  check :help word
+
+-- Folding
+vim.opt.foldlevel = 99 -- unfold everything reading a new buffer
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- DEBUG: run `:verbose set formatoptions`
 -- showed ftplugin rust/lua.vim etc. was overwriting this

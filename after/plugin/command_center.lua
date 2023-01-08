@@ -3,8 +3,12 @@ local noremap = { noremap = true }
 
 command_center.add({
 	{
-		desc = "PackerSync",
-		cmd = "<Cmd>PackerSync<Cr>",
+		desc = "PackerInstall",
+		cmd = "<Cmd>PackerInstall<Cr>",
+	},
+	{
+		desc = "PackerClean",
+		cmd = "<Cmd>PackerClean<Cr>",
 	},
 	{
 		desc = "RustSetInlayHints",

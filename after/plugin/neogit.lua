@@ -5,6 +5,7 @@ require("neogit").setup({
 			["p"] = "PushPopup",
 			["f"] = "PullPopup", -- fetch
 			["z"] = "StashPopup", -- fetch
+			["C"] = "Console",
 			["P"] = "",
 		},
 	},

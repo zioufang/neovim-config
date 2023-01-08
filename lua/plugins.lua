@@ -34,6 +34,7 @@ require("packer").startup(function(use)
 		"hrsh7th/nvim-cmp",
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-buffer",
@@ -139,6 +140,7 @@ require("packer").startup(function(use)
 	})
 
 	-- switch project + (more importantly) auto change working directory
+	-- NOTE: deleting projects that have existing buffers will not work, because the plugin will recreate it in the background
 	use({
 		"ahmedkhalf/project.nvim",
 		config = function()
@@ -176,6 +178,17 @@ require("packer").startup(function(use)
 		"lewis6991/gitsigns.nvim",
 		tag = "v0.6",
 	})
+	use({
+		"kdheepak/lazygit.nvim",
+		config = function()
+			vim.cmd([[
+            let g:lazygit_floating_window_winblend = 1
+            let g:lazygit_floating_window_scaling_factor = 1
+            let g:lazygit_floating_window_use_plenary = 1
+            ]])
+			vim.keymap.set("n", "<leader>gg", "<Cmd>LazyGit<Cr>")
+		end,
+	})
 	-- running git in cmd mode
 	use({
 		"dinhhuy258/git.nvim",
@@ -183,7 +196,7 @@ require("packer").startup(function(use)
 			require("git").setup({
 				default_mappings = true,
 				keymaps = {
-					browse = "<leader>gg",
+					browse = "<leader>gl",
 				},
 			})
 		end,
@@ -198,6 +211,18 @@ require("packer").startup(function(use)
 		"numToStr/Navigator.nvim",
 		config = function()
 			require("Navigator").setup()
+		end,
+	})
+
+	-- undotree
+	use({
+		"mbbill/undotree",
+		config = function()
+			vim.cmd([[
+            let g:undotree_WindowLayout = 2
+            let g:undotree_ShortIndicators = 1
+            ]])
+			vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<Cr>")
 		end,
 	})
 
@@ -315,11 +340,16 @@ require("packer").startup(function(use)
 			})
 		end,
 	})
+	-- hightlight word under cursor
 	use({
-		"xiyaowong/nvim-cursorword",
+		"RRethy/vim-illuminate",
 		config = function()
-			vim.cmd([[let g:cursorword_disable_at_startup = v:true]])
-			vim.keymap.set("n", "<leader>vc", "<Cmd>CursorWordToggle<Cr>")
+			require("illuminate").configure({
+				delay = 300,
+				providers = { "lsp", "treesitter" },
+				filetype_denylist = { "lir", "telescope" },
+			})
+			vim.keymap.set("n", "<leader>vw", "<Cmd>IlluminateToggle<Cr>")
 		end,
 	})
 
