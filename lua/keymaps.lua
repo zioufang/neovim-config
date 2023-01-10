@@ -2,8 +2,7 @@ vim.g.mapleader = " "
 
 -- telescope
 local telescope = require("telescope.builtin")
-
-vim.keymap.set("n", "<A-x>", "<Cmd>Telescope command_center<Cr>")
+local zilescope = require("zilescope")
 
 vim.keymap.set("n", "<leader>ff", telescope.git_files, {})
 vim.keymap.set("n", "<leader>fF", telescope.find_files, {})
@@ -19,7 +18,7 @@ vim.keymap.set("n", "<leader>fe", function()
 end, {})
 vim.keymap.set("n", "<leader>fE", telescope.diagnostics, {})
 
-vim.keymap.set("n", "<leader>p", ":Telescope projects<Cr>")
+vim.keymap.set("n", "<leader>p", zilescope.fd_projects)
 
 vim.keymap.set("n", "<leader>r", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set("n", "<leader>b", telescope.current_buffer_fuzzy_find, {})
@@ -44,13 +43,14 @@ vim.keymap.set("n", "<leader>lH", "<Cmd>RustUnsetInlayHints<Cr>", {})
 -- git, more keymaps defined in gitsigns
 vim.keymap.set("n", "<leader>gc", telescope.git_branches, {})
 
+-- folding
+vim.keymap.set("n", "<leader>z", "za", {})
+vim.keymap.set("n", "<leader>vf", "<Cmd>loadview<Cr>", {})
+vim.keymap.set("n", "<leader>vF", "<Cmd>mkview<Cr>", {})
+
 -- custom commands
 vim.cmd([[:command! Ve e ~/.config/nvim/init.lua]])
 vim.cmd([[:command! Vs so ~/.config/nvim/init.lua]])
-
--- save file
-vim.keymap.set("n", "<C-s>", "<Cmd>silent! update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do
-vim.keymap.set("i", "<C-s>", "<Esc>:silent! update<Cr>")
 
 -- vim.keymap.set("n", "<C-c>", ":close<Cr>", { silent = true }) -- close will not close the last window
 
@@ -58,8 +58,8 @@ vim.keymap.set("i", "<C-s>", "<Esc>:silent! update<Cr>")
 vim.keymap.set("n", "/", ":set hls<Cr>/")
 
 -- vim.keymap.set("n", "<leader>s", ":.,$s///gc<Left><Left><Left><Left>")
-vim.keymap.set("n", "<leader>s", ":set hls<Cr>:.,$S///gc<Left><Left><Left><Left>") -- Subvert from vim-abolish
-vim.keymap.set("n", "<leader>S", ":set hls<Cr>:cdo! .,$S///gc<Left><Left><Left><Left> | update")
+vim.keymap.set("n", "<leader>s", ":set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4)) -- Subvert from vim-abolish
+vim.keymap.set("n", "<leader>S", ":set hls<Cr>:cdo! .,$S///gc | update" .. string.rep("<Left>", 13))
 
 -- vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
 -- vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
@@ -126,3 +126,13 @@ vim.keymap.set("n", "<leader>Q", "<Cmd>call ToggleVertQuickfix()<Cr>")
 
 -- closing all buffers referenced in the qf list (after doing search replace etc.)
 -- cdo bd
+
+-- alt key mapping
+vim.keymap.set("n", "<A-s>", "<Cmd>silent! update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do
+vim.keymap.set("i", "<A-s>", "<Esc>:silent! update<Cr>")
+vim.keymap.set("n", "<A-x>", "<Cmd>Telescope command_center<Cr>")
+
+-- Cmd Copy Paste for MacOs in neovide or other GUI
+vim.keymap.set("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "!", "t", "v" }, "<D-v>", "<C-R>+", { noremap = true, silent = true })
+vim.keymap.set("v", "<D-c>", '"+y<Cr>', { noremap = true, silent = true })

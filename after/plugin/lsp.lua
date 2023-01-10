@@ -4,9 +4,9 @@ local mason_lspconfig = require("mason-lspconfig")
 -- Show line diagnostics automatically in hover window
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
-vim.o.updatetime = 250
-vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
-
+-- vim.o.updatetime = 250
+-- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+--
 local signs = {
 
 	{ name = "DiagnosticSignError", text = "" },

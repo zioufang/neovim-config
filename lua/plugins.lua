@@ -87,7 +87,8 @@ require("packer").startup(function(use)
 	})
 
 	-- better file explorer
-	use({ "tamago324/lir.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	-- use({ "tamago324/lir.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	use("stevearc/oil.nvim")
 	-- backup explorer for whole project view
 	use({
 		"nvim-tree/nvim-tree.lua",
@@ -136,15 +137,6 @@ require("packer").startup(function(use)
 		"kevinhwang91/nvim-bqf",
 		config = function()
 			require("bqf").setup({ auto_resize_height = true })
-		end,
-	})
-
-	-- switch project + (more importantly) auto change working directory
-	-- NOTE: deleting projects that have existing buffers will not work, because the plugin will recreate it in the background
-	use({
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("project_nvim").setup({ patterns = { ".git" }, detection_methods = { "pattern", "lsp" } })
 		end,
 	})
 
@@ -347,9 +339,16 @@ require("packer").startup(function(use)
 			require("illuminate").configure({
 				delay = 300,
 				providers = { "lsp", "treesitter" },
-				filetype_denylist = { "lir", "telescope" },
+				filetype_denylist = { "oil", "telescope", "qf" },
+				min_count_to_highlight = 2,
 			})
 			vim.keymap.set("n", "<leader>vw", "<Cmd>IlluminateToggle<Cr>")
+		end,
+	})
+	use({
+		"anuvyklack/pretty-fold.nvim",
+		config = function()
+			require("pretty-fold").setup()
 		end,
 	})
 

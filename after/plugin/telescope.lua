@@ -105,9 +105,6 @@ require("telescope").load_extension("live_grep_args")
 require("telescope").load_extension("command_center")
 require("telescope").load_extension("neoclip")
 
--- ahmedkhalf/project.nvim
-require("telescope").load_extension("projects")
-
 -- open qf in vertical
 -- local telescope_actions = require("telescope.actions")
 --

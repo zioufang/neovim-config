@@ -2,6 +2,10 @@ local function maximize_status()
 	return vim.t.maximized and " " or ""
 end
 
+local function winbar_icon()
+	return ""
+end
+
 local function lsp_provider()
 	local clients = {}
 	for _, client in pairs(vim.lsp.buf_get_clients()) do
@@ -17,6 +21,8 @@ local function lsp_provider()
 	return table.concat(clients, " ")
 end
 
+-- assuming two parent dirs before cwd,
+-- /Usrs/username/(cwd)
 local function current_working_dir()
 	local path = vim.split(vim.fn.getcwd(), "/")
 	local cwd = { unpack(path, 4, #path) }
@@ -45,6 +51,10 @@ require("lualine").setup({
 		theme = custom_auto,
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
+		disabled_filetypes = {
+			statusline = {},
+			winbar = { "packer", "NvimTree", "aerial", "qf", "" }, -- "" filetype is terminal
+		},
 		globalstatus = true,
 	},
 	sections = {
@@ -55,21 +65,6 @@ require("lualine").setup({
 			},
 		},
 		lualine_c = {
-			{
-				"filename",
-				-- 0: Just the filename
-				-- 1: Relative path
-				-- 2: Absolute path
-				-- 3: Absolute path, with tilde as the home directory
-				path = 1,
-				-- color = { fg = "#d8a657" },
-				symbols = {
-					modified = "[+]",
-					readonly = "",
-
-					unnamed = "[Home]", -- Text to show for unnamed buffers.
-				},
-			},
 			{
 				"branch",
 				padding = { left = 1, right = 0 },
@@ -95,19 +90,42 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = { "os.date('%H:%M')" }, -- strftime() format string
 	},
-	-- inactive_sections = {
-	-- 	lualine_a = {},
-	-- 	lualine_b = {},
-	-- 	lualine_c = {
-	-- 		{
-	-- 			"filename",
-	-- 			symbols = {
-	-- 				unnamed = "[Home]",
-	-- 			},
-	-- 		},
-	-- 	},
-	-- 	lualine_x = {},
-	-- 	lualine_y = {},
-	-- 	lualine_z = {},
-	-- },
+	-- TODO make oil buffer pretty in winbar
+	winbar = {
+		lualine_c = {
+			{
+				"filetype",
+				icon_only = true,
+				padding = { left = 1, right = 0 },
+			},
+			{
+				"filename",
+				path = 1,
+				color = { fg = "White" },
+				symbols = {
+					modified = "[+]",
+					readonly = "",
+					unnamed = "[Home]",
+				},
+			},
+		},
+	},
+	inactive_winbar = {
+		lualine_c = {
+			{
+				"filetype",
+				icon_only = true,
+				padding = { left = 1, right = 0 },
+			},
+			{
+				"filename",
+				path = 1,
+				symbols = {
+					modified = "[+]",
+					readonly = "",
+					unnamed = "[Home]",
+				},
+			},
+		},
+	},
 })
