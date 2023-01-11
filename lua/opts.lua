@@ -62,6 +62,9 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
+-- session
+vim.cmd([[set sessionoptions+=resize]])
+
 -- replace netrw with the default explorer e.g. lir.nvim
 -- see |netrw-noload|
 vim.g.loaded_netrw = 1

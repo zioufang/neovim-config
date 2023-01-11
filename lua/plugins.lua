@@ -97,15 +97,27 @@ require("packer").startup(function(use)
 		},
 		config = function()
 			require("nvim-tree").setup({
-				hijack_netrw = false, -- using lir.nvim
+				hijack_netrw = false, -- using oil
 				respect_buf_cwd = true,
 				sync_root_with_cwd = true,
+				view = {
+					mappings = {
+						custom_only = false,
+						list = {
+							{ key = "gh", action = "toggle_dotfiles" },
+							{ key = "p", action = "preview" },
+						},
+					},
+				},
 				update_focused_file = {
 					enable = true,
 					update_root = true,
 				},
 				git = { enable = true },
-				filters = { dotfiles = false },
+				filters = { dotfiles = true },
+				actions = {
+					open_file = { window_picker = { enable = false } }, -- open file in the last window
+				},
 			})
 			vim.keymap.set("n", "<leader>t", "<Cmd>NvimTreeToggle<Cr>", {})
 		end,

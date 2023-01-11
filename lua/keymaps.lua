@@ -121,8 +121,10 @@ function! ToggleVertQuickfix()
     endif
 endfunction
 ]])
-vim.keymap.set("n", "<leader>q", "<Cmd>call ToggleQuickfix()<Cr>")
-vim.keymap.set("n", "<leader>Q", "<Cmd>call ToggleVertQuickfix()<Cr>")
+vim.keymap.set("n", "<leader>qq", "<Cmd>call ToggleQuickfix()<Cr>")
+vim.keymap.set("n", "<leader>qv", "<Cmd>call ToggleVertQuickfix()<Cr>")
+vim.keymap.set("n", "<leader>qj", "<Cmd>silent! cnewer<Cr>")
+vim.keymap.set("n", "<leader>qk", "<Cmd>silent! colder<Cr>")
 
 -- closing all buffers referenced in the qf list (after doing search replace etc.)
 -- cdo bd
