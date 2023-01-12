@@ -2,10 +2,10 @@ vim.g.mapleader = " "
 
 -- telescope
 local telescope = require("telescope.builtin")
+local ivy = require("telescope.themes").get_ivy({})
 local zilescope = require("zilescope")
 
-vim.keymap.set("n", "<leader>ff", telescope.git_files, {})
-vim.keymap.set("n", "<leader>fF", telescope.find_files, {})
+vim.keymap.set("n", "<leader>ff", telescope.find_files, {})
 vim.keymap.set("n", "<leader>fd", telescope.buffers, {})
 vim.keymap.set("n", "<leader>fr", telescope.oldfiles, {})
 vim.keymap.set("n", "<leader>fc", telescope.command_history, {})
@@ -18,7 +18,8 @@ vim.keymap.set("n", "<leader>fe", function()
 end, {})
 vim.keymap.set("n", "<leader>fE", telescope.diagnostics, {})
 
-vim.keymap.set("n", "<leader>p", zilescope.fd_projects)
+vim.keymap.set("n", "<leader>p", function() zilescope.fd_projects(ivy) end, {})
+vim.api.nvim_create_user_command("ZiFdProjects", function() zilescope.fd_projects(ivy) end, {})
 
 vim.keymap.set("n", "<leader>r", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set("n", "<leader>b", telescope.current_buffer_fuzzy_find, {})
@@ -32,9 +33,11 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, bufopts)
 vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, bufopts)
 vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, bufopts)
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, bufopts)
 vim.keymap.set("n", "<leader>le", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>", bufopts) -- TOOD: might be a better way
--- vim.keymap.set("n", "<leader>jl", vim.diagnostic.open_float, {})
-vim.keymap.set("n", "<leader>ll", vim.diagnostic.goto_next, {})
+vim.keymap.set("n", "<leader>ll", vim.diagnostic.open_float, {})
+vim.keymap.set("n", "<leader>ln", vim.diagnostic.goto_next, {})
+vim.keymap.set("n", "<leader>lp", vim.diagnostic.goto_prev, {})
 vim.keymap.set("n", "<leader>lr", telescope.lsp_references, {})
 -- rust tools specific defined in rust_tools.lua
 vim.keymap.set("n", "<leader>lh", "<Cmd>RustSetInlayHints<Cr>", {})
@@ -125,6 +128,7 @@ vim.keymap.set("n", "<leader>qq", "<Cmd>call ToggleQuickfix()<Cr>")
 vim.keymap.set("n", "<leader>qv", "<Cmd>call ToggleVertQuickfix()<Cr>")
 vim.keymap.set("n", "<leader>qj", "<Cmd>silent! cnewer<Cr>")
 vim.keymap.set("n", "<leader>qk", "<Cmd>silent! colder<Cr>")
+vim.keymap.set("n", "<leader>qi", require("replacer").run, { silent = true })
 
 -- closing all buffers referenced in the qf list (after doing search replace etc.)
 -- cdo bd

@@ -39,6 +39,7 @@ require("telescope").setup({
 		find_files = {
 			theme = "ivy",
 			preview = { hide_on_startup = true },
+            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
 		},
 		buffers = {
 			theme = "ivy",
