@@ -151,6 +151,7 @@ require("packer").startup(function(use)
 			require("bqf").setup({ auto_resize_height = true })
 		end,
 	})
+	use("gabrielpoca/replacer.nvim") -- edit directly in quickfix buffer
 
 	-- surround
 	use({
