@@ -170,7 +170,7 @@ _G.packer_plugins = {
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["glow.nvim"] = {
-    config = { "\27LJ\2\nh\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\17height_ratio\4Í™³æ\fÌ™³ÿ\3\16width_ratio\4Í™³æ\fÌ™³ÿ\3\nsetup\tglow\frequire\0" },
+    config = { "\27LJ\2\nh\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\16width_ratio\4Í™³æ\fÌ™³ÿ\3\17height_ratio\4Í™³æ\fÌ™³ÿ\3\nsetup\tglow\frequire\0" },
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/glow.nvim",
     url = "https://github.com/ellisonleao/glow.nvim"
@@ -343,6 +343,11 @@ _G.packer_plugins = {
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/pretty-fold.nvim",
     url = "https://github.com/anuvyklack/pretty-fold.nvim"
   },
+  ["replacer.nvim"] = {
+    loaded = true,
+    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/replacer.nvim",
+    url = "https://github.com/gabrielpoca/replacer.nvim"
+  },
   ["rust-tools.nvim"] = {
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
@@ -391,7 +396,7 @@ _G.packer_plugins = {
     url = "https://github.com/tpope/vim-abolish"
   },
   ["vim-illuminate"] = {
-    config = { "\27LJ\2\n‹\2\0\0\5\0\14\0\0186\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\f\0'\4\r\0B\0\4\1K\0\1\0\30<Cmd>IlluminateToggle<Cr>\15<leader>vw\6n\bset\vkeymap\bvim\22filetype_denylist\1\4\0\0\boil\14telescope\aqf\14providers\1\3\0\0\blsp\15treesitter\1\0\2\27min_count_to_highlight\3\2\ndelay\3¬\2\14configure\15illuminate\frequire\0" },
+    config = { "\27LJ\2\n‹\2\0\0\5\0\14\0\0186\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\f\0'\4\r\0B\0\4\1K\0\1\0\30<Cmd>IlluminateToggle<Cr>\15<leader>vw\6n\bset\vkeymap\bvim\22filetype_denylist\1\4\0\0\boil\14telescope\aqf\14providers\1\3\0\0\blsp\15treesitter\1\0\2\ndelay\3¬\2\27min_count_to_highlight\3\2\14configure\15illuminate\frequire\0" },
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
@@ -421,94 +426,94 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: pretty-fold.nvim
-time([[Config for pretty-fold.nvim]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16pretty-fold\frequire\0", "config", "pretty-fold.nvim")
-time([[Config for pretty-fold.nvim]], false)
--- Config for: lazygit.nvim
-time([[Config for lazygit.nvim]], true)
-try_loadstring("\27LJ\2\n¤\2\0\0\5\0\b\0\f6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\3\0009\0\4\0'\2\5\0'\3\6\0'\4\a\0B\0\4\1K\0\1\0\21<Cmd>LazyGit<Cr>\15<leader>gg\6n\bset\vkeymap¿\1            let g:lazygit_floating_window_winblend = 1\n            let g:lazygit_floating_window_scaling_factor = 1\n            let g:lazygit_floating_window_use_plenary = 1\n            \bcmd\bvim\0", "config", "lazygit.nvim")
-time([[Config for lazygit.nvim]], false)
--- Config for: aerial.nvim
-time([[Config for aerial.nvim]], true)
-try_loadstring("\27LJ\2\n‚\1\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0B\0\4\1K\0\1\0\27<cmd>AerialToggle!<CR>\14<leader>a\6n\bset\vkeymap\bvim\nsetup\vaerial\frequire\0", "config", "aerial.nvim")
-time([[Config for aerial.nvim]], false)
--- Config for: nvim-bqf
-time([[Config for nvim-bqf]], true)
-try_loadstring("\27LJ\2\nL\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\23auto_resize_height\2\nsetup\bbqf\frequire\0", "config", "nvim-bqf")
-time([[Config for nvim-bqf]], false)
+-- Config for: undotree
+time([[Config for undotree]], true)
+try_loadstring("\27LJ\2\nÖ\1\0\0\5\0\b\0\f6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\3\0009\0\4\0'\2\5\0'\3\6\0'\4\a\0B\0\4\1K\0\1\0\28<Cmd>UndotreeToggle<Cr>\14<leader>u\6n\bset\vkeymapl            let g:undotree_WindowLayout = 2\n            let g:undotree_ShortIndicators = 1\n            \bcmd\bvim\0", "config", "undotree")
+time([[Config for undotree]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
 time([[Config for nvim-autopairs]], false)
--- Config for: windows.nvim
-time([[Config for windows.nvim]], true)
-try_loadstring("\27LJ\2\n½\2\0\0\5\0\18\0#6\0\0\0009\0\1\0)\1\5\0=\1\2\0006\0\0\0009\0\1\0)\1\5\0=\1\3\0006\0\0\0009\0\1\0+\1\1\0=\1\4\0006\0\5\0'\2\6\0B\0\2\0029\0\a\0005\2\t\0005\3\b\0=\3\n\2B\0\2\0016\0\0\0009\0\v\0009\0\f\0'\2\r\0'\3\14\0'\4\15\0B\0\4\0016\0\0\0009\0\v\0009\0\f\0'\2\r\0'\3\16\0'\4\17\0B\0\4\1K\0\1\0\29<Cmd>WindowsMaximize<Cr>\n<F10>'<Cmd>WindowsMaximizeVertically<Cr>\n<F11>\6n\bset\vkeymap\14autowidth\1\0\0\1\0\1\venable\1\nsetup\fwindows\frequire\16equalalways\16winminwidth\rwinwidth\6o\bvim\0", "config", "windows.nvim")
-time([[Config for windows.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\nü\3\0\0\a\0\29\0%6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\b\0005\4\4\0004\5\3\0005\6\5\0>\6\1\0055\6\6\0>\6\2\5=\5\a\4=\4\t\3=\3\n\0025\3\v\0=\3\f\0025\3\r\0=\3\14\0025\3\15\0=\3\16\0025\3\20\0005\4\18\0005\5\17\0=\5\19\4=\4\21\3=\3\22\2B\0\2\0016\0\23\0009\0\24\0009\0\25\0'\2\26\0'\3\27\0'\4\28\0004\5\0\0B\0\5\1K\0\1\0\28<Cmd>NvimTreeToggle<Cr>\14<leader>t\6n\bset\vkeymap\bvim\factions\14open_file\1\0\0\18window_picker\1\0\0\1\0\1\venable\1\ffilters\1\0\1\rdotfiles\2\bgit\1\0\1\venable\2\24update_focused_file\1\0\2\venable\2\16update_root\2\tview\rmappings\1\0\0\tlist\1\0\2\vaction\fpreview\bkey\6p\1\0\2\vaction\20toggle_dotfiles\bkey\agh\1\0\1\16custom_only\1\1\0\3\23sync_root_with_cwd\2\20respect_buf_cwd\2\17hijack_netrw\1\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
--- Config for: git.nvim
-time([[Config for git.nvim]], true)
-try_loadstring("\27LJ\2\no\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\1\vbrowse\15<leader>gl\1\0\1\21default_mappings\2\nsetup\bgit\frequire\0", "config", "git.nvim")
-time([[Config for git.nvim]], false)
--- Config for: winshift.nvim
-time([[Config for winshift.nvim]], true)
-try_loadstring("\27LJ\2\nc\0\0\3\0\4\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0D\0\2\0\1\0\1\17picker_chars\23SDFGHJKL1234567890\16pick_window\17winshift.lib\frequire·\1\1\0\5\0\f\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\1K\0\1\0003<Cmd>set cmdheight=1<Cr><Cmd>WinShift swap<Cr>\v<C-W>m\6n\bset\vkeymap\bvim\18window_picker\1\0\0\0\nsetup\rwinshift\frequire\0", "config", "winshift.nvim")
-time([[Config for winshift.nvim]], false)
+-- Config for: maximize.nvim
+time([[Config for maximize.nvim]], true)
+try_loadstring("\27LJ\2\n±\1\0\0\5\0\n\0\0146\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0009\0\6\0005\2\a\0'\3\b\0'\4\t\0B\0\4\1K\0\1\0.<Cmd>lua require('maximize').toggle()<CR>\n<F12>\1\3\0\0\6n\6t\bset\vkeymap\bvim\1\0\1\20default_keymaps\1\nsetup\rmaximize\frequire\0", "config", "maximize.nvim")
+time([[Config for maximize.nvim]], false)
+-- Config for: pretty-fold.nvim
+time([[Config for pretty-fold.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16pretty-fold\frequire\0", "config", "pretty-fold.nvim")
+time([[Config for pretty-fold.nvim]], false)
 -- Config for: nvim-surround
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
 time([[Config for nvim-surround]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
+-- Config for: icon-picker.nvim
+time([[Config for icon-picker.nvim]], true)
+try_loadstring("\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\28disable_legacy_commands\2\nsetup\16icon-picker\frequire\0", "config", "icon-picker.nvim")
+time([[Config for icon-picker.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+try_loadstring("\27LJ\2\nä\1\0\0\b\0\v\1\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\3\0006\3\3\0009\3\4\3'\5\5\0B\3\2\2>\3\1\0026\3\3\0009\3\6\0039\3\a\3'\5\b\0'\6\t\0'\a\n\0B\3\4\0?\3\0\0B\0\2\1K\0\1\0#<Cmd>IndentBlanklineToggle<Cr>\15<leader>vi\6n\bset\vkeymap-let g:indent_blankline_enabled = v:false\bcmd\bvim\nsetup\21indent_blankline\frequire\5€€À™\4\0", "config", "indent-blankline.nvim")
+time([[Config for indent-blankline.nvim]], false)
+-- Config for: Navigator.nvim
+time([[Config for Navigator.nvim]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14Navigator\frequire\0", "config", "Navigator.nvim")
+time([[Config for Navigator.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\nü\3\0\0\a\0\29\0%6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\b\0005\4\4\0004\5\3\0005\6\5\0>\6\1\0055\6\6\0>\6\2\5=\5\a\4=\4\t\3=\3\n\0025\3\v\0=\3\f\0025\3\r\0=\3\14\0025\3\15\0=\3\16\0025\3\20\0005\4\18\0005\5\17\0=\5\19\4=\4\21\3=\3\22\2B\0\2\0016\0\23\0009\0\24\0009\0\25\0'\2\26\0'\3\27\0'\4\28\0004\5\0\0B\0\5\1K\0\1\0\28<Cmd>NvimTreeToggle<Cr>\14<leader>t\6n\bset\vkeymap\bvim\factions\14open_file\1\0\0\18window_picker\1\0\0\1\0\1\venable\1\ffilters\1\0\1\rdotfiles\2\bgit\1\0\1\venable\2\24update_focused_file\1\0\2\venable\2\16update_root\2\tview\rmappings\1\0\0\tlist\1\0\2\vaction\fpreview\bkey\6p\1\0\2\vaction\20toggle_dotfiles\bkey\agh\1\0\1\16custom_only\1\1\0\3\23sync_root_with_cwd\2\20respect_buf_cwd\2\17hijack_netrw\1\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
 -- Config for: glow.nvim
 time([[Config for glow.nvim]], true)
-try_loadstring("\27LJ\2\nh\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\17height_ratio\4Í™³æ\fÌ™³ÿ\3\16width_ratio\4Í™³æ\fÌ™³ÿ\3\nsetup\tglow\frequire\0", "config", "glow.nvim")
+try_loadstring("\27LJ\2\nh\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\16width_ratio\4Í™³æ\fÌ™³ÿ\3\17height_ratio\4Í™³æ\fÌ™³ÿ\3\nsetup\tglow\frequire\0", "config", "glow.nvim")
 time([[Config for glow.nvim]], false)
+-- Config for: lazygit.nvim
+time([[Config for lazygit.nvim]], true)
+try_loadstring("\27LJ\2\n¤\2\0\0\5\0\b\0\f6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\3\0009\0\4\0'\2\5\0'\3\6\0'\4\a\0B\0\4\1K\0\1\0\21<Cmd>LazyGit<Cr>\15<leader>gg\6n\bset\vkeymap¿\1            let g:lazygit_floating_window_winblend = 1\n            let g:lazygit_floating_window_scaling_factor = 1\n            let g:lazygit_floating_window_use_plenary = 1\n            \bcmd\bvim\0", "config", "lazygit.nvim")
+time([[Config for lazygit.nvim]], false)
+-- Config for: nvim-bqf
+time([[Config for nvim-bqf]], true)
+try_loadstring("\27LJ\2\nL\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\23auto_resize_height\2\nsetup\bbqf\frequire\0", "config", "nvim-bqf")
+time([[Config for nvim-bqf]], false)
+-- Config for: nvim-pqf.git
+time([[Config for nvim-pqf.git]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bpqf\frequire\0", "config", "nvim-pqf.git")
+time([[Config for nvim-pqf.git]], false)
+-- Config for: windows.nvim
+time([[Config for windows.nvim]], true)
+try_loadstring("\27LJ\2\n½\2\0\0\5\0\18\0#6\0\0\0009\0\1\0)\1\5\0=\1\2\0006\0\0\0009\0\1\0)\1\5\0=\1\3\0006\0\0\0009\0\1\0+\1\1\0=\1\4\0006\0\5\0'\2\6\0B\0\2\0029\0\a\0005\2\t\0005\3\b\0=\3\n\2B\0\2\0016\0\0\0009\0\v\0009\0\f\0'\2\r\0'\3\14\0'\4\15\0B\0\4\0016\0\0\0009\0\v\0009\0\f\0'\2\r\0'\3\16\0'\4\17\0B\0\4\1K\0\1\0\29<Cmd>WindowsMaximize<Cr>\n<F10>'<Cmd>WindowsMaximizeVertically<Cr>\n<F11>\6n\bset\vkeymap\14autowidth\1\0\0\1\0\1\venable\1\nsetup\fwindows\frequire\16equalalways\16winminwidth\rwinwidth\6o\bvim\0", "config", "windows.nvim")
+time([[Config for windows.nvim]], false)
+-- Config for: leap.nvim
+time([[Config for leap.nvim]], true)
+try_loadstring("\27LJ\2\nÔ\1\0\0\3\0\b\0\0246\0\0\0'\2\1\0B\0\2\0029\0\2\0004\1\0\0=\1\3\0006\0\0\0'\2\1\0B\0\2\0029\0\2\0005\1\5\0=\1\4\0006\0\0\0'\2\1\0B\0\2\0029\0\2\0+\1\2\0=\1\6\0006\0\0\0'\2\1\0B\0\2\0029\0\a\0B\0\1\1K\0\1\0\25add_default_mappings\19case_sensitive\1\17\0\0\6f\6d\6s\6g\6j\6k\6l\6h\6r\6t\6v\6b\6y\6u\6n\6a\vlabels\16safe_labels\topts\tleap\frequire\0", "config", "leap.nvim")
+time([[Config for leap.nvim]], false)
+-- Config for: winshift.nvim
+time([[Config for winshift.nvim]], true)
+try_loadstring("\27LJ\2\nc\0\0\3\0\4\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0D\0\2\0\1\0\1\17picker_chars\23SDFGHJKL1234567890\16pick_window\17winshift.lib\frequire·\1\1\0\5\0\f\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\1K\0\1\0003<Cmd>set cmdheight=1<Cr><Cmd>WinShift swap<Cr>\v<C-W>m\6n\bset\vkeymap\bvim\18window_picker\1\0\0\0\nsetup\rwinshift\frequire\0", "config", "winshift.nvim")
+time([[Config for winshift.nvim]], false)
+-- Config for: fidget.nvim
+time([[Config for fidget.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vfidget\frequire\0", "config", "fidget.nvim")
+time([[Config for fidget.nvim]], false)
+-- Config for: aerial.nvim
+time([[Config for aerial.nvim]], true)
+try_loadstring("\27LJ\2\n‚\1\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0B\0\4\1K\0\1\0\27<cmd>AerialToggle!<CR>\14<leader>a\6n\bset\vkeymap\bvim\nsetup\vaerial\frequire\0", "config", "aerial.nvim")
+time([[Config for aerial.nvim]], false)
 -- Config for: traces.vim
 time([[Config for traces.vim]], true)
 try_loadstring("\27LJ\2\n<\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\1\0=\1\2\0K\0\1\0\31traces_abolish_integration\6g\bvim\0", "config", "traces.vim")
 time([[Config for traces.vim]], false)
 -- Config for: vim-illuminate
 time([[Config for vim-illuminate]], true)
-try_loadstring("\27LJ\2\n‹\2\0\0\5\0\14\0\0186\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\f\0'\4\r\0B\0\4\1K\0\1\0\30<Cmd>IlluminateToggle<Cr>\15<leader>vw\6n\bset\vkeymap\bvim\22filetype_denylist\1\4\0\0\boil\14telescope\aqf\14providers\1\3\0\0\blsp\15treesitter\1\0\2\27min_count_to_highlight\3\2\ndelay\3¬\2\14configure\15illuminate\frequire\0", "config", "vim-illuminate")
+try_loadstring("\27LJ\2\n‹\2\0\0\5\0\14\0\0186\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\f\0'\4\r\0B\0\4\1K\0\1\0\30<Cmd>IlluminateToggle<Cr>\15<leader>vw\6n\bset\vkeymap\bvim\22filetype_denylist\1\4\0\0\boil\14telescope\aqf\14providers\1\3\0\0\blsp\15treesitter\1\0\2\ndelay\3¬\2\27min_count_to_highlight\3\2\14configure\15illuminate\frequire\0", "config", "vim-illuminate")
 time([[Config for vim-illuminate]], false)
--- Config for: fidget.nvim
-time([[Config for fidget.nvim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vfidget\frequire\0", "config", "fidget.nvim")
-time([[Config for fidget.nvim]], false)
--- Config for: undotree
-time([[Config for undotree]], true)
-try_loadstring("\27LJ\2\nÖ\1\0\0\5\0\b\0\f6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\3\0009\0\4\0'\2\5\0'\3\6\0'\4\a\0B\0\4\1K\0\1\0\28<Cmd>UndotreeToggle<Cr>\14<leader>u\6n\bset\vkeymapl            let g:undotree_WindowLayout = 2\n            let g:undotree_ShortIndicators = 1\n            \bcmd\bvim\0", "config", "undotree")
-time([[Config for undotree]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
-time([[Config for Comment.nvim]], false)
--- Config for: nvim-pqf.git
-time([[Config for nvim-pqf.git]], true)
-try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bpqf\frequire\0", "config", "nvim-pqf.git")
-time([[Config for nvim-pqf.git]], false)
--- Config for: icon-picker.nvim
-time([[Config for icon-picker.nvim]], true)
-try_loadstring("\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\28disable_legacy_commands\2\nsetup\16icon-picker\frequire\0", "config", "icon-picker.nvim")
-time([[Config for icon-picker.nvim]], false)
--- Config for: leap.nvim
-time([[Config for leap.nvim]], true)
-try_loadstring("\27LJ\2\nÔ\1\0\0\3\0\b\0\0246\0\0\0'\2\1\0B\0\2\0029\0\2\0004\1\0\0=\1\3\0006\0\0\0'\2\1\0B\0\2\0029\0\2\0005\1\5\0=\1\4\0006\0\0\0'\2\1\0B\0\2\0029\0\2\0+\1\2\0=\1\6\0006\0\0\0'\2\1\0B\0\2\0029\0\a\0B\0\1\1K\0\1\0\25add_default_mappings\19case_sensitive\1\17\0\0\6f\6d\6s\6g\6j\6k\6l\6h\6r\6t\6v\6b\6y\6u\6n\6a\vlabels\16safe_labels\topts\tleap\frequire\0", "config", "leap.nvim")
-time([[Config for leap.nvim]], false)
--- Config for: maximize.nvim
-time([[Config for maximize.nvim]], true)
-try_loadstring("\27LJ\2\n±\1\0\0\5\0\n\0\0146\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0009\0\6\0005\2\a\0'\3\b\0'\4\t\0B\0\4\1K\0\1\0.<Cmd>lua require('maximize').toggle()<CR>\n<F12>\1\3\0\0\6n\6t\bset\vkeymap\bvim\1\0\1\20default_keymaps\1\nsetup\rmaximize\frequire\0", "config", "maximize.nvim")
-time([[Config for maximize.nvim]], false)
--- Config for: Navigator.nvim
-time([[Config for Navigator.nvim]], true)
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14Navigator\frequire\0", "config", "Navigator.nvim")
-time([[Config for Navigator.nvim]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-try_loadstring("\27LJ\2\nä\1\0\0\b\0\v\1\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\3\0006\3\3\0009\3\4\3'\5\5\0B\3\2\2>\3\1\0026\3\3\0009\3\6\0039\3\a\3'\5\b\0'\6\t\0'\a\n\0B\3\4\0?\3\0\0B\0\2\1K\0\1\0#<Cmd>IndentBlanklineToggle<Cr>\15<leader>vi\6n\bset\vkeymap-let g:indent_blankline_enabled = v:false\bcmd\bvim\nsetup\21indent_blankline\frequire\5€€À™\4\0", "config", "indent-blankline.nvim")
-time([[Config for indent-blankline.nvim]], false)
+-- Config for: git.nvim
+time([[Config for git.nvim]], true)
+try_loadstring("\27LJ\2\no\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\1\vbrowse\15<leader>gl\1\0\1\21default_mappings\2\nsetup\bgit\frequire\0", "config", "git.nvim")
+time([[Config for git.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]

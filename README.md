@@ -2,7 +2,7 @@
 
 ## 
 
-ripgrep fd bat cmake
+nodejs ripgrep fd bat cmake
 
 deno: for js/ts/json/markdown formatter (need lsp present to work)
 
