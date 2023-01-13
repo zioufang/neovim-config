@@ -1,3 +1,5 @@
+local p = require("utils/pattern")
+
 -- toggle relative line number based on mode + focus
 local augroup_number_toggle = vim.api.nvim_create_augroup("numbertoggle", {})
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "CmdlineLeave", "WinEnter" }, {
@@ -29,11 +31,27 @@ au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=2
 augroup END
 ]])
 
+-- auto set cwd based on project root pattern
+function _G.AutoSetCwd()
+	-- don't set cwd with the following filetype
+	if vim.tbl_contains({ "telescope", "aerial", "qf", "NvimTree", "packer", "oil" }, vim.filetype) then
+		return
+	end
+	local root, _ = p.find_pattern_root()
+	if root == nil then
+		return false
+	end
+	if vim.fn.getcwd() ~= root then
+		vim.api.nvim_set_current_dir(root)
+	end
+	return true
+end
+
 vim.cmd([[
 let blacklist = ['oil']
 
 augroup set_cwd
 autocmd!
-autocmd BufEnter * lua require("zi/helpers").auto_set_cwd() 
+autocmd BufEnter * lua AutoSetCwd()
 augroup END
 ]])
