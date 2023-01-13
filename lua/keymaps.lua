@@ -1,5 +1,8 @@
 vim.g.mapleader = " "
 
+-- open lazygit on cwd in a newtab
+vim.keymap.set("n", "<leader><leader>", "<Cmd>tabnew | term lazygit<Cr>i")
+
 -- telescope
 local telescope = require("telescope.builtin")
 local ivy = require("telescope.themes").get_ivy({})
@@ -18,8 +21,12 @@ vim.keymap.set("n", "<leader>fe", function()
 end, {})
 vim.keymap.set("n", "<leader>fE", telescope.diagnostics, {})
 
-vim.keymap.set("n", "<leader>p", function() zilescope.fd_projects(ivy) end, {})
-vim.api.nvim_create_user_command("ZiFdProjects", function() zilescope.fd_projects(ivy) end, {})
+vim.keymap.set("n", "<leader>p", function()
+	zilescope.fd_projects(ivy)
+end, {})
+vim.api.nvim_create_user_command("ZiFdProjects", function()
+	zilescope.fd_projects(ivy)
+end, {})
 
 vim.keymap.set("n", "<leader>r", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set("n", "<leader>b", telescope.current_buffer_fuzzy_find, {})
@@ -62,7 +69,7 @@ vim.keymap.set("n", "/", ":set hls<Cr>/")
 
 -- vim.keymap.set("n", "<leader>s", ":.,$s///gc<Left><Left><Left><Left>")
 vim.keymap.set("n", "<leader>s", ":set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4)) -- Subvert from vim-abolish
-vim.keymap.set("n", "<leader>S", ":set hls<Cr>:cdo! .,$S///gc | update" .. string.rep("<Left>", 13))
+vim.keymap.set("n", "<leader>S", ":set hls<Cr>:%S///gc" .. string.rep("<Left>", 4)) -- Subvert from vim-abolish
 
 -- vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
 -- vim.keymap.set("n", "<C-K>", "<C-W><C-K>")

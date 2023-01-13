@@ -183,17 +183,6 @@ require("packer").startup(function(use)
 		"lewis6991/gitsigns.nvim",
 		tag = "v0.6",
 	})
-	use({
-		"kdheepak/lazygit.nvim",
-		config = function()
-			vim.cmd([[
-            let g:lazygit_floating_window_winblend = 1
-            let g:lazygit_floating_window_scaling_factor = 1
-            let g:lazygit_floating_window_use_plenary = 1
-            ]])
-			vim.keymap.set("n", "<leader>gg", "<Cmd>LazyGit<Cr>")
-		end,
-	})
 	-- running git in cmd mode
 	use({
 		"dinhhuy258/git.nvim",

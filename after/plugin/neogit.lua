@@ -14,4 +14,4 @@ require("neogit").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader><leader>", ":Neogit<Cr>")
+vim.keymap.set("n", "<leader>gg", ":Neogit<Cr>")
