@@ -171,18 +171,6 @@ require("packer").startup(function(use)
 		end,
 	}) -- preview support for abolish
 
-	-- Git related plugins
-	use({
-		"TimUntersberger/neogit",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim",
-		},
-	})
-	use({
-		"lewis6991/gitsigns.nvim",
-		tag = "v0.6",
-	})
 	-- running git in cmd mode
 	use({
 		"dinhhuy258/git.nvim",
