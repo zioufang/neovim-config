@@ -50,6 +50,10 @@ command_center.add({
 		desc = "BufferCloseHidden",
 		cmd = "<Cmd>BufferCloseHidden<Cr>",
 	},
+	{
+		desc = "Nvim Reload Config",
+		cmd = "<Cmd>lua ReloadConfig()<Cr>",
+	},
 }, command_center.mode.ADD)
 
 vim.cmd([[
@@ -73,3 +77,14 @@ function! BufferCloseHidden()
   echon "Deleted " . l:tally . " buffers"
 endfun
 ]])
+
+function _G.ReloadConfig()
+	for name, _ in pairs(package.loaded) do
+		if name:match("^zi") then -- deletiong `zi` namespace only
+			package.loaded[name] = nil
+		end
+	end
+
+	dofile(vim.env.MYVIMRC)
+	vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
+end
