@@ -176,11 +176,14 @@ require("packer").startup(function(use)
 		"dinhhuy258/git.nvim",
 		config = function()
 			require("git").setup({
-				default_mappings = true,
+				default_mappings = false,
 				keymaps = {
+					-- <>gb for popup blame
+					-- <>gB for full blame
 					browse = "<leader>gl",
 				},
 			})
+			vim.keymap.set("n", "<leader>gn", ":Git checkout -b ")
 		end,
 	})
 

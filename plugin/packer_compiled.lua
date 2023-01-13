@@ -154,7 +154,7 @@ _G.packer_plugins = {
     url = "https://github.com/j-hui/fidget.nvim"
   },
   ["git.nvim"] = {
-    config = { "\27LJ\2\no\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\1\vbrowse\15<leader>gl\1\0\1\21default_mappings\2\nsetup\bgit\frequire\0" },
+    config = { "\27LJ\2\n¹\1\0\0\5\0\f\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\1K\0\1\0\22:Git checkout -b \15<leader>gn\6n\bset\vkeymap\bvim\fkeymaps\1\0\1\vbrowse\15<leader>gl\1\0\1\21default_mappings\1\nsetup\bgit\frequire\0" },
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/git.nvim",
     url = "https://github.com/dinhhuy258/git.nvim"
@@ -463,7 +463,7 @@ try_loadstring("\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B
 time([[Config for icon-picker.nvim]], false)
 -- Config for: git.nvim
 time([[Config for git.nvim]], true)
-try_loadstring("\27LJ\2\no\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\1\vbrowse\15<leader>gl\1\0\1\21default_mappings\2\nsetup\bgit\frequire\0", "config", "git.nvim")
+try_loadstring("\27LJ\2\n¹\1\0\0\5\0\f\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\1K\0\1\0\22:Git checkout -b \15<leader>gn\6n\bset\vkeymap\bvim\fkeymaps\1\0\1\vbrowse\15<leader>gl\1\0\1\21default_mappings\1\nsetup\bgit\frequire\0", "config", "git.nvim")
 time([[Config for git.nvim]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
