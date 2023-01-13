@@ -6,7 +6,7 @@ vim.keymap.set("n", "<leader><leader>", "<Cmd>tabnew | term lazygit<Cr>i")
 -- telescope
 local telescope = require("telescope.builtin")
 local ivy = require("telescope.themes").get_ivy({})
-local zilescope = require("zilescope")
+local zilescope = require("zi/zilescope")
 
 vim.keymap.set("n", "<leader>ff", telescope.find_files, {})
 vim.keymap.set("n", "<leader>fd", telescope.buffers, {})

@@ -34,6 +34,6 @@ let blacklist = ['oil']
 
 augroup set_cwd
 autocmd!
-autocmd BufEnter * lua require("helpers").auto_set_cwd() 
+autocmd BufEnter * lua require("zi/helpers").auto_set_cwd() 
 augroup END
 ]])
