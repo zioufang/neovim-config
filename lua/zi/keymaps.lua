@@ -14,18 +14,18 @@ local telescope = require("telescope.builtin")
 local ivy = require("telescope.themes").get_ivy({})
 local zilescope = require("zi/zilescope")
 
-nmap("<leader>ff", telescope.find_files, {})
-nmap("<leader>fd", telescope.buffers, {})
-nmap("<leader>fr", telescope.oldfiles, {})
-nmap("<leader>fc", telescope.command_history, {})
-nmap("<leader>ft", telescope.resume, {})
-nmap("<leader>fy", "<Cmd>Telescope neoclip<Cr>", {})
-nmap("<leader>fh", telescope.help_tags, {})
+nmap("<leader>ff", telescope.find_files)
+nmap("<leader>fd", telescope.buffers)
+nmap("<leader>fr", telescope.oldfiles)
+nmap("<leader>fc", telescope.command_history)
+nmap("<leader>ft", telescope.resume)
+nmap("<leader>fy", "<Cmd>Telescope neoclip<Cr>")
+nmap("<leader>fh", telescope.help_tags)
 -- some keymaps are defined in lsp.lua, to utilize on_attach
 nmap("<leader>fe", function()
 	telescope.diagnostics({ bufnr = 0 })
 end, {})
-nmap("<leader>fE", telescope.diagnostics, {})
+nmap("<leader>fE", telescope.diagnostics)
 
 nmap("<leader>p", function()
 	zilescope.fd_projects(ivy)
@@ -51,21 +51,16 @@ nmap("<leader>ls", vim.lsp.buf.signature_help, bufopts)
 nmap("<leader>lR", vim.lsp.buf.rename, bufopts)
 nmap("<leader>lf", vim.lsp.buf.format, bufopts)
 nmap("<leader>le", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>", bufopts) -- TOOD: might be a better way
-nmap("<leader>ll", vim.diagnostic.open_float, {})
-nmap("<leader>ln", vim.diagnostic.goto_next, {})
-nmap("<leader>lp", vim.diagnostic.goto_prev, {})
-nmap("<leader>lr", telescope.lsp_references, {})
+nmap("<leader>ll", vim.diagnostic.open_float)
+nmap("<leader>ln", vim.diagnostic.goto_next)
+nmap("<leader>lp", vim.diagnostic.goto_prev)
+nmap("<leader>lr", telescope.lsp_references)
 -- rust tools specific defined in rust_tools.lua
-nmap("<leader>lh", "<Cmd>RustSetInlayHints<Cr>", {})
-nmap("<leader>lH", "<Cmd>RustUnsetInlayHints<Cr>", {})
+nmap("<leader>lh", "<Cmd>RustSetInlayHints<Cr>")
+nmap("<leader>lH", "<Cmd>RustUnsetInlayHints<Cr>")
 
 -- git, more keymaps defined in gitsigns
-nmap("<leader>gc", telescope.git_branches, {})
-
--- folding
-nmap("<leader>z", "za", {})
-nmap("<leader>vf", "<Cmd>loadview<Cr>", {})
-nmap("<leader>vF", "<Cmd>mkview<Cr>", {})
+nmap("<leader>gc", telescope.git_branches)
 
 -- custom commands
 vim.cmd([[:command! Ve e ~/.config/nvim/init.lua]])
@@ -98,8 +93,21 @@ nmap("Q", "@q")
 nmap("H", "^")
 nmap("L", "$")
 
+-- folding
+nmap("<leader>z", "za")
+nmap("<leader>vf", "<Cmd>loadview<Cr>")
+nmap("<leader>vF", "<Cmd>mkview<Cr>")
+
+-- markdown preview in glow
+function _G.GlowMarkdown()
+	local path = vim.api.nvim_buf_get_name(0)
+	local cmd = "tabnew | term glow " .. path .. " && exit 1" -- HACK: forcing to exit 1 so the term auto close (defined in terminal.lua) doesn't happen
+	vim.cmd(cmd)
+end
+nmap("<leader>vm", GlowMarkdown)
+
 -- toggle highlight
-vim.keymap.set("n", "<leader>h", "<Cmd>set hls!<Cr>")
+nmap("<leader>h", "<Cmd>set hls!<Cr>")
 -- toggle cmdheight, good for recording macro
 local function toggle_cmdline()
 	vim.pretty_print(vim.opt.cmdheight)

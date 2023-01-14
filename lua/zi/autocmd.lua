@@ -1,8 +1,11 @@
+local wo = vim.wo
+local au = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 local p = require("utils/pattern")
 
 -- toggle relative line number based on mode + focus
-local augroup_number_toggle = vim.api.nvim_create_augroup("numbertoggle", {})
-vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "CmdlineLeave", "WinEnter" }, {
+local augroup_number_toggle = augroup("zi_numbertoggle", {})
+au({ "BufEnter", "FocusGained", "InsertLeave", "CmdlineLeave", "WinEnter" }, {
 	pattern = "*",
 	group = augroup_number_toggle,
 	callback = function()
@@ -12,7 +15,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "Cmdline
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "CmdlineEnter", "WinLeave" }, {
+au({ "BufLeave", "FocusLost", "InsertEnter", "CmdlineEnter", "WinLeave" }, {
 	pattern = "*",
 	group = augroup_number_toggle,
 	callback = function()
@@ -48,15 +51,15 @@ function _G.AutoSetCwd()
 end
 
 vim.cmd([[
-augroup set_cwd
+augroup zi_set_cwd
 autocmd!
 autocmd BufEnter * lua AutoSetCwd()
 augroup END
 ]])
 
-local wo = vim.wo
-local au = vim.api.nvim_create_autocmd
+local augroup_cursorline = augroup("zi_cursorline", {})
 au("WinEnter", {
+	group = augroup_cursorline,
 	callback = function()
 		if vim.bo.filetype ~= "" then -- disable it for terminal
 			wo.cursorline = true
@@ -66,6 +69,7 @@ au("WinEnter", {
 	end,
 })
 au("WinLeave", {
+	group = augroup_cursorline,
 	callback = function()
 		wo.cursorline = false
 	end,
@@ -79,6 +83,7 @@ au("WinLeave", {
 -- local timer = vim.loop.new_timer()
 -- local timeout = 500
 -- au({ "CursorMoved", "CursorMovedI" }, {
+--  group = augroup_cursorline,
 -- 	callback = function()
 -- 		wo.cursorlineopt = "number"
 -- 		timer:start(
@@ -90,3 +95,26 @@ au("WinLeave", {
 -- 		)
 -- 	end,
 -- })
+
+-- Change tab size to 4 for certain filetypes
+local augroup_tab_ft = augroup("zi_tab_ft", {})
+au({ "BufNewFile", "BufRead" }, {
+	group = augroup_tab_ft,
+	pattern = "*.rs,*.py,*.go",
+	callback = function()
+		vim.opt.tabstop = 4
+		vim.opt.softtabstop = 4
+		vim.opt.shiftwidth = 4
+	end,
+})
+
+-- folding by default in zinotes dir
+-- showing only heading-2 and above
+local augroup_folding_notes = augroup("zi_folding_notes", {})
+au({ "BufNewFile", "BufRead" }, {
+	group = augroup_folding_notes,
+	pattern = "*/zinotes/**",
+	callback = function()
+		vim.opt_local.foldlevel = 2
+	end,
+})

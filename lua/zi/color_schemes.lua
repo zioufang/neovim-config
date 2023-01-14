@@ -21,4 +21,4 @@ vim.cmd("colorscheme gruvbox-material")
 
 -- CursorLine setup
 -- line number at cursor
-vim.cmd("hi CursorLineNr guifg=Black guibg=Yellow")
+vim.cmd("hi CursorLineNr guifg=Black guibg=Orange")

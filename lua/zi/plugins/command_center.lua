@@ -88,9 +88,3 @@ function _G.ReloadConfig()
 	dofile(vim.env.MYVIMRC)
 	vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
 end
-
-function _G.GlowMarkdown()
-	local path = vim.api.nvim_buf_get_name(0)
-	local cmd = "tabnew | term glow " .. path .. " && exit 1" -- HACK: forcing to exit 1 so the term auto close (defined in terminal.lua) doesn't happen
-	vim.cmd(cmd)
-end
