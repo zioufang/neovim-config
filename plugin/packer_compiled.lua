@@ -395,12 +395,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/windows.nvim",
     url = "https://github.com/anuvyklack/windows.nvim"
-  },
-  ["winshift.nvim"] = {
-    config = { "\27LJ\2\nc\0\0\3\0\4\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0D\0\2\0\1\0\1\17picker_chars\23SDFGHJKL1234567890\16pick_window\17winshift.lib\frequire·\1\1\0\5\0\f\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\1K\0\1\0003<Cmd>set cmdheight=1<Cr><Cmd>WinShift swap<Cr>\v<C-W>m\6n\bset\vkeymap\bvim\18window_picker\1\0\0\0\nsetup\rwinshift\frequire\0" },
-    loaded = true,
-    path = "/Users/zioufang/.local/share/nvim/site/pack/packer/start/winshift.nvim",
-    url = "https://github.com/sindrets/winshift.nvim"
   }
 }
 
@@ -449,14 +443,14 @@ time([[Config for fidget.nvim]], false)
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
 time([[Config for nvim-surround]], false)
--- Config for: winshift.nvim
-time([[Config for winshift.nvim]], true)
-try_loadstring("\27LJ\2\nc\0\0\3\0\4\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0D\0\2\0\1\0\1\17picker_chars\23SDFGHJKL1234567890\16pick_window\17winshift.lib\frequire·\1\1\0\5\0\f\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\1K\0\1\0003<Cmd>set cmdheight=1<Cr><Cmd>WinShift swap<Cr>\v<C-W>m\6n\bset\vkeymap\bvim\18window_picker\1\0\0\0\nsetup\rwinshift\frequire\0", "config", "winshift.nvim")
-time([[Config for winshift.nvim]], false)
--- Config for: git.nvim
-time([[Config for git.nvim]], true)
-try_loadstring("\27LJ\2\n¹\1\0\0\5\0\f\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\1K\0\1\0\22:Git checkout -b \15<leader>gn\6n\bset\vkeymap\bvim\fkeymaps\1\0\1\vbrowse\15<leader>gl\1\0\1\21default_mappings\1\nsetup\bgit\frequire\0", "config", "git.nvim")
-time([[Config for git.nvim]], false)
+-- Config for: maximize.nvim
+time([[Config for maximize.nvim]], true)
+try_loadstring("\27LJ\2\n±\1\0\0\5\0\n\0\0146\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0009\0\6\0005\2\a\0'\3\b\0'\4\t\0B\0\4\1K\0\1\0.<Cmd>lua require('maximize').toggle()<CR>\n<F12>\1\3\0\0\6n\6t\bset\vkeymap\bvim\1\0\1\20default_keymaps\1\nsetup\rmaximize\frequire\0", "config", "maximize.nvim")
+time([[Config for maximize.nvim]], false)
+-- Config for: nvim-pqf.git
+time([[Config for nvim-pqf.git]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bpqf\frequire\0", "config", "nvim-pqf.git")
+time([[Config for nvim-pqf.git]], false)
 -- Config for: vim-illuminate
 time([[Config for vim-illuminate]], true)
 try_loadstring("\27LJ\2\n‹\2\0\0\5\0\14\0\0186\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\f\0'\4\r\0B\0\4\1K\0\1\0\30<Cmd>IlluminateToggle<Cr>\15<leader>vw\6n\bset\vkeymap\bvim\22filetype_denylist\1\4\0\0\boil\14telescope\aqf\14providers\1\3\0\0\blsp\15treesitter\1\0\2\ndelay\3¬\2\27min_count_to_highlight\3\2\14configure\15illuminate\frequire\0", "config", "vim-illuminate")
@@ -473,14 +467,10 @@ time([[Config for undotree]], false)
 time([[Config for pretty-fold.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16pretty-fold\frequire\0", "config", "pretty-fold.nvim")
 time([[Config for pretty-fold.nvim]], false)
--- Config for: maximize.nvim
-time([[Config for maximize.nvim]], true)
-try_loadstring("\27LJ\2\n±\1\0\0\5\0\n\0\0146\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0009\0\6\0005\2\a\0'\3\b\0'\4\t\0B\0\4\1K\0\1\0.<Cmd>lua require('maximize').toggle()<CR>\n<F12>\1\3\0\0\6n\6t\bset\vkeymap\bvim\1\0\1\20default_keymaps\1\nsetup\rmaximize\frequire\0", "config", "maximize.nvim")
-time([[Config for maximize.nvim]], false)
--- Config for: nvim-pqf.git
-time([[Config for nvim-pqf.git]], true)
-try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bpqf\frequire\0", "config", "nvim-pqf.git")
-time([[Config for nvim-pqf.git]], false)
+-- Config for: git.nvim
+time([[Config for git.nvim]], true)
+try_loadstring("\27LJ\2\n¹\1\0\0\5\0\f\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\1K\0\1\0\22:Git checkout -b \15<leader>gn\6n\bset\vkeymap\bvim\fkeymaps\1\0\1\vbrowse\15<leader>gl\1\0\1\21default_mappings\1\nsetup\bgit\frequire\0", "config", "git.nvim")
+time([[Config for git.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\nü\3\0\0\a\0\29\0%6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\b\0005\4\4\0004\5\3\0005\6\5\0>\6\1\0055\6\6\0>\6\2\5=\5\a\4=\4\t\3=\3\n\0025\3\v\0=\3\f\0025\3\r\0=\3\14\0025\3\15\0=\3\16\0025\3\20\0005\4\18\0005\5\17\0=\5\19\4=\4\21\3=\3\22\2B\0\2\0016\0\23\0009\0\24\0009\0\25\0'\2\26\0'\3\27\0'\4\28\0004\5\0\0B\0\5\1K\0\1\0\28<Cmd>NvimTreeToggle<Cr>\14<leader>t\6n\bset\vkeymap\bvim\factions\14open_file\1\0\0\18window_picker\1\0\0\1\0\1\venable\1\ffilters\1\0\1\rdotfiles\2\bgit\1\0\1\venable\2\24update_focused_file\1\0\2\16update_root\2\venable\2\tview\rmappings\1\0\0\tlist\1\0\2\bkey\6p\vaction\fpreview\1\0\2\bkey\agh\vaction\20toggle_dotfiles\1\0\1\16custom_only\1\1\0\3\23sync_root_with_cwd\2\20respect_buf_cwd\2\17hijack_netrw\1\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")

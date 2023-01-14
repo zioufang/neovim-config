@@ -43,6 +43,7 @@ end)
 -- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 vim.cmd([[autocmd TermOpen * setlocal nonumber norelativenumber]])
 
+-- auto close terminal that exited with 0, but keep it open if exit code is non-zero
 -- Do not show [Process exited with 0] and quit finished terminals traightaway
 -- https://github.com/neovim/neovim/issues/14986
 -- WARN: would leave a ghost window with floating terminal

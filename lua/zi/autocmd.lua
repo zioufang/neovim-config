@@ -48,8 +48,6 @@ function _G.AutoSetCwd()
 end
 
 vim.cmd([[
-let blacklist = ['oil']
-
 augroup set_cwd
 autocmd!
 autocmd BufEnter * lua AutoSetCwd()

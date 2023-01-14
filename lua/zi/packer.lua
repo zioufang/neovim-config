@@ -183,7 +183,6 @@ require("packer").startup(function(use)
 					browse = "<leader>gl",
 				},
 			})
-			vim.keymap.set("n", "<leader>gn", ":Git checkout -b ")
 		end,
 	})
 
@@ -223,17 +222,6 @@ require("packer").startup(function(use)
 	use("nvim-lua/plenary.nvim")
 	use("rcarriga/nvim-notify")
 
-	-- markdown preview
-	use({
-		"ellisonleao/glow.nvim",
-		config = function()
-			require("glow").setup({
-				width_ratio = 0.9,
-				height_ratio = 0.9,
-			})
-		end,
-	})
-
 	-----------------------
 	-- Window Management --
 	-----------------------
@@ -265,21 +253,21 @@ require("packer").startup(function(use)
 			vim.keymap.set({ "n", "t" }, "<F12>", "<Cmd>lua require('maximize').toggle()<CR>")
 		end,
 	})
-	use({
-		"sindrets/winshift.nvim",
-		config = function()
-			require("winshift").setup({
-				window_picker = function()
-					return require("winshift.lib").pick_window({
-						picker_chars = "SDFGHJKL1234567890",
-					})
-				end,
-			})
-			-- vim.keymap.set("n", "<C-W>M", "<Cmd>WinShift<Cr>")
-			-- need to set cmdheight to non-zero, so the selection shows up. set it back to one afterwards (:set ch=0)
-			vim.keymap.set("n", "<C-W>m", "<Cmd>set cmdheight=1<Cr><Cmd>WinShift swap<Cr>")
-		end,
-	}) -- swapping windows
+	-- use({
+	-- 	"sindrets/winshift.nvim",
+	-- 	config = function()
+	-- 		require("winshift").setup({
+	-- 			window_picker = function()
+	-- 				return require("winshift.lib").pick_window({
+	-- 					picker_chars = "SDFGHJKL1234567890",
+	-- 				})
+	-- 			end,
+	-- 		})
+	-- 		-- vim.keymap.set("n", "<C-W>M", "<Cmd>WinShift<Cr>")
+	-- 		-- need to set cmdheight to non-zero, so the selection shows up. set it back to one afterwards (:set ch=0)
+	-- 		vim.keymap.set("n", "<C-W>m", "<Cmd>set cmdheight=1<Cr><Cmd>WinShift swap<Cr>")
+	-- 	end,
+	-- }) -- swapping windows
 
 	-----------------
 	-- Eye Candies --
