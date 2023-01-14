@@ -39,7 +39,7 @@ require("telescope").setup({
 		find_files = {
 			theme = "ivy",
 			preview = { hide_on_startup = true },
-            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
 		},
 		buffers = {
 			theme = "ivy",
@@ -57,7 +57,7 @@ require("telescope").setup({
 
 	extensions = {
 		-- fzf EXACT match syntax
-		-- 'wild	include wild
+		-- 'word	include word
 		-- ^music	start with music
 		-- .mp3$	end with .mp3
 		-- !fire	do not include fire
@@ -71,11 +71,10 @@ require("telescope").setup({
 		},
 		live_grep_args = {
 			auto_quoting = false, -- enable/disable auto-quoting
-			-- define mappings, e.g.
 			mappings = { -- extend mappings
 				i = {
 					["<C-k>"] = lga_actions.quote_prompt(),
-					["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+					["<C-l>"] = lga_actions.quote_prompt({ postfix = " -g " }),
 				},
 			},
 		},

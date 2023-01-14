@@ -34,8 +34,10 @@ vim.api.nvim_create_user_command("ZiFdProjects", function()
 	zilescope.fd_projects(ivy)
 end, {})
 
-nmap("<leader>r", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-nmap("<leader>R", telescope.live_grep)
+nmap("<leader>R", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+nmap("<leader>r", function()
+	telescope.grep_string({ shorten_path = true, word_match = "-w", only_sort_text = true, search = "" })
+end)
 nmap("<leader>b", telescope.current_buffer_fuzzy_find, {})
 
 -- lsp
