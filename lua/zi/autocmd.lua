@@ -53,3 +53,40 @@ autocmd!
 autocmd BufEnter * lua AutoSetCwd()
 augroup END
 ]])
+
+local wo = vim.wo
+local au = vim.api.nvim_create_autocmd
+au("WinEnter", {
+	callback = function()
+		if vim.bo.filetype ~= "" then -- disable it for terminal
+			wo.cursorline = true
+		else
+			wo.cursorline = false
+		end
+	end,
+})
+au("WinLeave", {
+	callback = function()
+		wo.cursorline = false
+	end,
+})
+
+-- Delayed highlight Cursorline autocmd
+-- but terminal in a newtab would still display a cursorline
+-- which is super annoying, disable it for now
+
+-- wo.cursorlineopt = "both"
+-- local timer = vim.loop.new_timer()
+-- local timeout = 500
+-- au({ "CursorMoved", "CursorMovedI" }, {
+-- 	callback = function()
+-- 		wo.cursorlineopt = "number"
+-- 		timer:start(
+-- 			timeout,
+-- 			0,
+-- 			vim.schedule_wrap(function()
+-- 				wo.cursorlineopt = "both"
+-- 			end)
+-- 		)
+-- 	end,
+-- })

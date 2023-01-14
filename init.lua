@@ -3,10 +3,10 @@ require("zi/opts")
 require("zi/terminal")
 require("zi/autocmd")
 require("zi/keymaps")
+require("zi/color_schemes")
 
 -- plugins
 require("zi/plugins/cmp")
-require("zi/plugins/color_schemes")
 require("zi/plugins/command_center")
 require("zi/plugins/dressing")
 require("zi/plugins/lsp")

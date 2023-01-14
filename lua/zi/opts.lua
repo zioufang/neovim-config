@@ -10,6 +10,10 @@ vim.opt.wildmode = "longest,list,full"
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
+-- highlight line number only for cursorline
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
 -- mouse is disabled in insert mode
 vim.opt.mouse = "nv"
 
