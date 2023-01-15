@@ -1,5 +1,5 @@
 vim.cmd([[
-let blacklist = ['sql']
+let blacklist = ['sql', 'fish']
 
 augroup fmt
   autocmd!
