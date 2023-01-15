@@ -1,7 +1,7 @@
 -- normal mapping
 local function keymap(keys, cmd, modes, opts)
-	local opts = opts or { noremap = true, silent = true }
-	local modes = modes or { "n" }
+	opts = opts or { noremap = true, silent = true }
+	modes = modes or { "n" }
 	vim.keymap.set(modes, keys, cmd, opts)
 end
 
@@ -19,11 +19,19 @@ local telescope = require("telescope.builtin")
 local ivy = require("telescope.themes").get_ivy({})
 local zilescope = require("zi.zilescope")
 
-keymap("<leader>ff", telescope.find_files)
-keymap("<leader>fd", function()
-	telescope.buffers({ ignore_current_buffer = true, sort_mru = true }) -- sort all buffers by recency
+keymap("<leader>ff", function()
+	require("telescope").extensions.frecency.frecency(vim.tbl_deep_extend('keep', ivy, {previewer = false, workspace = 'CWD'}))
 end)
-keymap("<leader>fr", require("telescope").extensions.frecency.frecency) -- replacing builtin.oldfiles
+keymap("<leader>fr", function()
+	require("telescope").extensions.frecency.frecency(vim.tbl_deep_extend('keep', ivy, {previewer = false}))
+end)
+keymap("<leader>fp", telescope.find_files)
+keymap("<leader>fd", function()
+	telescope.buffers({ ignore_current_buffer = true, sort_mru = true, only_cwd = true }) -- sort all buffers by recency
+end)
+keymap("<leader>fb", function()
+	telescope.buffers({ ignore_current_buffer = true, sort_mru = true, only_cwd = false }) -- sort all buffers by recency
+end)
 keymap("<leader>fc", telescope.command_history)
 keymap("<leader>ft", telescope.resume)
 keymap("<leader>fy", "<Cmd>Telescope neoclip<Cr>")
@@ -167,8 +175,11 @@ keymap("<C-k>", "<CMD>NavigatorUp<CR>", { "n", "t" })
 keymap("<C-j>", "<CMD>NavigatorDown<CR>", { "n", "t" })
 
 -- GNU readline behaviour in cmdline
-keymap("<C-a>", "<S-Left>", "c", { silent = false })
-keymap("<C-e>", "<S-Right>", "c", { silent = false })
+keymap("<C-b>", "<S-Left>", "c", { silent = false })
+keymap("<C-f>", "<S-Right>", "c", { silent = false })
+keymap("<C-a>", "<C-b>", "c", { silent = false })
+
+keymap("<C-x><C-e>", "<C-f>", "c", { silent = false })
 
 -- alt key mapping
 keymap("<A-s>", "<Cmd>update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do

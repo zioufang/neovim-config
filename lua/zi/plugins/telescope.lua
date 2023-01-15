@@ -98,8 +98,8 @@ require("telescope").setup({
 			theme = require("telescope.themes").get_ivy,
 		},
 		frecency = {
-			show_scores = false,
-			show_unindexed = true,
+			show_scores = true,
+			show_unindexed = false, -- show unindexed will slow it down with big workspace (like CWD in HOME)
 			ignore_patterns = { "*.git/*", "*/tmp/*", "**/neovim/**/*.txt" },
 			theme = require("telescope.themes").get_ivy,
 		},
