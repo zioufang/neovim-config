@@ -1,6 +1,6 @@
 -- normal mapping
 local function nmap(keys, cmd, opts)
-	local opts = opts or {}
+	local opts = opts or { noremap = true, silent = true }
 	vim.keymap.set("n", keys, cmd, opts)
 end
 
@@ -42,15 +42,14 @@ nmap("<leader>b", telescope.current_buffer_fuzzy_find, {})
 
 -- lsp
 -- See `:h vim.lsp.*`
-local bufopts = { noremap = true, silent = true }
-nmap("gd", vim.lsp.buf.definition, bufopts)
-nmap("gr", vim.lsp.buf.references, bufopts)
-nmap("K", vim.lsp.buf.hover, bufopts)
-nmap("<leader>la", vim.lsp.buf.code_action, bufopts)
-nmap("<leader>ls", vim.lsp.buf.signature_help, bufopts)
-nmap("<leader>lR", vim.lsp.buf.rename, bufopts)
-nmap("<leader>lf", vim.lsp.buf.format, bufopts)
-nmap("<leader>le", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>", bufopts) -- TOOD: might be a better way
+nmap("gd", vim.lsp.buf.definition)
+nmap("gr", vim.lsp.buf.references)
+nmap("K", vim.lsp.buf.hover)
+nmap("<leader>la", vim.lsp.buf.code_action)
+nmap("<leader>ls", vim.lsp.buf.signature_help)
+nmap("<leader>lR", vim.lsp.buf.rename)
+nmap("<leader>lf", vim.lsp.buf.format)
+nmap("<leader>le", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>") -- TOOD: might be a better way
 nmap("<leader>ll", vim.diagnostic.open_float)
 nmap("<leader>ln", vim.diagnostic.goto_next)
 nmap("<leader>lp", vim.diagnostic.goto_prev)
@@ -66,7 +65,7 @@ nmap("<leader>gc", telescope.git_branches)
 vim.cmd([[:command! Ve e ~/.config/nvim/init.lua]])
 vim.cmd([[:command! Vs so ~/.config/nvim/init.lua]])
 
--- vim.keymap.set("n", "<C-c>", ":close<Cr>", { silent = true }) -- close will not close the last window
+vim.keymap.set("n", "<C-c>", "<Cmd>close<Cr>") -- close will not close the last window
 
 -- hit '/' highlights then enter search mode
 nmap("/", ":set hls<Cr>/")
@@ -160,19 +159,19 @@ endfunction
 ]])
 nmap("<leader>qq", "<Cmd>call ToggleQuickfix()<Cr>")
 nmap("<leader>qv", "<Cmd>call ToggleVertQuickfix()<Cr>")
-nmap("<leader>qj", "<Cmd>silent! cnewer<Cr>")
-nmap("<leader>qk", "<Cmd>silent! colder<Cr>")
-nmap("<leader>qi", require("replacer").run, { silent = true })
+nmap("<leader>qj", "<Cmd>cnewer<Cr>")
+nmap("<leader>qk", "<Cmd>colder<Cr>")
+nmap("<leader>qi", require("replacer").run)
 
 -- closing all buffers referenced in the qf list (after doing search replace etc.)
 -- cdo bd
 
 -- alt key mapping
-nmap("<A-s>", "<Cmd>silent! update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do
-vim.keymap.set("i", "<A-s>", "<Esc>:silent! update<Cr>")
+nmap("<A-s>", "<Cmd>update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do
+vim.keymap.set("i", "<A-s>", "<Esc>update<Cr>")
 nmap("<A-x>", "<Cmd>Telescope command_center<Cr>")
 
 -- Cmd Copy Paste for MacOs in neovide or other GUI
-vim.keymap.set("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
-vim.keymap.set({ "!", "t", "v" }, "<D-v>", "<C-R>+", { noremap = true, silent = true })
-vim.keymap.set("v", "<D-c>", '"+y<Cr>', { noremap = true, silent = true })
+vim.keymap.set("", "<D-v>", "+p<CR>")
+vim.keymap.set({ "!", "t", "v" }, "<D-v>", "<C-R>+")
+vim.keymap.set("v", "<D-c>", '"+y<Cr>')
