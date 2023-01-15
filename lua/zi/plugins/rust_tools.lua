@@ -26,4 +26,4 @@ local function open_external_docs()
 	end)
 end
 
-vim.keymap.set("n", "<leader>ld", open_external_docs, {})
+vim.keymap.set("n", "<leader>jd", open_external_docs, {})

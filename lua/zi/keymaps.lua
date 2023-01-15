@@ -17,7 +17,7 @@ keymap("<C-c>", "<Cmd>silent! close!<Cr>")
 -- telescope
 local telescope = require("telescope.builtin")
 local ivy = require("telescope.themes").get_ivy({})
-local zilescope = require("zi/zilescope")
+local zilescope = require("zi.zilescope")
 
 keymap("<leader>ff", telescope.find_files)
 keymap("<leader>fd", telescope.buffers)
@@ -35,9 +35,6 @@ keymap("<leader>fE", telescope.diagnostics)
 keymap("<leader>p", function()
 	zilescope.fd_projects(ivy)
 end)
-vim.api.nvim_create_user_command("ZiFdProjects", function()
-	zilescope.fd_projects(ivy)
-end, {})
 
 keymap("<leader>R", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 keymap("<leader>r", function()
@@ -50,18 +47,18 @@ keymap("<leader>b", telescope.current_buffer_fuzzy_find)
 keymap("gd", vim.lsp.buf.definition)
 keymap("gr", vim.lsp.buf.references)
 keymap("K", vim.lsp.buf.hover)
-keymap("<leader>la", vim.lsp.buf.code_action)
-keymap("<leader>ls", vim.lsp.buf.signature_help)
-keymap("<leader>lR", vim.lsp.buf.rename)
-keymap("<leader>lf", vim.lsp.buf.format)
-keymap("<leader>le", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>") -- TOOD: might be a better way
-keymap("<leader>ll", vim.diagnostic.open_float)
-keymap("<leader>ln", vim.diagnostic.goto_next)
-keymap("<leader>lp", vim.diagnostic.goto_prev)
-keymap("<leader>lr", telescope.lsp_references)
+keymap("<leader>ja", vim.lsp.buf.code_action)
+keymap("<leader>js", vim.lsp.buf.signature_help)
+keymap("<leader>jR", vim.lsp.buf.rename)
+keymap("<leader>jf", vim.lsp.buf.format)
+keymap("<leader>je", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>") -- TOOD: might be a better way
+keymap("<leader>jj", vim.diagnostic.open_float)
+keymap("<leader>jn", vim.diagnostic.goto_next)
+keymap("<leader>jp", vim.diagnostic.goto_prev)
+keymap("<leader>jr", telescope.lsp_references)
 -- rust tools specific defined in rust_tools.lua
-keymap("<leader>lh", "<Cmd>RustSetInlayHints<Cr>")
-keymap("<leader>lH", "<Cmd>RustUnsetInlayHints<Cr>")
+keymap("<leader>jh", "<Cmd>RustSetInlayHints<Cr>")
+keymap("<leader>jH", "<Cmd>RustUnsetInlayHints<Cr>")
 
 -- git, more keymaps defined in gitsigns
 keymap("<leader>gc", telescope.git_branches)
@@ -73,18 +70,9 @@ vim.cmd([[:command! Vs so ~/.config/nvim/init.lua]])
 -- hit '/' highlights then enter search mode
 keymap("/", ":set hls<Cr>/")
 
-keymap("<leader>s", ":set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4)) -- Subvert from vim-abolish
-keymap("<leader>S", ":set hls<Cr>:%S///gc" .. string.rep("<Left>", 4)) -- Subvert from vim-abolish
-
--- vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
--- vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
--- vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
--- vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
---
-keymap("<C-h>", "<CMD>NavigatorLeft<CR>", { "n", "t" })
-keymap("<C-l>", "<CMD>NavigatorRight<CR>", { "n", "t" })
-keymap("<C-k>", "<CMD>NavigatorUp<CR>", { "n", "t" })
-keymap("<C-j>", "<CMD>NavigatorDown<CR>", { "n", "t" })
+-- need to disable `silent` for Cmd without Cr, otherwise the text will not show up  in cmdlin
+vim.keymap.set("n", "<leader>s", "<Cmd>set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4)) -- Subvert from vim-abolish
+-- keymap("<leader>S", "<Cmd>set hls<Cr><Cmd>set cmdheight=1<Cr>:%S///gc" .. string.rep("<Left>", 4)) -- Subvert from vim-abolish
 
 keymap("<leader>w", "<C-W>=")
 
@@ -169,6 +157,11 @@ end)
 
 -- closing all buffers referenced in the qf list (after doing search replace etc.)
 -- cdo bd
+
+keymap("<C-h>", "<CMD>NavigatorLeft<CR>", { "n", "t" })
+keymap("<C-l>", "<CMD>NavigatorRight<CR>", { "n", "t" })
+keymap("<C-k>", "<CMD>NavigatorUp<CR>", { "n", "t" })
+keymap("<C-j>", "<CMD>NavigatorDown<CR>", { "n", "t" })
 
 -- using `vim.keymap.set` would not update cursor position after key presses
 -- GNU readline behaviour in cmdline
