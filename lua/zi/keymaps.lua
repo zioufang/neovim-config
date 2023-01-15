@@ -161,7 +161,9 @@ nmap("<leader>qq", "<Cmd>call ToggleQuickfix()<Cr>")
 nmap("<leader>qv", "<Cmd>call ToggleVertQuickfix()<Cr>")
 nmap("<leader>qj", "<Cmd>cnewer<Cr>")
 nmap("<leader>qk", "<Cmd>colder<Cr>")
-nmap("<leader>qi", require("replacer").run)
+nmap("<leader>qi", function()
+	require("replacer").run({ rename_files = false }) -- dont rename file in quickfix
+end)
 
 -- closing all buffers referenced in the qf list (after doing search replace etc.)
 -- cdo bd
