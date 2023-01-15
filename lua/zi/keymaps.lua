@@ -71,8 +71,8 @@ vim.cmd([[:command! Vs so ~/.config/nvim/init.lua]])
 keymap("/", ":set hls<Cr>/")
 
 -- need to disable `silent` for Cmd without Cr, otherwise the text will not show up  in cmdlin
-vim.keymap.set("n", "<leader>s", "<Cmd>set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4)) -- Subvert from vim-abolish
--- keymap("<leader>S", "<Cmd>set hls<Cr><Cmd>set cmdheight=1<Cr>:%S///gc" .. string.rep("<Left>", 4)) -- Subvert from vim-abolish
+keymap("<leader>s", "<Cmd>set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4), "n", { silent = false }) -- Subvert from vim-abolish
+keymap("<leader>S", "<Cmd>set hls<Cr>:%S///gc" .. string.rep("<Left>", 4), "n", { silent = false }) -- Subvert from vim-abolish
 
 keymap("<leader>w", "<C-W>=")
 
@@ -154,6 +154,7 @@ keymap("<leader>qk", "<Cmd>silent! colder<Cr>")
 keymap("<leader>qi", function()
 	require("replacer").run({ rename_files = false }) -- dont rename file in quickfix
 end)
+keymap("<leader>qI", require("replacer").run) -- rename file in quickfix
 
 -- closing all buffers referenced in the qf list (after doing search replace etc.)
 -- cdo bd
@@ -163,10 +164,9 @@ keymap("<C-l>", "<CMD>NavigatorRight<CR>", { "n", "t" })
 keymap("<C-k>", "<CMD>NavigatorUp<CR>", { "n", "t" })
 keymap("<C-j>", "<CMD>NavigatorDown<CR>", { "n", "t" })
 
--- using `vim.keymap.set` would not update cursor position after key presses
 -- GNU readline behaviour in cmdline
-vim.cmd([[cnoremap <C-a> <S-Left>]])
-vim.cmd([[cnoremap <C-e> <S-Right>]])
+keymap("<C-a>", "<S-Left>", "c", { silent = false })
+keymap("<C-e>", "<S-Right>", "c", { silent = false })
 
 -- alt key mapping
 keymap("<A-s>", "<Cmd>update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do
