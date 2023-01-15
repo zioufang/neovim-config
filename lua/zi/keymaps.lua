@@ -170,7 +170,10 @@ end)
 -- closing all buffers referenced in the qf list (after doing search replace etc.)
 -- cdo bd
 
--- cmdline key maps
+-- using `vim.keymap.set` would not update cursor position after key presses
+-- GNU readline behaviour in cmdline
+vim.cmd([[cnoremap <C-a> <S-Left>]])
+vim.cmd([[cnoremap <C-e> <S-Right>]])
 
 -- alt key mapping
 keymap("<A-s>", "<Cmd>update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do
