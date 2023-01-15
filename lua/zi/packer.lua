@@ -74,6 +74,14 @@ require("packer").startup(function(use)
 	use("nvim-telescope/telescope-live-grep-args.nvim")
 	use("FeiyouG/command_center.nvim") -- flat list of customized commands
 
+	use({
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function()
+			require("telescope").load_extension("frecency")
+		end,
+		requires = { "kkharji/sqlite.lua" },
+	})
+
 	-- movement
 	use({
 		"ggandor/leap.nvim",

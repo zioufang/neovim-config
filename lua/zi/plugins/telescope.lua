@@ -97,6 +97,12 @@ require("telescope").setup({
 			separator = " ",
 			theme = require("telescope.themes").get_ivy,
 		},
+		frecency = {
+			show_scores = false,
+			show_unindexed = true,
+			ignore_patterns = { "*.git/*", "*/tmp/*", "**/neovim/**/*.txt" },
+			theme = require("telescope.themes").get_ivy,
+		},
 	},
 })
 

@@ -20,8 +20,10 @@ local ivy = require("telescope.themes").get_ivy({})
 local zilescope = require("zi.zilescope")
 
 keymap("<leader>ff", telescope.find_files)
-keymap("<leader>fd", telescope.buffers)
-keymap("<leader>fr", telescope.oldfiles)
+keymap("<leader>fd", function()
+	telescope.buffers({ ignore_current_buffer = true, sort_mru = true }) -- sort all buffers by recency
+end)
+keymap("<leader>fr", require("telescope").extensions.frecency.frecency) -- replacing builtin.oldfiles
 keymap("<leader>fc", telescope.command_history)
 keymap("<leader>ft", telescope.resume)
 keymap("<leader>fy", "<Cmd>Telescope neoclip<Cr>")
