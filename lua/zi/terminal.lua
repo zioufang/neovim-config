@@ -42,7 +42,7 @@ end)
 -- -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 -- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 vim.cmd([[
-augroup zi_term
+augroup zi_term_nonumber
 autocmd!
 autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
@@ -53,7 +53,7 @@ augroup END
 -- https://github.com/neovim/neovim/issues/14986
 -- WARN: would leave a ghost window with floating terminal
 vim.cmd([[
-augroup zi_term
+augroup zi_term_auto_close
 autocmd!
 autocmd TermClose * if !v:event.status | exe 'silent! bdelete! '..expand('<abuf>') | endif
 augroup END
