@@ -20,17 +20,24 @@ local telescope = require("telescope.builtin")
 local ivy = require("telescope.themes").get_ivy({})
 local zilescope = require("zi.zilescope")
 
+-- only use frecency for full history persistence
+-- because the default frecency sorter prioritise frecency over string match
 keymap("<leader>ff", function()
+	require("telescope").extensions.frecency.frecency(vim.tbl_deep_extend("force", ivy, {
+		previewer = false,
+		workspace = "CWD",
+		prompt_title = "Project Files Frecency",
+		sorter = require("telescope.sorters").get_generic_fuzzy_sorter(),
+	}))
+end)
+keymap("<leader>fr", function()
 	require("telescope").extensions.frecency.frecency(
 		vim.tbl_deep_extend(
 			"force",
 			ivy,
-			{ previewer = false, workspace = "CWD", prompt_title = "Project Files Frecency" }
+			{ previewer = false, sorter = require("telescope.sorters").get_generic_fuzzy_sorter() }
 		)
 	)
-end)
-keymap("<leader>fr", function()
-	require("telescope").extensions.frecency.frecency(vim.tbl_deep_extend("force", ivy, { previewer = false }))
 end)
 keymap("<leader>fp", telescope.find_files)
 keymap("<leader>fd", function()
