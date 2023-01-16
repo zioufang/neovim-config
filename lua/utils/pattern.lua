@@ -142,6 +142,9 @@ end
 function M.find_pattern_root()
 	local root_patterns = { ".git", "Makefile" }
 	local search_dir = vim.fn.expand("%:p:h", true)
+  -- remove prefix for oil.nvim buffers
+  search_dir = search_dir:gsub("oil://", "")
+
 	if vim.fn.has("win32") > 0 then
 		search_dir = search_dir:gsub("\\", "/")
 	end

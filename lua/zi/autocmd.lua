@@ -37,7 +37,7 @@ augroup END
 -- auto set cwd based on project root pattern
 function _G.AutoSetCwd()
 	-- don't set cwd with the following filetype
-	if vim.tbl_contains({ "telescope", "aerial", "qf", "NvimTree", "packer", "oil" }, vim.filetype) then
+	if vim.tbl_contains({ "telescope", "aerial", "qf", "NvimTree", "packer"}, vim.filetype) then
 		return
 	end
 	local root, _ = p.find_pattern_root()
@@ -57,6 +57,7 @@ autocmd BufEnter * lua AutoSetCwd()
 augroup END
 ]])
 
+-- highlight number for cursorline
 local augroup_cursorline = augroup("zi_cursorline", {})
 au("WinEnter", {
 	group = augroup_cursorline,
