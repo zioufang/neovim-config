@@ -98,6 +98,8 @@ require("telescope").setup({
 			theme = require("telescope.themes").get_ivy,
 		},
 		frecency = {
+			auto_validate = false, -- don't auto delete non-existed entries, it is bad when switching branches, run `FrecencyValidate` to manually prune
+			db_safe_mode = true, -- always confirm entries deletion
 			show_scores = true,
 			show_unindexed = false, -- show unindexed will slow it down with big workspace (like CWD in HOME)
 			ignore_patterns = { "*.git/*", "*/tmp/*", "**/neovim/**/*.txt" },

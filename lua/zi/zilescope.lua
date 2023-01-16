@@ -7,7 +7,6 @@ local actions = require("telescope.actions")
 
 M = {}
 
--- TODO: introduce recency, frequency etc.
 function M.fd_projects(theme)
 	local opts = theme or {}
 

@@ -11,7 +11,8 @@ vim.g.mapleader = " "
 keymap("<leader><leader>", "<Cmd>tabnew | term lazygit<Cr>i")
 
 -- universal closing keymap in normal mode
--- but will not close the last window
+-- 1. will not close the last window
+-- 2. will not save modified buffer (should use `ZZ` instead)
 keymap("<C-c>", "<Cmd>silent! close!<Cr>")
 
 -- telescope
@@ -179,7 +180,7 @@ keymap("<C-b>", "<S-Left>", "c", { silent = false })
 keymap("<C-f>", "<S-Right>", "c", { silent = false })
 keymap("<C-a>", "<C-b>", "c", { silent = false })
 
-keymap("<C-x><C-e>", "<C-f>", "c", { silent = false })
+keymap("<C-x><C-e>", "<C-f>i", "c", { silent = false }) -- enter command line window with insert mode
 
 -- alt key mapping
 keymap("<A-s>", "<Cmd>update<Cr>") -- update doesnt overwrite if file is unchanged like :w would do

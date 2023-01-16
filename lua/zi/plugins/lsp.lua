@@ -106,5 +106,3 @@ mason_lspconfig.setup_handlers({
 		lspconfig.sumneko_lua.setup({ capabilities = capabilities })
 	end,
 })
-
--- TODO: change diagnostics underline to wavy + pretty sign
