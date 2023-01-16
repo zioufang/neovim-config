@@ -15,6 +15,9 @@ keymap("<leader><leader>", "<Cmd>tabnew | term lazygit<Cr>i")
 -- 2. will not save modified buffer (should use `ZZ` instead)
 keymap("<C-c>", "<Cmd>silent! close!<Cr>")
 
+-- Lazy.nvim UI
+vim.keymap.set("n", "<leader>l", "<Cmd>Lazy<Cr>")
+
 -- telescope
 local telescope = require("telescope.builtin")
 local ivy = require("telescope.themes").get_ivy({})
@@ -48,7 +51,6 @@ keymap("<leader>fb", function()
 end)
 keymap("<leader>fc", telescope.command_history)
 keymap("<leader>ft", telescope.resume)
-keymap("<leader>fy", "<Cmd>Telescope neoclip<Cr>")
 keymap("<leader>fh", telescope.help_tags)
 -- some keymaps are defined in lsp.lua, to utilize on_attach
 keymap("<leader>fe", function()
