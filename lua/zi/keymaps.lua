@@ -21,10 +21,16 @@ local ivy = require("telescope.themes").get_ivy({})
 local zilescope = require("zi.zilescope")
 
 keymap("<leader>ff", function()
-	require("telescope").extensions.frecency.frecency(vim.tbl_deep_extend('keep', ivy, {previewer = false, workspace = 'CWD'}))
+	require("telescope").extensions.frecency.frecency(
+		vim.tbl_deep_extend(
+			"force",
+			ivy,
+			{ previewer = false, workspace = "CWD", prompt_title = "Project Files Frecency" }
+		)
+	)
 end)
 keymap("<leader>fr", function()
-	require("telescope").extensions.frecency.frecency(vim.tbl_deep_extend('keep', ivy, {previewer = false}))
+	require("telescope").extensions.frecency.frecency(vim.tbl_deep_extend("force", ivy, { previewer = false }))
 end)
 keymap("<leader>fp", telescope.find_files)
 keymap("<leader>fd", function()
