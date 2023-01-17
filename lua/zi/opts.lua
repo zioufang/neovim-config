@@ -6,6 +6,14 @@ vim.opt.showmode = false -- disable the redundant show mode on the last line
 vim.opt.lazyredraw = true -- better macro performance
 vim.opt.clipboard = "unnamedplus"
 
+-- color settings
+-- check zi/plugins/color_themes.lua
+vim.opt.background = "dark"
+-- Custom color needs to be placed after the colorscheme
+-- https://jonasjacek.github.io/colors/
+-- but lazy.nvim handles it by setting colortheme priority very high
+vim.cmd("hi CursorLineNr guifg=Black guibg=Orange")
+
 vim.opt.wildmode = "longest,list,full"
 vim.opt.hlsearch = true
 vim.opt.incsearch = true

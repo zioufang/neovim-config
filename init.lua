@@ -1,21 +1,5 @@
-require("zi/packer")
+require("zi/lazy")
 require("zi/opts")
 require("zi/terminal")
 require("zi/autocmd")
 require("zi/keymaps")
-require("zi/color_schemes")
-
--- plugins
-require("zi/plugins/cmp")
-require("zi/plugins/command_center")
-require("zi/plugins/dressing")
-require("zi/plugins/lsp")
-require("zi/plugins/lualine")
-require("zi/plugins/neoclip")
-require("zi/plugins/neoformat")
-require("zi/plugins/oil")
--- require("zi/plugins/lir") -- replaced by oil
-require("zi/plugins/rust_tools")
-require("zi/plugins/scrollbar")
-require("zi/plugins/telescope")
-require("zi/plugins/treesitter")
