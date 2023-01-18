@@ -9,7 +9,7 @@ return {
 	{
 		"anuvyklack/windows.nvim",
 		keys = {
-			{ "<F10>", "<Cmd>WindowsMaximize<Cr>" },
+			{ "<F12>", "<Cmd>WindowsMaximize<Cr>" },
 			{ "<F11>", "<Cmd>WindowsMaximizeVertically<Cr>" },
 		},
 		dependencies = {
@@ -26,17 +26,6 @@ return {
 				},
 			})
 		end,
-	},
-
-	-- fully maximize but don't work well with special buffer types
-	{
-		"declancm/maximize.nvim",
-		keys = {
-			{ "<F12>", "<Cmd>lua require('maximize').maximize" },
-		},
-		opts = {
-			default_keymaps = false,
-		},
 	},
 
 	-- swapping windows

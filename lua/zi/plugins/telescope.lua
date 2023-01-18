@@ -103,21 +103,12 @@ return {
 						separator = " ",
 						theme = require("telescope.themes").get_ivy,
 					},
-					frecency = {
-						auto_validate = false, -- don't auto delete non-existed entries, it is bad when switching branches, run `FrecencyValidate` to manually prune
-						db_safe_mode = true, -- always confirm entries deletion
-						show_scores = false,
-						show_unindexed = false, -- show unindexed will slow it down with big workspace (like CWD in HOME)
-						ignore_patterns = { "*.git/*", "*/tmp/*", "**/neovim/**/*.txt" },
-						theme = require("telescope.themes").get_ivy,
-					},
 				},
 			})
 
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("live_grep_args")
 			require("telescope").load_extension("command_center")
-			require("telescope").load_extension("frecency")
 			-- open qf in vertical
 			-- local telescope_actions = require("telescope.actions")
 			--
@@ -151,10 +142,7 @@ return {
 		"FeiyouG/command_center.nvim",
 		config = function()
 			require("zi.plugins.command_center.setup")
+			require("zi.plugins.command_center.custom_commands")
 		end,
 	}, -- flat list of customized commands
-	{
-		"nvim-telescope/telescope-frecency.nvim",
-		dependencies = { "kkharji/sqlite.lua" },
-	},
 }
