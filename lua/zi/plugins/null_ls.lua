@@ -1,5 +1,6 @@
 return {
 	"jose-elias-alvarez/null-ls.nvim",
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
@@ -9,6 +10,7 @@ return {
 
 		nls.setup({
 			sources = {
+				-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 				nls.builtins.formatting.stylua,
 				nls.builtins.formatting.black,
 				nls.builtins.formatting.deno_fmt,

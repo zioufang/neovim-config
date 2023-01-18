@@ -1,10 +1,11 @@
 return {
 	{
 		"kevinhwang91/nvim-bqf",
+		event = "VeryLazy",
 		opts = { auto_resize_height = true },
 	},
 
-	{ "gabrielpoca/replacer.nvim" }, -- edit directly in quickfix buffer
+	{ "gabrielpoca/replacer.nvim", ft = "qf" }, -- edit directly in quickfix buffer
 
 	-- prettier qf
 	{

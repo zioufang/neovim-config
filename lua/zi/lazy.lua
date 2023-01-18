@@ -16,7 +16,6 @@ vim.opt.runtimepath:prepend(lazypath)
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>l", "<Cmd>Lazy<Cr>")
 require("lazy").setup("zi.plugins", {
 	defaults = { lazy = false },
 	install = {

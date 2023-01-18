@@ -2,29 +2,46 @@ return {
 	-- gc for comment
 	{
 		"numToStr/Comment.nvim",
+		event = "VeryLazy",
 		config = true,
 	},
 
 	{
 		"windwp/nvim-autopairs",
+		event = "VeryLazy",
 		config = true,
 	},
 
 	{
 		"kylechui/nvim-surround",
+		event = "VeryLazy",
 		config = true,
 	},
 
 	-- better substitution + case coercion
-	{ "tpope/vim-abolish" },
+	{ "tpope/vim-abolish", event = "VeryLazy" },
 	-- preview support for abolish
 	{
 		"markonm/traces.vim",
+		event = "VeryLazy",
 		config = function()
 			vim.g.traces_abolish_integration = 1
 		end,
 	},
 
+	-- doc generation
+	{
+		"danymat/neogen",
+		event = "VeryLazy",
+		keys = { { "<leader>d", "<Cmd>lua require('neogen').generate()<Cr>" } },
+		config = true,
+		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
+
 	-- iv + av for subwords in snake/camel cases
-	{ "kana/vim-textobj-user", dependencies = "Julian/vim-textobj-variable-segment" },
+	{
+		"kana/vim-textobj-user",
+		event = "VeryLazy",
+		dependencies = "Julian/vim-textobj-variable-segment",
+	},
 }

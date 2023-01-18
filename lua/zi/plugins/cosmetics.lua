@@ -2,25 +2,24 @@ return {
 	-- nicer default ui
 	{
 		"stevearc/dressing.nvim",
-		config = function()
-			require("dressing").setup({
-				input = {
-					insert_only = false,
+		event = "VeryLazy",
+		opts = {
+			input = {
+				insert_only = false,
+			},
+			mappings = {
+				n = {
+					["<Esc>"] = "Close",
+					["<CR>"] = "Confirm",
 				},
-				mappings = {
-					n = {
-						["<Esc>"] = "Close",
-						["<CR>"] = "Confirm",
-					},
-					i = {
-						["<C-c>"] = "Close",
-						["<CR>"] = "Confirm",
-						["<C-Up>"] = "HistoryPrev",
-						["<C-Down>"] = "HistoryNext",
-					},
+				i = {
+					["<C-c>"] = "Close",
+					["<CR>"] = "Confirm",
+					["<C-Up>"] = "HistoryPrev",
+					["<C-Down>"] = "HistoryNext",
 				},
-			})
-		end,
+			},
+		},
 	},
 	-- scrollbar
 	{
@@ -71,6 +70,7 @@ return {
 	-- hightlight word under cursor
 	{
 		"RRethy/vim-illuminate",
+		event = "VeryLazy",
 		config = function()
 			require("illuminate").configure({
 				delay = 300,
@@ -87,4 +87,14 @@ return {
 		"anuvyklack/pretty-fold.nvim",
 		config = true,
 	},
+
+	{
+		"jackMort/pommodoro-clock.nvim",
+		enabled = false,
+		dependencies = { "MunifTanjim/nui.nvim" },
+		config = true,
+	},
+
+	-- TODO: check out minimap
+	-- mouse click movement: https://github.com/gorbit99/codewindow.nvim/issues/37
 }
