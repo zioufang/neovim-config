@@ -2,6 +2,10 @@ local command_center = require("command_center")
 
 command_center.add({
 	{
+		desc = "GHOpenPr",
+		cmd = "<Cmd>GHOpenPR<Cr>",
+	},
+	{
 		desc = "RustSetInlayHints",
 		cmd = "<Cmd>RustSetInlayHints<Cr>",
 	},

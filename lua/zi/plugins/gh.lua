@@ -12,7 +12,7 @@ return {
 			-- do not map any keys inside any gh.nvim buffers.
 			disable_keymaps = false,
 			-- the icon set to use.
-			icon_set = "default",
+			icon_set = "nerd",
 			-- any custom icons to use.
 			icon_set_custom = nil,
 			-- whether to register the @username and #issue_number omnifunc completion
