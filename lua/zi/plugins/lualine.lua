@@ -16,6 +16,8 @@ return {
 					if client.config.settings.python["pythonPath"] ~= nil then
 						clients[#clients + 1] = client.name .. "(venv)"
 					end
+				elseif client.name == "null-ls" then
+				-- do not add
 				else
 					clients[#clients + 1] = client.name
 				end
