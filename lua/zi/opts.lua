@@ -5,6 +5,7 @@ vim.opt.number = true
 vim.opt.showmode = false -- disable the redundant show mode on the last line
 vim.opt.lazyredraw = true -- better macro performance
 vim.opt.clipboard = "unnamedplus"
+vim.opt.shada = "!,'1000,<50,s10,h" -- increase edited file history to 500
 
 -- color settings
 -- check zi/plugins/color_themes.lua
