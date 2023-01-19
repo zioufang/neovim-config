@@ -54,6 +54,15 @@ keymap("<leader>r", function()
 end)
 keymap("<leader>b", telescope.current_buffer_fuzzy_find)
 
+-- marks with grapple.nvim
+keymap("<leader>fm", function()
+	require("grapple").popup_tags()
+end)
+keymap("<leader>mm", function()
+	-- require("grapple").tag({ file_path = "{file_path}" })
+	require("grapple").tag()
+end)
+
 -- lsp
 -- See `:h vim.lsp.*`
 keymap("gd", vim.lsp.buf.definition)
@@ -192,3 +201,4 @@ keymap("<A-x>", "<Cmd>Telescope command_center<Cr>")
 keymap("<D-v>", "+p<CR>", "")
 keymap("<D-v>", "<C-R>+", { "!", "t", "v" })
 keymap("<D-c>", '"+y<Cr>', "v")
+keymap("<A-C>", '"+y<Cr>', "v") -- Cmd+c is remapped to Alt-Shift-c in alacritty
