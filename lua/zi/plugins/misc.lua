@@ -27,4 +27,10 @@ return {
 			disable_legacy_commands = true,
 		},
 	},
+
+	-- qml
+	{
+		"peterhoeg/vim-qml",
+		-- event = "BufEnter *.qml",
+	},
 }
