@@ -19,6 +19,7 @@ return {
 				nls.builtins.formatting.terraform_fmt,
 				nls.builtins.formatting.fish_indent,
 				nls.builtins.formatting.taplo,
+				nls.builtins.formatting.shfmt,
 				-- rustfmt edition args read from Cargo.toml
 				nls.builtins.formatting.rustfmt.with({
 					extra_args = function(params)
@@ -42,7 +43,14 @@ return {
 				nls.builtins.code_actions.shellcheck,
 
 				-- diagnostics
+				nls.builtins.diagnostics.actionlint, -- github action linter
+				nls.builtins.diagnostics.checkmake, -- Makefile linter
+				nls.builtins.diagnostics.fish, -- for fish shell
 				nls.builtins.diagnostics.vale, -- for spelling + style for Markup (e.g. Markdown, rst, etc.)
+
+				-- qml
+				nls.builtins.diagnostics.qmllint,
+				nls.builtins.formatting.qmlformat,
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then

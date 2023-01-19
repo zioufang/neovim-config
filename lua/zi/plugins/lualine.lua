@@ -2,22 +2,23 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
 	config = function()
-		-- maximized status for maximize.nvim
-		local function maximize_status()
-			return vim.t.maximized and " " or ""
-		end
-
 		-- show name of the lsp server for current buf
 		local function lsp_provider()
 			local clients = {}
-			for _, client in pairs(vim.lsp.buf_get_clients()) do
+			local buf_clients = vim.lsp.buf_get_clients()
+			local client_cnt = vim.tbl_count(buf_clients)
+			for _, client in pairs(buf_clients) do
 				if client.name == "pyright" then
-					-- add (venv) if customized python path is detected
-					if client.config.settings.python["pythonPath"] ~= nil then
-						clients[#clients + 1] = client.name .. "(venv)"
+					local cwd = vim.fn.getcwd()
+					-- use python path for pyright
+					local py_path = client.config.settings.python["pythonPath"]
+					if py_path ~= nil then
+						py_path = py_path:gsub(cwd .. "/", "")
+						clients[#clients + 1] = "pyright[" .. py_path .. "]"
 					end
-				elseif client.name == "null-ls" then
-				-- do not add
+				-- only display null-ls if there is only null-ls attached
+				-- therefore don't add null-ls if count > 1
+				elseif client.name == "null-ls" and client_cnt > 1 then
 				else
 					clients[#clients + 1] = client.name
 				end
@@ -124,7 +125,6 @@ return {
 					{ "diff", separator = "|" },
 				},
 				lualine_x = {
-					{ maximize_status, separator = "|" },
 					{
 						"aerial",
 						dense = true,
