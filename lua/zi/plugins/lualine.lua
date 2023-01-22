@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		-- show name of the lsp server for current buf
 		local function lsp_provider()
@@ -140,7 +140,13 @@ return {
 					{ lsp_provider },
 				},
 				lualine_y = {},
-				lualine_z = { "os.date('%H:%M')" }, -- strftime() format string
+				lualine_z = {
+					-- {
+					-- 	function()
+					-- 		return " " .. os.date("%H:%M")
+					-- 	end,
+					-- },
+				},
 			},
 			-- TODO make oil buffer pretty in winbar
 			winbar = {
