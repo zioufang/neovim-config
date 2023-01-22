@@ -6,6 +6,10 @@ command_center.add({
 		cmd = "<Cmd>GHOpenPR<Cr>",
 	},
 	{
+		desc = "Diffview Current Buffer",
+		cmd = "<Cmd>DiffviewFileHistory %<Cr>",
+	},
+	{
 		desc = "RustSetInlayHints",
 		cmd = "<Cmd>RustSetInlayHints<Cr>",
 	},
@@ -44,9 +48,5 @@ command_center.add({
 	{
 		desc = "BufferCloseHidden",
 		cmd = "<Cmd>BufferCloseHidden<Cr>",
-	},
-	{
-		desc = "Nvim Reload Config",
-		cmd = "<Cmd>lua ReloadConfig()<Cr>",
 	},
 }, command_center.mode.ADD)
