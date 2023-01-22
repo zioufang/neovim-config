@@ -129,7 +129,13 @@ local function toggle_cmdline()
 end
 keymap("<leader>vc", toggle_cmdline)
 
-keymap("<leader>cd", "<Cmd>cd %:p:h<Cr>")
+-- useful when combined with rg a word in cwd
+local function cd_current_buf()
+	local cwd = vim.fn.expand("%:p:h")
+	cwd = cwd:gsub("oil://", "")
+	vim.cmd("cd " .. cwd)
+end
+keymap("<leader>cd", cd_current_buf)
 -- copy correct dir to clipboard
 keymap("<leader>cp", '<Cmd>let @+ = expand("%:p:h")<Cr>')
 -- chmod a+x on current buffer
