@@ -1,6 +1,5 @@
 return {
 	-- neovim  dev
-	{ "folke/neodev.nvim", ft = "lua" },
 	{ "rafcamlet/nvim-luapad", cmd = "Luapad" },
 	{ "nvim-lua/plenary.nvim" },
 	{ "rcarriga/nvim-notify" },
@@ -33,4 +32,5 @@ return {
 		"peterhoeg/vim-qml",
 		-- event = "BufEnter *.qml",
 	},
+	{ "towolf/vim-helm" },
 }

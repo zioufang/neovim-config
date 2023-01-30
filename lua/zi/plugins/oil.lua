@@ -16,6 +16,7 @@ return {
 				["<C-r>"] = "actions.refresh",
 				["-"] = "actions.parent",
 				["`"] = "actions.open_cwd",
+				[";"] = "actions.open_cmdline_dir",
 				-- ["@"] = "actions.cd",
 				-- ["~"] = "actions.tcd",
 				["gh"] = "actions.toggle_hidden",

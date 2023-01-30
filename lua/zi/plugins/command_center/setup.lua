@@ -10,32 +10,8 @@ command_center.add({
 		cmd = "<Cmd>DiffviewFileHistory %<Cr>",
 	},
 	{
-		desc = "RustSetInlayHints",
-		cmd = "<Cmd>RustSetInlayHints<Cr>",
-	},
-	{
-		desc = "RustUnsetInlayHints",
-		cmd = "<Cmd>RustUnsetInlayHints<Cr>",
-	},
-	{
-		desc = "RustExpandMacro",
-		cmd = "<Cmd>RustExpandMacro<Cr>",
-	},
-	{
 		desc = "IconPickerInsert",
 		cmd = "<Cmd>IconPickerInsert<Cr>",
-	},
-	{
-		desc = "Telescope spell_suggest",
-		cmd = "<Cmd>Telescope spell_suggest<Cr>",
-	},
-	{
-		desc = "Telescope search_history",
-		cmd = "<Cmd>Telescope search_history<Cr>",
-	},
-	{
-		desc = "Telescope quickfixhistory",
-		cmd = "<Cmd>Telescope quickfixhistory<Cr>",
 	},
 	{
 		desc = "Luapad (Scratch)",
@@ -48,5 +24,36 @@ command_center.add({
 	{
 		desc = "BufferCloseHidden",
 		cmd = "<Cmd>BufferCloseHidden<Cr>",
+	},
+
+	-- rust-tools
+	{
+		desc = "RustSetInlayHints",
+		cmd = "<Cmd>RustSetInlayHints<Cr>",
+	},
+	{
+		desc = "RustUnsetInlayHints",
+		cmd = "<Cmd>RustUnsetInlayHints<Cr>",
+	},
+	{
+		desc = "RustExpandMacro",
+		cmd = "<Cmd>RustExpandMacro<Cr>",
+	},
+	-- Telescope
+	{
+		desc = "Telescope jumplist",
+		cmd = "<Cmd>Telescope jumplist<Cr>",
+	},
+	{
+		desc = "Telescope spell_suggest",
+		cmd = "<Cmd>Telescope spell_suggest<Cr>",
+	},
+	{
+		desc = "Telescope search_history",
+		cmd = "<Cmd>Telescope search_history<Cr>",
+	},
+	{
+		desc = "Telescope quickfixhistory",
+		cmd = "<Cmd>Telescope quickfixhistory<Cr>",
 	},
 }, command_center.mode.ADD)

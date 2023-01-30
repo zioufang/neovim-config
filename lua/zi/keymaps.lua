@@ -66,6 +66,7 @@ end)
 -- lsp
 -- See `:h vim.lsp.*`
 keymap("gd", vim.lsp.buf.definition)
+keymap("gD", "<Cmd>vert sb<Cr><Cmd>lua vim.lsp.buf.definition()<Cr>")
 keymap("gr", vim.lsp.buf.references)
 keymap("K", vim.lsp.buf.hover)
 keymap("<leader>ja", vim.lsp.buf.code_action)
@@ -207,4 +208,6 @@ keymap("<A-x>", "<Cmd>Telescope command_center<Cr>")
 keymap("<D-v>", "+p<CR>", "")
 keymap("<D-v>", "<C-R>+", { "!", "t", "v" })
 keymap("<D-c>", '"+y<Cr>', "v")
-keymap("<A-C>", '"+y<Cr>', "v") -- Cmd+c is remapped to Alt-Shift-c in alacritty
+
+-- Cmd+c is remapped to Alt-Shift-C in terminal app
+keymap("<A-C>", '"+y<Cr>', { "v" })

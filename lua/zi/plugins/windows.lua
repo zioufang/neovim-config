@@ -9,8 +9,8 @@ return {
 	{
 		"anuvyklack/windows.nvim",
 		keys = {
-			{ "<F12>", "<Cmd>WindowsMaximize<Cr>" },
-			{ "<F11>", "<Cmd>WindowsMaximizeVertically<Cr>" },
+			{ "<F12>", "<Cmd>WindowsMaximize<Cr>", mode = { "n", "t" } },
+			{ "<F11>", "<Cmd>WindowsMaximizeVertically<Cr>", mode = { "n", "t" } },
 		},
 		dependencies = {
 			"anuvyklack/middleclass",

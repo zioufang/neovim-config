@@ -12,6 +12,7 @@ return {
 			sources = {
 				-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 				nls.builtins.formatting.stylua,
+				nls.builtins.formatting.isort,
 				nls.builtins.formatting.black,
 				nls.builtins.formatting.deno_fmt,
 				nls.builtins.formatting.goimports,
@@ -20,6 +21,7 @@ return {
 				nls.builtins.formatting.fish_indent,
 				nls.builtins.formatting.taplo,
 				nls.builtins.formatting.shfmt,
+				nls.builtins.formatting.clang_format,
 				-- rustfmt edition args read from Cargo.toml
 				nls.builtins.formatting.rustfmt.with({
 					extra_args = function(params)
@@ -49,7 +51,7 @@ return {
 				nls.builtins.diagnostics.vale, -- for spelling + style for Markup (e.g. Markdown, rst, etc.)
 
 				-- qml
-				nls.builtins.diagnostics.qmllint,
+				-- nls.builtins.diagnostics.qmllint,
 				nls.builtins.formatting.qmlformat,
 			},
 			on_attach = function(client, bufnr)
