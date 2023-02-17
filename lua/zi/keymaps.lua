@@ -44,6 +44,8 @@ keymap("<leader>fe", function()
 end)
 keymap("<leader>fE", telescope.diagnostics)
 
+keymap("<leader>fy", "<Cmd>Telescope neoclip<Cr>")
+
 keymap("<leader>p", function()
 	zilescope.fd_projects(ivy)
 end)

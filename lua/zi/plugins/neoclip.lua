@@ -1,7 +1,7 @@
 return {
 	-- better clilpboard management
 	"AckslD/nvim-neoclip.lua",
-	keys = { { "<leader>fy", "<Cmd>Telescope neoclip<Cr>" } },
+	event = "VeryLazy",
 	config = function()
 		require("neoclip").setup({
 			history = 20,
