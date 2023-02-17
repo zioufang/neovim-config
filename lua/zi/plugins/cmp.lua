@@ -1,7 +1,7 @@
 return {
 	"hrsh7th/nvim-cmp",
 	-- load cmp on InsertEnter
-	event = "InsertEnter",
+	-- event = "InsertEnter",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
@@ -62,7 +62,7 @@ return {
 			},
 			completion = {
 				completeopt = "menu,noinsert",
-				keyword_length = 2,
+				keyword_length = 1,
 			},
 			mapping = cmp.mapping.preset.insert({
 				-- i = insert, s = select, c = cmd
@@ -73,6 +73,7 @@ return {
 					if cmp.visible() then
 						cmp.confirm({ -- confirm without replacement
 							select = false,
+							behavior = cmp.ConfirmBehavior.Insert,
 						})
 					elseif luasnip.expand_or_jumpable() then
 						luasnip.expand_or_jump()

@@ -57,7 +57,7 @@ vim.opt.sidescrolloff = 5
 
 -- Set colorscheme
 vim.opt.termguicolors = true
-vim.opt.completeopt = "menu,noinsert" -- autoselect the first entry in autocompletion
+-- vim.opt.completeopt = "menu,noinsert" -- autoselect the first entry in autocompletion
 -- vim.opt.iskeyword:remove({ "_" }) -- _ will be treated as a word('w' not 'W') boundry  check :help word
 
 -- Folding
