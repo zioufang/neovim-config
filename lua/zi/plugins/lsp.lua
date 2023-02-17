@@ -1,10 +1,10 @@
 return {
-	{ "folke/neodev.nvim", config = true },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
+			{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -73,7 +73,7 @@ return {
 			require("mason").setup()
 			mason_lspconfig.setup({
 				ensure_installed = {
-					"sumneko_lua",
+					"lua_ls",
 					"rust_analyzer",
 					"pyright",
 					"gopls",
@@ -116,6 +116,9 @@ return {
 						before_init = require("neodev.lsp").before_init,
 						settings = {
 							Lua = {
+								workspace = {
+									checkThirdParty = false,
+								},
 								completion = {
 									callSnippet = "Replace",
 								},
