@@ -2,5 +2,16 @@
   "derive": {
     "prefix": "de",
     "body": "#[derive($1)]"
+  },
+  "mod tests": {
+    "prefix": "te",
+    "body": [
+      "#[cfg(test)]",
+      "mod tests {",
+      "\tuse super::*;",
+      "\n\t#[test]",
+      "\tfn test_$0",
+      "}"
+    ]
   }
 }
