@@ -110,9 +110,9 @@ return {
 				end,
 
 				-- default lua lsp to neovim variant
-				["sumneko_lua"] = function()
+				["lua_ls"] = function()
 					-- require("neodev").setup({})
-					lspconfig.sumneko_lua.setup({
+					lspconfig.lua_ls.setup({
 						before_init = require("neodev.lsp").before_init,
 						settings = {
 							Lua = {
