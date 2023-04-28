@@ -37,7 +37,7 @@ augroup END
 -- auto set cwd based on project root pattern
 function _G.AutoSetCwd()
 	-- don't set cwd with the following filetype
-	if vim.tbl_contains({ "telescope", "aerial", "qf", "NvimTree", "packer"}, vim.filetype) then
+	if vim.tbl_contains({ "telescope", "aerial", "qf", "NvimTree", "packer" }, vim.filetype) then
 		return
 	end
 	local root, _ = p.find_pattern_root()
@@ -103,9 +103,9 @@ au({ "BufNewFile", "BufRead" }, {
 	group = augroup_tab_ft,
 	pattern = "*.rs,*.py,*.go",
 	callback = function()
-		vim.opt.tabstop = 4
-		vim.opt.softtabstop = 4
-		vim.opt.shiftwidth = 4
+		vim.opt_local.tabstop = 4
+		vim.opt_local.softtabstop = 4
+		vim.opt_local.shiftwidth = 4
 	end,
 })
 

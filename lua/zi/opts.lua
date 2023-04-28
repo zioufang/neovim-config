@@ -28,8 +28,7 @@ vim.opt.mouse = "nv"
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
--- TODO: enable when the feature is released
--- vim.opt.splitkeep = "screen" -- keep screen after split
+vim.opt.splitkeep = "screen" -- keep screen after split
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
