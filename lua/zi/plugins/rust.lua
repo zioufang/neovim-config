@@ -13,6 +13,8 @@ return {
 				settings = {
 					["rust-analyzer"] = {
 						inlayHints = { locationLinks = false },
+						-- procMacro = { enable = true },
+						diagnostics = { disabled = { "unresolved-proc-macro" } },
 					},
 				},
 			},

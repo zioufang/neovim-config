@@ -127,6 +127,17 @@ return {
 						capabilities = capabilities,
 					})
 				end,
+
+				-- ["rust_analyzer"] = function()
+				-- 	lspconfig.rust_analyzer.setup({
+				-- 		settings = {
+				-- 			inlayHints = { locationLinks = false },
+				-- 			procMacro = { enable = true },
+				-- 			diagnostics = { disabled = { "unresolved-proc-macro" } },
+				-- 		},
+				-- 		capabilities = capabilities,
+				-- 	})
+				-- end,
 			})
 		end,
 	},
