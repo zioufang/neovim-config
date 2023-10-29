@@ -2,10 +2,14 @@
 -- See `:help vim.opt`
 vim.opt.number = true
 -- vim.opt.relativenumber = true
-vim.opt.showmode = false -- disable the redundant show mode on the last line
-vim.opt.lazyredraw = true -- better macro performance
+vim.opt.showmode = false            -- disable the redundant show mode on the last line
+vim.opt.lazyredraw = true           -- better macro performance
 vim.opt.clipboard = "unnamedplus"
 vim.opt.shada = "!,'1000,<50,s10,h" -- increase edited file history to 500
+
+
+local fish_path = io.popen("which fish"):read("*l")
+vim.opt.shell = fish_path
 
 -- color settings
 -- check zi/plugins/color_themes.lua
