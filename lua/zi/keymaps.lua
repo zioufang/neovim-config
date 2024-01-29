@@ -1,8 +1,8 @@
 -- normal mapping
 local function keymap(keys, cmd, modes, opts)
-	opts = opts or { noremap = true, silent = true }
-	modes = modes or { "n" }
-	vim.keymap.set(modes, keys, cmd, opts)
+  opts = opts or { noremap = true, silent = true }
+  modes = modes or { "n" }
+  vim.keymap.set(modes, keys, cmd, opts)
 end
 
 vim.g.mapleader = " "
@@ -21,49 +21,35 @@ vim.keymap.set("n", "<leader>l", "<Cmd>Lazy<Cr>")
 -- telescope
 local telescope = require("telescope.builtin")
 local ivy = require("telescope.themes").get_ivy({})
-local zilescope = require("zi.zilescope")
 
 keymap("<leader>ff", function()
-	telescope.oldfiles({ only_cwd = true })
+  telescope.oldfiles({ only_cwd = true })
 end)
 keymap("<leader>fr", telescope.oldfiles)
 
 keymap("<leader>fp", telescope.find_files)
 keymap("<leader>fd", function()
-	telescope.buffers({ ignore_current_buffer = true, sort_mru = true, only_cwd = true }) -- sort all buffers by recency
+  telescope.buffers({ ignore_current_buffer = true, sort_mru = true, only_cwd = true }) -- sort all buffers by recency
 end)
 keymap("<leader>fb", function()
-	telescope.buffers({ ignore_current_buffer = true, sort_mru = true, only_cwd = false }) -- sort all buffers by recency
+  telescope.buffers({ ignore_current_buffer = true, sort_mru = true, only_cwd = false }) -- sort all buffers by recency
 end)
 keymap("<leader>fc", telescope.command_history)
 keymap("<leader>ft", telescope.resume)
 keymap("<leader>fh", telescope.help_tags)
 -- some keymaps are defined in lsp.lua, to utilize on_attach
 keymap("<leader>fe", function()
-	telescope.diagnostics({ bufnr = 0 })
+  telescope.diagnostics({ bufnr = 0 })
 end)
 keymap("<leader>fE", telescope.diagnostics)
 
 keymap("<leader>fy", "<Cmd>Telescope neoclip<Cr>")
 
-keymap("<leader>p", function()
-	zilescope.fd_projects(ivy)
-end)
-
 keymap("<leader>R", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 keymap("<leader>r", function()
-	telescope.grep_string({ shorten_path = true, word_match = "-w", only_sort_text = true, search = "" })
+  telescope.grep_string({ shorten_path = true, word_match = "-w", only_sort_text = true, search = "" })
 end)
 keymap("<leader>b", telescope.current_buffer_fuzzy_find)
-
--- marks with grapple.nvim
-keymap("<leader>fm", function()
-	require("grapple").popup_tags()
-end)
-keymap("<leader>mm", function()
-	-- require("grapple").tag({ file_path = "{file_path}" })
-	require("grapple").tag()
-end)
 
 -- lsp
 -- See `:h vim.lsp.*`
@@ -96,7 +82,7 @@ keymap("/", ":set hls<Cr>/")
 
 -- need to disable `silent` for Cmd without Cr, otherwise the text will not show up  in cmdlin
 keymap("<leader>s", "<Cmd>set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4), "n", { silent = false }) -- Subvert from vim-abolish
-keymap("<leader>S", "<Cmd>set hls<Cr>:%S///gc" .. string.rep("<Left>", 4), "n", { silent = false }) -- Subvert from vim-abolish
+keymap("<leader>S", "<Cmd>set hls<Cr>:%S///gc" .. string.rep("<Left>", 4), "n", { silent = false })   -- Subvert from vim-abolish
 
 keymap("<leader>w", "<C-W>=")
 
@@ -113,30 +99,33 @@ keymap("<leader>vF", "<Cmd>mkview<Cr>")
 
 -- markdown preview in glow
 function _G.GlowMarkdown()
-	local path = vim.api.nvim_buf_get_name(0)
-	local cmd = "tabnew | term glow " .. path .. " && exit 1" -- HACK: forcing to exit 1 so the term auto close (defined in terminal.lua) doesn't happen
-	vim.cmd(cmd)
+  local path = vim.api.nvim_buf_get_name(0)
+  local cmd = "tabnew | term glow " ..
+      path ..
+      " && exit 1"     -- HACK: forcing to exit 1 so the term auto close (defined in terminal.lua) doesn't happen
+  vim.cmd(cmd)
 end
+
 keymap("<leader>vm", GlowMarkdown)
 
 -- toggle highlight
 keymap("<leader>h", "<Cmd>set hls!<Cr>")
 -- toggle cmdheight, good for recording macro
 local function toggle_cmdline()
-	vim.pretty_print(vim.opt.cmdheight)
-	if vim.opt.cmdheight:get() > 0 then
-		vim.opt.cmdheight = 0
-	else
-		vim.opt.cmdheight = 1
-	end
+  vim.pretty_print(vim.opt.cmdheight)
+  if vim.opt.cmdheight:get() > 0 then
+    vim.opt.cmdheight = 0
+  else
+    vim.opt.cmdheight = 1
+  end
 end
 keymap("<leader>vc", toggle_cmdline)
 
 -- useful when combined with rg a word in cwd
 local function cd_current_buf()
-	local cwd = vim.fn.expand("%:p:h")
-	cwd = cwd:gsub("oil://", "")
-	vim.cmd("cd " .. cwd)
+  local cwd = vim.fn.expand("%:p:h")
+  cwd = cwd:gsub("oil://", "")
+  vim.cmd("cd " .. cwd)
 end
 keymap("<leader>cd", cd_current_buf)
 -- copy correct dir to clipboard
@@ -182,9 +171,9 @@ keymap("<leader>qv", "<Cmd>call ToggleVertQuickfix()<Cr>")
 keymap("<leader>qj", "<Cmd>silent! cnewer<Cr>")
 keymap("<leader>qk", "<Cmd>silent! colder<Cr>")
 keymap("<leader>qi", function()
-	require("replacer").run({ rename_files = false }) -- dont rename file in quickfix
+  require("replacer").run({ rename_files = false }) -- dont rename file in quickfix
 end)
-keymap("<leader>qI", require("replacer").run) -- rename file in quickfix
+keymap("<leader>qI", require("replacer").run)       -- rename file in quickfix
 
 -- closing all buffers referenced in the qf list (after doing search replace etc.)
 -- cdo bd

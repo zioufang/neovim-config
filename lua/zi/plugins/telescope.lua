@@ -68,12 +68,6 @@ return {
           -- !fire	do not include fire
           -- !^music	do not start with music
           -- !.mp3$	do not end with .mp3
-          fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-          },
           live_grep_args = {
             auto_quoting = false, -- enable/disable auto-quoting
             mappings = {
@@ -105,44 +99,10 @@ return {
         },
       })
 
-      require("telescope").load_extension("fzf")
       require("telescope").load_extension("live_grep_args")
-      -- require("telescope").load_extension("commander")
-      -- open qf in vertical
-      -- local telescope_actions = require("telescope.actions")
-      --
-      -- local function send_to_quickfix(promtbufnr)
-      --    telescope_actions.smart_send_to_qflist(promtbufnr)
-      --    vim.cmd([[botright copen]])
-      -- end
-      --
-      -- telescope.setup({
-      --   defaults = {
-      --     mappings = {
-      --       ["n"] = {
-      --         ["<C-q>"] = send_to_quickfix,
-      --       },
-      --        ["i"] = {
-      --          ["<C-q>"] = send_to_quickfix,
-      --        },
-      --      },
-      --   },
-      -- })
     end,
   },
 
   -- extensions
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build =
-    "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-  },
   { "nvim-telescope/telescope-live-grep-args.nvim" },
-  -- {
-  --   "FeiyouG/commander.nvim",
-  --   config = function()
-  --     require("zi.plugins.commander.setup")
-  --     require("zi.plugins.commander.custom_commands")
-  --   end,
-  -- }, -- flat list of customized commands
 }
