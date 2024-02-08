@@ -43,13 +43,13 @@ keymap("<leader>fe", function()
 end)
 keymap("<leader>fE", telescope.diagnostics)
 
-keymap("<leader>fy", "<Cmd>Telescope neoclip<Cr>")
-
 keymap("<leader>R", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 keymap("<leader>r", function()
   telescope.grep_string({ shorten_path = true, word_match = "-w", only_sort_text = true, search = "" })
 end)
 keymap("<leader>b", telescope.current_buffer_fuzzy_find)
+
+keymap("<leader>p", "<Cmd>Telescope repo<CR>")
 
 -- lsp
 -- See `:h vim.lsp.*`
@@ -102,7 +102,7 @@ function _G.GlowMarkdown()
   local path = vim.api.nvim_buf_get_name(0)
   local cmd = "tabnew | term glow " ..
       path ..
-      " && exit 1"     -- HACK: forcing to exit 1 so the term auto close (defined in terminal.lua) doesn't happen
+      " && exit 1" -- HACK: forcing to exit 1 so the term auto close (defined in terminal.lua) doesn't happen
   vim.cmd(cmd)
 end
 

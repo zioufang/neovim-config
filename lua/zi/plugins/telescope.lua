@@ -78,31 +78,35 @@ return {
               },
             },
           },
-          -- commander = {
-          --   components = {
-          --     commander.component.DESC,
-          --     -- command_center.component.KEYS,
-          --     -- command_center.component.CMD,
-          --     -- command_center.component.CATEGORY,
-          --   },
-          --   -- Spcify by what components the commands is sorted
-          --   -- Order does not matter
-          --   sort_by = {
-          --     commander.component.DESC,
-          --     -- command_center.component.KEYS,
-          --     -- command_center.component.CMD,
-          --     -- command_center.component.CATEGORY,
-          --   },
-          --   separator = " ",
-          --   theme = require("telescope.themes").get_ivy,
-          -- },
+          repo = {
+            list = {
+              fd_opts = {
+                "--max-depth",
+                "3",
+              },
+              search_dirs = {
+                "~/projects",
+              },
+              file_ignore_patterns = {
+                "/%.cache/",
+                "/%.cargo/",
+                "/%.venv/",
+                "/%.terraform/",
+              },
+            },
+            settings = {
+              auto_lcd = true,
+            }
+          },
         },
       })
 
       require("telescope").load_extension("live_grep_args")
+      require("telescope").load_extension("repo")
     end,
   },
 
   -- extensions
   { "nvim-telescope/telescope-live-grep-args.nvim" },
+  { 'cljoly/telescope-repo.nvim' },
 }
