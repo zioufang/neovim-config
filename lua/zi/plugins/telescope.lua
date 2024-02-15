@@ -144,11 +144,13 @@ return {
       require("telescope").load_extension("live_grep_args")
       require("telescope").load_extension("repo")
       require("telescope").load_extension("zf-native")
+      require("telescope").load_extension("terraform_doc")
     end,
   },
 
   -- extensions
   { "nvim-telescope/telescope-live-grep-args.nvim" },
   { 'cljoly/telescope-repo.nvim' },
-  { 'natecraddock/telescope-zf-native.nvim' }
+  { 'natecraddock/telescope-zf-native.nvim' },
+  { 'ANGkeith/telescope-terraform-doc.nvim' }
 }

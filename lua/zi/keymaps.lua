@@ -35,7 +35,6 @@ keymap("<leader>fb", function()
 end)
 keymap("<leader>fc", telescope.command_history)
 keymap("<leader>ft", telescope.resume)
-keymap("<leader>fh", telescope.help_tags)
 -- some keymaps are defined in lsp.lua, to utilize on_attach
 keymap("<leader>fe", function()
   telescope.diagnostics({ bufnr = 0 })
@@ -50,6 +49,11 @@ keymap("<leader>b", telescope.current_buffer_fuzzy_find)
 
 keymap("<leader>p", function() require("zi.switch_repo").fd_projects(require("telescope.themes").get_ivy()) end)
 keymap("<leader>P", "<Cmd>Telescope repo<CR>")
+
+
+-- docs
+keymap("<leader>fhv", telescope.help_tags)
+keymap("<leader>fht", "<Cmd>Telescope terraform_doc full_name=hashicorp/google<CR>")
 
 -- lsp
 -- See `:h vim.lsp.*`
@@ -70,7 +74,7 @@ keymap("<leader>jr", telescope.lsp_references)
 keymap("<leader>jh", "<Cmd>RustSetInlayHints<Cr>")
 keymap("<leader>jH", "<Cmd>RustUnsetInlayHints<Cr>")
 
--- git, more keymaps defined in gitsigns
+-- git, more keymaps defined in git
 keymap("<leader>gc", telescope.git_branches)
 
 -- custom commands
