@@ -81,9 +81,10 @@ return {
           "marksman", -- markdown
           "bashls",
           "jsonls",
-          -- "yamlls", -- messed up helm
+          "helm_ls",
+          "yamlls", -- would mess up helm without helm_ls setup
           "terraformls",
-          "taplo", -- toml
+          "taplo",  -- toml
           -- formatter
           "shfmt",
           "prettierd",
@@ -115,6 +116,17 @@ return {
           })
         end,
 
+        ["helm_ls"] = function()
+          lspconfig.helm_ls.setup({
+            settings = {
+              ['helm-ls'] = {
+                yamlls = {
+                  path = "yaml-language-server",
+                }
+              }
+            }
+          })
+        end,
         -- default lua lsp to neovim variant
         ["lua_ls"] = function()
           -- require("neodev").setup({})

@@ -18,13 +18,5 @@ return {
     },
   },
 
-  -- picking icons
-  {
-    "ziontee113/icon-picker.nvim",
-    cmd = "IconPickerInsert",
-    opts = {
-      disable_legacy_commands = true,
-    },
-  },
   { "towolf/vim-helm" },
 }
