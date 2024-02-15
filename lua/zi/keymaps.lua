@@ -20,7 +20,6 @@ vim.keymap.set("n", "<leader>l", "<Cmd>Lazy<Cr>")
 
 -- telescope
 local telescope = require("telescope.builtin")
-local ivy = require("telescope.themes").get_ivy({})
 
 keymap("<leader>ff", function()
   telescope.oldfiles({ only_cwd = true })
@@ -49,7 +48,8 @@ keymap("<leader>r", function()
 end)
 keymap("<leader>b", telescope.current_buffer_fuzzy_find)
 
-keymap("<leader>p", "<Cmd>Telescope repo<CR>")
+keymap("<leader>p", function() require("zi.switch_repo").fd_projects(require("telescope.themes").get_ivy()) end)
+keymap("<leader>P", "<Cmd>Telescope repo<CR>")
 
 -- lsp
 -- See `:h vim.lsp.*`
