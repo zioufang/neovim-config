@@ -81,9 +81,13 @@ return {
           "marksman", -- markdown
           "bashls",
           "jsonls",
-          "yamlls",
+          -- "yamlls", -- messed up helm
           "terraformls",
           "taplo", -- toml
+          -- formatter
+          "shfmt",
+          "prettierd",
+          "black",
         },
       })
 
