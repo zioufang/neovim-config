@@ -5,7 +5,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local lga_actions = require("telescope-live-grep-args.actions")
-      -- local commander = require("commander")
+      local actions = require("telescope.actions")
 
       require("telescope").setup({
         defaults = {
@@ -15,25 +15,25 @@ return {
           mappings = {
             i = {
               -- delete buffer, can multi select with Tab first
-              ["<C-x>"] = require("telescope.actions").delete_buffer,
-              ["<C-s>"] = require("telescope.actions").select_horizontal,
-              ["<C-d>"] = require("telescope.actions").results_scrolling_down,
-              ["<C-u>"] = require("telescope.actions").results_scrolling_up,
-              ["<C-f>"] = require("telescope.actions").preview_scrolling_down,
-              ["<C-b>"] = require("telescope.actions").preview_scrolling_up,
-              ["<C-Down>"] = require("telescope.actions").cycle_history_next,
-              ["<C-Up>"] = require("telescope.actions").cycle_history_prev,
+              ["<C-x>"] = actions.delete_buffer,
+              ["<C-s>"] = actions.select_horizontal,
+              ["<C-d>"] = actions.results_scrolling_down,
+              ["<C-u>"] = actions.results_scrolling_up,
+              ["<C-f>"] = actions.preview_scrolling_down,
+              ["<C-b>"] = actions.preview_scrolling_up,
+              ["<C-Down>"] = actions.cycle_history_next,
+              ["<C-Up>"] = actions.cycle_history_prev,
             },
             n = {
-              ["<C-n>"] = require("telescope.actions").move_selection_next,
-              ["<C-p>"] = require("telescope.actions").move_selection_previous,
-              ["<C-s>"] = require("telescope.actions").select_horizontal,
-              ["<C-d>"] = require("telescope.actions").results_scrolling_down,
-              ["<C-u>"] = require("telescope.actions").results_scrolling_up,
-              ["<C-f>"] = require("telescope.actions").preview_scrolling_down,
-              ["<C-b>"] = require("telescope.actions").preview_scrolling_up,
-              ["<C-Down>"] = require("telescope.actions").cycle_history_next,
-              ["<C-Up>"] = require("telescope.actions").cycle_history_prev,
+              ["<C-n>"] = actions.move_selection_next,
+              ["<C-p>"] = actions.move_selection_previous,
+              ["<C-s>"] = actions.select_horizontal,
+              ["<C-d>"] = actions.results_scrolling_down,
+              ["<C-u>"] = actions.results_scrolling_up,
+              ["<C-f>"] = actions.preview_scrolling_down,
+              ["<C-b>"] = actions.preview_scrolling_up,
+              ["<C-Down>"] = actions.cycle_history_next,
+              ["<C-Up>"] = actions.cycle_history_prev,
             },
           },
         },
@@ -54,6 +54,15 @@ return {
           oldfiles = {
             theme = "ivy",
             preview = { hide_on_startup = true },
+          },
+          git_branches = {
+            theme = "ivy",
+            mappings = {
+              i = {
+                ["<CR>"] = actions.git_switch_branch
+              }
+            }
+
           },
           command_history = {
             theme = "ivy",
