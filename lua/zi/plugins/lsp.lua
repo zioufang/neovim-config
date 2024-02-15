@@ -81,6 +81,7 @@ return {
           "marksman", -- markdown
           "bashls",
           "jsonls",
+          "yamlls",
           "terraformls",
           "taplo", -- toml
         },
