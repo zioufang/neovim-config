@@ -98,15 +98,48 @@ return {
               auto_lcd = true,
             }
           },
+          ["zf-native"] = {
+            -- options for sorting file-like items
+            file = {
+              -- override default telescope file sorter
+              enable = true,
+
+              -- highlight matching text in results
+              highlight_results = true,
+
+              -- enable zf filename match priority
+              match_filename = true,
+
+              -- optional function to define a sort order when the query is empty
+              initial_sort = nil,
+            },
+
+            -- options for sorting all other items
+            generic = {
+              -- override default telescope generic item sorter
+              enable = true,
+
+              -- highlight matching text in results
+              highlight_results = true,
+
+              -- disable zf filename match priority
+              match_filename = false,
+
+              -- optional function to define a sort order when the query is empty
+              initial_sort = nil,
+            },
+          },
         },
       })
 
       require("telescope").load_extension("live_grep_args")
       require("telescope").load_extension("repo")
+      require("telescope").load_extension("zf-native")
     end,
   },
 
   -- extensions
   { "nvim-telescope/telescope-live-grep-args.nvim" },
   { 'cljoly/telescope-repo.nvim' },
+  { 'natecraddock/telescope-zf-native.nvim' }
 }
