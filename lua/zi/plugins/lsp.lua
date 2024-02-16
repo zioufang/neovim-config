@@ -132,7 +132,13 @@ return {
           lspconfig.helm_ls.setup({
             settings = {
               ['helm-ls'] = {
+                valuesFiles = {
+                  mainValuesFile = "values.yaml",
+                  lintOverlayValuesFile = "values.lint.yaml",
+                  additionalValuesFilesGlobPattern = "values*.yaml",
+                },
                 yamlls = {
+                  enabled = false,
                   path = "yaml-language-server",
                 }
               }
