@@ -70,9 +70,10 @@ keymap("<leader>jj", vim.diagnostic.open_float)
 keymap("<leader>jn", vim.diagnostic.goto_next)
 keymap("<leader>jp", vim.diagnostic.goto_prev)
 keymap("<leader>jr", telescope.lsp_references)
--- rust tools specific defined in rust_tools.lua
+-- rust
 keymap("<leader>jh", "<Cmd>RustSetInlayHints<Cr>")
-keymap("<leader>jH", "<Cmd>RustUnsetInlayHints<Cr>")
+keymap("<leader>jd", "<Cmd>RustOpenDocs<Cr>")
+
 
 -- git, more keymaps defined in git
 keymap("<leader>gc", telescope.git_branches)

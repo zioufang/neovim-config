@@ -142,16 +142,34 @@ return {
           })
         end,
 
-        -- ["rust_analyzer"] = function()
-        -- 	lspconfig.rust_analyzer.setup({
-        -- 		settings = {
-        -- 			inlayHints = { locationLinks = false },
-        -- 			procMacro = { enable = true },
-        -- 			diagnostics = { disabled = { "unresolved-proc-macro" } },
-        -- 		},
-        -- 		capabilities = capabilities,
-        -- 	})
-        -- end,
+        ["rust_analyzer"] = function()
+          lspconfig.rust_analyzer.setup({
+            settings = {
+              inlayHints = { locationLinks = false },
+              procMacro = { enable = true },
+              diagnostics = { disabled = { "unresolved-proc-macro" } },
+            },
+            capabilities = capabilities,
+            commands = {
+              RustOpenDocs = {
+                function()
+                  vim.lsp.buf_request(vim.api.nvim_get_current_buf(), 'experimental/externalDocs',
+                    vim.lsp.util.make_position_params(), function(err, url)
+                      if err then
+                        error(tostring(err))
+                      else
+                        --  because netrw#BrowseX is disabled for lir/nvim-tree etc, but is needed to do open url in browser for rust_tools.open_external_docs
+                        -- https://github.com/simrat39/rust-tools.nvim/blob/99fd1238c6068d0637df30b6cee9a264334015e9/lua/rust-tools/external_docs.lua#L12
+                        -- vim.fn['netrw#BrowseX'](url, 0)
+                        vim.fn.execute("!open " .. url)
+                      end
+                    end)
+                end,
+                description = 'Open documentation for the symbol under the cursor in default browser',
+              },
+            },
+          })
+        end,
       })
     end,
   },

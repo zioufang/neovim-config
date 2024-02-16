@@ -47,7 +47,7 @@ return {
     }
 
     -- default selection behaviour is select only, and with Tab or C-j to confirm
-    -- some lsp doesn't support insertReplaceEdit feature, e.g. gopls & rust-analyzer, thus default to replace
+    -- some lsp doesn't support insertReplaceEdit feature, e.g. gopls, thus default to replace
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
     local has_words_before = function()
       unpack = unpack or table.unpack
@@ -74,7 +74,7 @@ return {
           if cmp.visible() then
             cmp.confirm({
               select = true,
-              behavior = cmp.ConfirmBehavior.Replace,
+              behavior = cmp.ConfirmBehavior.Insert,
             })
           elseif luasnip.expand_or_locally_jumpable() then
             luasnip.expand_or_jump()
@@ -87,7 +87,7 @@ return {
         ["<C-j>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.confirm({
-              behavior = cmp.ConfirmBehavior.Inser,
+              behavior = cmp.ConfirmBehavior.Replace,
               select = true,
             })
           else
