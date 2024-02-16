@@ -85,10 +85,6 @@ return {
           "yamlls", -- would mess up helm without helm_ls setup
           "terraformls",
           "taplo",  -- toml
-          -- formatter
-          "shfmt",
-          "prettierd",
-          "black",
         },
       })
 
