@@ -71,16 +71,48 @@ keymap("<leader>jn", vim.diagnostic.goto_next)
 keymap("<leader>jp", vim.diagnostic.goto_prev)
 keymap("<leader>jr", telescope.lsp_references)
 -- rust
-keymap("<leader>jh", "<Cmd>RustSetInlayHints<Cr>")
+-- keymap("<leader>jh", "<Cmd>RustSetInlayHints<Cr>")
 keymap("<leader>jd", "<Cmd>RustOpenDocs<Cr>")
 
-
 -- git, more keymaps defined in git
+local function open_current_buffer_in_github()
+  local handle = io.popen("git config --get remote.origin.url")
+  local git_remote_url = handle:read("*a"):gsub('\n', '')
+  handle:close()
+
+  local github_base_url = git_remote_url:gsub("git@github.com:", "https://github.com/"):gsub("%.git", "")
+
+  local handle = io.popen("git rev-parse --show-toplevel")
+  local git_root = handle:read("*a"):gsub('\n', '')
+  handle:close()
+
+  -- Get the absolute path of the current file
+  local file_path = vim.fn.expand("%:p")
+
+  local relative_file_path = ""
+  if git_root ~= "" and file_path:sub(1, #git_root) == git_root then
+    -- Subtract the Git root from the file path to get the relative path
+    -- Adding 2 because we want to remove the leading '/' as well
+    relative_file_path = file_path:sub(#git_root + 2)
+  end
+
+  local handle = io.popen("git branch --show-current")
+  local branch_name = handle:read("*a"):gsub('\n', '')
+  handle:close()
+
+  local github_file_url = string.format("%s/blob/%s/%s", github_base_url, branch_name, relative_file_path)
+
+  -- Open URL in default browser. Adjust the command according to your OS.
+  -- This example uses 'xdg-open' for Linux. Use 'open' for macOS, or 'start' for Windows.
+  vim.fn.execute("!open " .. github_file_url)
+end
+
 keymap("<leader>gc", telescope.git_branches)
+keymap("<leader>gl", open_current_buffer_in_github)
+
 
 -- custom commands
 vim.cmd([[:command! Ve e ~/.config/nvim/init.lua]])
-vim.cmd([[:command! Vs so ~/.config/nvim/init.lua]])
 
 -- hit '/' highlights then enter search mode
 keymap("/", ":set hls<Cr>/")
@@ -88,8 +120,6 @@ keymap("/", ":set hls<Cr>/")
 -- need to disable `silent` for Cmd without Cr, otherwise the text will not show up  in cmdlin
 keymap("<leader>s", "<Cmd>set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4), "n", { silent = false }) -- Subvert from vim-abolish
 keymap("<leader>S", "<Cmd>set hls<Cr>:%S///gc" .. string.rep("<Left>", 4), "n", { silent = false })   -- Subvert from vim-abolish
-
-keymap("<leader>w", "<C-W>=")
 
 keymap("\\", ":vert sb<Cr><C-w>=")
 --
@@ -117,7 +147,6 @@ keymap("<leader>vm", GlowMarkdown)
 keymap("<leader>h", "<Cmd>set hls!<Cr>")
 -- toggle cmdheight, good for recording macro
 local function toggle_cmdline()
-  vim.pretty_print(vim.opt.cmdheight)
   if vim.opt.cmdheight:get() > 0 then
     vim.opt.cmdheight = 0
   else
