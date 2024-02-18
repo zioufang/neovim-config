@@ -73,12 +73,15 @@ return {
     event = "VeryLazy",
     config = function()
       require("illuminate").configure({
-        delay = 300,
+        delay = 150,
         providers = { "lsp", "treesitter" },
-        filetype_denylist = { "oil", "telescope", "qf" },
+        filetypes_denylist = { "oil", "telescope", "qf" },
         min_count_to_highlight = 2,
       })
       vim.keymap.set("n", "<leader>vw", "<Cmd>IlluminateToggle<Cr>")
+      vim.cmd([[hi IlluminatedWordText gui=underline]])
+      vim.cmd([[hi IlluminatedWordRead gui=underline]])
+      vim.cmd([[hi IlluminatedWordWrite gui=underline]])
     end,
   },
 
