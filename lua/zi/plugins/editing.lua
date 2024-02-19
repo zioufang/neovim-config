@@ -45,9 +45,10 @@ return {
   },
 
   -- iv + av for subwords in snake/camel cases
-  {
-    "kana/vim-textobj-user",
-    event = "VeryLazy",
-    dependencies = "Julian/vim-textobj-variable-segment",
-  },
+  -- {
+  --   "kana/vim-textobj-user",
+  --   event = "VeryLazy",
+  --   dependencies = "Julian/vim-textobj-variable-segment",
+  -- },
+
 }
