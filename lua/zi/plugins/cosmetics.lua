@@ -60,11 +60,11 @@ return {
   -- show indent line
   {
     "lukas-reineke/indent-blankline.nvim",
-    keys = { { "<leader>vi", "<Cmd>IndentBlanklineToggle!<CR>", desc = "Toggle Indent Line" } },
-    init = function()
-      vim.g.indent_blankline_enabled = false -- disable by default for toggle
-    end,
-    config = true,
+    main = "ibl",
+    keys = { { "<leader>vi", "<Cmd>IBLToggle<CR>", desc = "Toggle Indent Line" } },
+    config = {
+      enabled = false
+    },
   },
 
   -- hightlight word under cursor
