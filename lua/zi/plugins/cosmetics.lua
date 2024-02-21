@@ -79,9 +79,9 @@ return {
         min_count_to_highlight = 2,
       })
       vim.keymap.set("n", "<leader>vw", "<Cmd>IlluminateToggle<Cr>")
-      vim.cmd([[hi IlluminatedWordText gui=underline]])
-      vim.cmd([[hi IlluminatedWordRead gui=underline]])
-      vim.cmd([[hi IlluminatedWordWrite gui=underline]])
+      vim.cmd([[hi IlluminatedWordText gui=reverse]])
+      vim.cmd([[hi IlluminatedWordRead gui=reverse]])
+      vim.cmd([[hi IlluminatedWordWrite gui=reverse]])
     end,
   },
 
