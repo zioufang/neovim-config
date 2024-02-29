@@ -114,14 +114,14 @@ return {
         -- python
         ["pyright"] = function()
           lspconfig.pyright.setup({
-            -- assume there is always an `.venv` virtualenv in every python project root
+            -- will look for a '.venv/' in any dir with 'pyproject.toml'
             before_init = function(_, config)
               local Path = require("plenary.path")
-              local venv = Path:new((config.root_dir:gsub("/", Path.path.sep)), ".venv")
-              if venv:joinpath("bin"):is_dir() then
-                config.settings.python.pythonPath = tostring(venv:joinpath("bin", "python"))
+              local venv = Path:new(config.root_dir, ".venv", "bin", "python")
+              if venv:is_file() then
+                config.settings.python.pythonPath = tostring(venv)
               else
-                config.settings.python.pythonPath = tostring(venv:joinpath("Scripts", "python.exe"))
+                config.settings.python.pythonPath = tostring(venv) .. " missing"
               end
             end,
             capabilities = capabilities,

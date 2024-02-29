@@ -13,7 +13,7 @@ return {
           -- use python path for pyright
           local py_path = client.config.settings.python["pythonPath"]
           if py_path ~= nil then
-            py_path = py_path:gsub(cwd .. "/", "")
+            py_path = py_path:gsub(cwd .. "/", ""):gsub("/.venv/bin/python", "")
             clients[#clients + 1] = "pyright[" .. py_path .. "]"
           end
         else
