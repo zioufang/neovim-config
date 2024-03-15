@@ -9,11 +9,12 @@ return {
       local client_cnt = vim.tbl_count(buf_clients)
       for _, client in pairs(buf_clients) do
         if client.name == "pyright" then
-          local cwd = vim.fn.getcwd()
+          -- local cwd = vim.fn.getcwd()
+          local home = os.getenv("HOME")
           -- use python path for pyright
           local py_path = client.config.settings.python["pythonPath"]
           if py_path ~= nil then
-            py_path = py_path:gsub(cwd .. "/", ""):gsub("/.venv/bin/python", "")
+            py_path = py_path:gsub(home .. "/projects/", ""):gsub("/.venv/bin/python", "")
             clients[#clients + 1] = "pyright[" .. py_path .. "]"
           end
         else
