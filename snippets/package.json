@@ -21,6 +21,14 @@
         "path": "./zi/python.json"
       },
       {
+        "language": "typescript",
+        "path": "./zi/typescript.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./zi/typescriptreact.json"
+      },
+      {
         "language": "rust",
         "path": "./zi/rust.json"
       }

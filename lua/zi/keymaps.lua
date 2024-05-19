@@ -155,6 +155,8 @@ local function toggle_cmdline()
 end
 keymap("<leader>vc", toggle_cmdline)
 
+keymap("<leader>vs", "<CMD>ScrollbarToggle<Cr>")
+
 -- useful when combined with rg a word in cwd
 local function cd_current_buf()
   local cwd = vim.fn.expand("%:p:h")

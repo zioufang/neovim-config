@@ -7,9 +7,18 @@ return {
       local ft = require('Comment.ft')
       ft.set('hcl', '# %s')
       require("Comment").setup({
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
         ignore = '^$', -- ignore empty lines
       })
     end,
+  },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = function()
+      require('ts_context_commentstring').setup {
+        enable_autocmd = false,
+      }
+    end
   },
 
   {
@@ -34,21 +43,4 @@ return {
       vim.g.traces_abolish_integration = 1
     end,
   },
-
-  -- doc generation
-  {
-    "danymat/neogen",
-    event = "VeryLazy",
-    keys = { { "<leader>d", "<Cmd>lua require('neogen').generate()<Cr>" } },
-    config = true,
-    dependencies = "nvim-treesitter/nvim-treesitter",
-  },
-
-  -- iv + av for subwords in snake/camel cases
-  -- {
-  --   "kana/vim-textobj-user",
-  --   event = "VeryLazy",
-  --   dependencies = "Julian/vim-textobj-variable-segment",
-  -- },
-
 }
