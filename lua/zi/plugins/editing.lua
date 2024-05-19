@@ -27,12 +27,6 @@ return {
     config = true,
   },
 
-  {
-    "kylechui/nvim-surround",
-    event = "VeryLazy",
-    config = true,
-  },
-
   -- better substitution + case coercion
   { "tpope/vim-abolish", event = "VeryLazy" },
   -- preview support for abolish

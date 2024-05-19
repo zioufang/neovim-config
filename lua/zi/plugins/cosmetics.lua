@@ -84,13 +84,4 @@ return {
       vim.cmd([[hi IlluminatedWordWrite gui=reverse]])
     end,
   },
-
-  -- pretty fold
-  {
-    "anuvyklack/pretty-fold.nvim",
-    config = true,
-  },
-
-  -- TODO: check out minimap
-  -- mouse click movement: https://github.com/gorbit99/codewindow.nvim/issues/37
 }
