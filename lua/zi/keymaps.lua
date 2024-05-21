@@ -70,9 +70,24 @@ keymap("<leader>jj", vim.diagnostic.open_float)
 keymap("<leader>jn", vim.diagnostic.goto_next)
 keymap("<leader>jp", vim.diagnostic.goto_prev)
 keymap("<leader>jr", telescope.lsp_references)
--- rust
--- keymap("<leader>jh", "<Cmd>RustSetInlayHints<Cr>")
-keymap("<leader>jd", "<Cmd>RustOpenDocs<Cr>")
+
+
+-- disable inlay hint by default and toggle
+vim.lsp.inlay_hint.enable(false)
+keymap("<leader>jh", function()
+  local toggle = not vim.lsp.inlay_hint.is_enabled()
+  vim.lsp.inlay_hint.enable(toggle)
+end)
+
+-- -- inlay hint only displayed in normal mode
+-- local augroup_inlay_hint = augroup("zi_inlay_hint", {})
+-- au({ "LspAttach", "InsertEnter", "InsertLeave" }, {
+--   group = augroup_inlay_hint,
+--   callback = function(args)
+--     local enabled = args.event ~= "InsertEnter"
+--     vim.lsp.inlay_hint.enable(enabled, { bufnr = args.buf })
+--   end,
+-- })
 
 -- git, more keymaps defined in git
 local function open_current_buffer_in_github()
