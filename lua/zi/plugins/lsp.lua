@@ -92,7 +92,7 @@ return {
           "lua_ls",
           "rust_analyzer",
           "pyright",
-          "gopls",
+          -- "gopls",
           "tsserver", -- js + ts
           "marksman", -- markdown
           "bashls",

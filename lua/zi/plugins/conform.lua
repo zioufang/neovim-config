@@ -3,7 +3,8 @@ return {
   opts = {
     formatters_by_ft = {
       -- Conform will run multiple formatters sequentially
-      python = { "isort", "black" },
+      -- python = { "isort", "black" },
+      python = { "ruff" },
       go = { "goimports", "gofmt" },
       markdown = { "prettierd" },
       sh = { "shfmt" },
