@@ -93,7 +93,7 @@ return {
           "rust_analyzer",
           "pyright",
           -- "gopls",
-          "tsserver", -- js + ts
+          "ts_ls",    -- js + ts
           "marksman", -- markdown
           "bashls",
           "jsonls",
