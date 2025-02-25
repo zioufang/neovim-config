@@ -25,6 +25,7 @@ return {
               ["<C-Up>"] = actions.cycle_history_prev,
             },
             n = {
+              ["<C-x>"] = actions.delete_buffer,
               ["<C-n>"] = actions.move_selection_next,
               ["<C-p>"] = actions.move_selection_previous,
               ["<C-s>"] = actions.select_horizontal,
