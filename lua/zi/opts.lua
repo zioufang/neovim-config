@@ -85,3 +85,7 @@ vim.cmd([[set sessionoptions+=resize]])
 -- see |netrw-noload|
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- for avante
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3

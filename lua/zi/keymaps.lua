@@ -21,17 +21,15 @@ vim.keymap.set("n", "<leader>l", "<Cmd>Lazy<Cr>")
 -- telescope
 local telescope = require("telescope.builtin")
 
+-- fa: arieal toggle
 keymap("<leader>ff", function()
   telescope.oldfiles({ only_cwd = true })
 end)
 keymap("<leader>fr", telescope.oldfiles)
-
+keymap("<leader>fb", telescope.current_buffer_fuzzy_find)
 keymap("<leader>fp", telescope.find_files)
 keymap("<leader>fd", function()
   telescope.buffers({ ignore_current_buffer = true, sort_mru = true, only_cwd = true }) -- sort all buffers by recency
-end)
-keymap("<leader>fb", function()
-  telescope.buffers({ ignore_current_buffer = true, sort_mru = true, only_cwd = false }) -- sort all buffers by recency
 end)
 keymap("<leader>fc", telescope.command_history)
 keymap("<leader>ft", telescope.resume)
@@ -46,11 +44,15 @@ keymap("<leader>r", ":lua require('telescope').extensions.live_grep_args.live_gr
 keymap("<leader>R", function()
   telescope.grep_string({ shorten_path = true, word_match = "-w", only_sort_text = true, search = "" })
 end)
-keymap("<leader>b", telescope.current_buffer_fuzzy_find)
+keymap("<leader>b", function()
+  telescope.buffers({ ignore_current_buffer = true, sort_mru = true, only_cwd = false }) -- sort all buffers by recency
+end)
 
 keymap("<leader>p", function() require("zi.switch_repo").fd_projects(require("telescope.themes").get_ivy()) end)
 keymap("<leader>P", "<Cmd>Telescope repo<CR>")
 
+-- neoclip
+keymap("<leader>y", "<Cmd>Telescope neoclip<CR>")
 
 -- docs
 keymap("<leader>fhv", telescope.help_tags)
