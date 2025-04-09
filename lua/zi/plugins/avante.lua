@@ -10,7 +10,6 @@ return {
       model = "o3-mini",
       timeout = 30 * 000,
       temperature = 0,
-      max_tokens = 4000,
       -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
     },
     claude = {
@@ -18,7 +17,6 @@ return {
       model = "claude-3-7-sonnet-latest",
       timeout = 30 * 000,
       temperature = 0,
-      max_tokens = 4000,
     },
   },
   repo_map = {
