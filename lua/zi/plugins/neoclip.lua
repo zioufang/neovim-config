@@ -11,8 +11,8 @@ return {
       keys = {
         telescope = {
           i = {
-            select = '<cr>',
-            paste = {},
+            select = {},
+            paste = '<cr>',
             paste_behind = '<c-k>',
             replay = {},      -- replay a macro
             delete = '<c-x>', -- delete an entry

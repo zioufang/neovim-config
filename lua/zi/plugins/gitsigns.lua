@@ -1,6 +1,7 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
+    keys = { { "<leader>hm", "<Cmd>Gitsigns change_base main<CR>", desc = "Gitsigns change base to main" } },
     config = function()
       require('gitsigns').setup(
         {

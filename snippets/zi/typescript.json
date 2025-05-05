@@ -1,9 +1,15 @@
 {
+  "console debug": {
+    "prefix": "cd",
+    "body": [
+      "console.debug(\"DEBUG!\");",
+      "console.debug($1);"
+    ]
+  },
   "console log": {
     "prefix": "cl",
     "body": [
-      "console.log(\"DEBUG $1\");",
-      "console.log($2);"
+      "console.log($1);"
     ]
   }
 }
