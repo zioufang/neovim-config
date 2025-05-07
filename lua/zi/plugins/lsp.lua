@@ -2,9 +2,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+      { "williamboman/mason.nvim",           version = "1.*" },
+      { "williamboman/mason-lspconfig.nvim", version = "1.*" },
+      { "folke/neodev.nvim",                 opts = { experimental = { pathStrict = true } } },
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -104,6 +104,8 @@ return {
         },
       })
 
+      -- TODO: use vim.lsp.config() API after migrate to mason v2
+      -- https://github.com/mason-org/mason-lspconfig.nvim/blob/2a66ac70f88113f97ec7639c5f57a46521600d44/CHANGELOG.md#example-setup
       mason_lspconfig.setup_handlers({
         function(server_name)
           require("lspconfig")[server_name].setup({
