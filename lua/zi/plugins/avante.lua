@@ -2,8 +2,8 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
-  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-  keys = { { "<leader>aR", "<Cmd>AvanteClear<CR>", desc = "Avante Clear Chat History" } },
+  version = false,                                                                         -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  keys = { { "<leader>aR", "<Cmd>AvanteClear<CR>", desc = "Avante Clear Chat History" } }, -- or type /clear and submit in chat
   opts = {
     provider = "openai",
     openai = {
@@ -19,69 +19,65 @@ return {
       timeout = 30 * 000,
       temperature = 0,
     },
-  },
-  repo_map = {
-    ignore_patterns = { "%.git", "%.worktree", "__pycache__", "node_modules" }, -- ignore files matching these
-    negate_patterns = {},                                                       -- negate ignore files matching these.
-  },
-  behaviour = {
-    auto_set_keymaps = false,
+    behaviour = {
+      use_cwd_as_project_root = true, -- this is required for getting file path right for sub directory
+      auto_set_keymaps = true,
+    },
+    mappings = {
+      -- diff = {
+      --   ours = "co",
+      --   theirs = "ct",
+      --   all_theirs = "ca",
+      --   both = "cb",
+      --   cursor = "cc",
+      --   next = "]x",
+      --   prev = "[x",
+      -- },
+      -- suggestion = {
+      --   accept = "<M-l>",
+      --   next = "<M-]>",
+      --   prev = "<M-[>",
+      --   dismiss = "<C-]>",
+      -- },
+      -- jump = {
+      --   next = "]]",
+      --   prev = "[[",
+      -- },
+      -- submit = {
+      --   normal = "<CR>",
+      --   insert = "<C-s>",
+      -- },
+      -- ask = "<leader>aa",
+      -- edit = "<leader>ae",
+      -- refresh = "<leader>ar",
+      -- focus = "<leader>aF",
+      -- stop = "<leader>aS",
+      -- toggle = {
+      --   default = "<leader>at",
+      --   debug = "<leader>ad",
+      --   hint = "<leader>ah",
+      --   suggestion = "<leader>as",
+      --   repomap = "<leader>am",
+      -- },
+      sidebar = {
+        -- apply_all = "A",
+        -- apply_cursor = "a",
+        -- retry_user_request = "r",
+        -- edit_user_request = "e",
+        -- switch_windows = "<Tab>",
+        -- reverse_switch_windows = "<S-Tab>",
+        -- remove_file = "d",
+        -- add_file = "@",
+        -- close = { "<Esc>", "q" },
+        close_from_input = { normal = "q", insert = "<C-d>" }
+      },
+      files = {
+        add_current = "<leader>af", -- Add current buffer to selected files
+      },
+      select_model = "<leader>a?",  -- Select model command
+    },
   },
 
-  -- mappings = {
-  --   diff = {
-  --     ours = "co",
-  --     theirs = "ct",
-  --     all_theirs = "ca",
-  --     both = "cb",
-  --     cursor = "cc",
-  --     next = "]x",
-  --     prev = "[x",
-  --   },
-  --   suggestion = {
-  --     accept = "<M-l>",
-  --     next = "<M-]>",
-  --     prev = "<M-[>",
-  --     dismiss = "<C-]>",
-  --   },
-  --   jump = {
-  --     next = "]]",
-  --     prev = "[[",
-  --   },
-  --   submit = {
-  --     normal = "<CR>",
-  --     insert = "<C-s>",
-  --   },
-  --   -- NOTE: The following will be safely set by avante.nvim
-  --   ask = "<leader>aa",
-  --   edit = "<leader>ae",
-  --   refresh = "<leader>ar",
-  --   focus = "<leader>aF",
-  --   stop = "<leader>aS",
-  --   toggle = {
-  --     default = "<leader>at",
-  --     debug = "<leader>ad",
-  --     hint = "<leader>ah",
-  --     suggestion = "<leader>as",
-  --     repomap = "<leader>aR",
-  --   },
-  --   sidebar = {
-  --     apply_all = "A",
-  --     apply_cursor = "a",
-  --     retry_user_request = "r",
-  --     edit_user_request = "e",
-  --     switch_windows = "<Tab>",
-  --     reverse_switch_windows = "<S-Tab>",
-  --     remove_file = "d",
-  --     add_file = "@",
-  --     close = { "<Esc>", "q" },
-  --     close_from_input = { normal = "q", insert = "<C-d>" }
-  --   },
-  --   files = {
-  --     add_current = "<leader>ac", -- Add current buffer to selected files
-  --   },
-  --   select_model = "<leader>a?",  -- Select model command
-  -- },
 
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
