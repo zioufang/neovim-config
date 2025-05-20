@@ -97,8 +97,8 @@ keymap("<leader>jR", vim.lsp.buf.rename)
 keymap("<leader>jf", vim.lsp.buf.format)
 keymap("<leader>je", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>")                            -- TOOD: might be a better way
 keymap("<leader>jj", function() vim.diagnostic.open_float({ focusable = true }) end) -- <C-w><C-w> (or just w) to focus on the float window
-keymap("<leader>jn", vim.diagnostic.goto_next)
-keymap("<leader>jp", vim.diagnostic.goto_prev)
+keymap("<leader>jn", function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end)
+keymap("<leader>jp", function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end)
 keymap("<leader>jr", telescope.lsp_references)
 
 
@@ -163,8 +163,9 @@ vim.cmd([[:command! Ve e ~/.config/nvim/init.lua]])
 keymap("/", ":set hls<Cr>/")
 
 -- need to disable `silent` for Cmd without Cr, otherwise the text will not show up  in cmdlin
-keymap("<leader>s", "<Cmd>set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4), "n", { silent = false }) -- Subvert from vim-abolish
-keymap("<leader>S", "<Cmd>set hls<Cr>:%S///gc" .. string.rep("<Left>", 4), "n", { silent = false })   -- Subvert from vim-abolish
+keymap("<leader>ss", "<Cmd>set hls<Cr>:.,$s///gc" .. string.rep("<Left>", 4), "n", { silent = false })
+keymap("<leader>sS", "<Cmd>set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4), "n", { silent = false })   -- Subvert from vim-abolish
+keymap("<leader>sq", "<Cmd>set hls<Cr>:cdo %s///gc" .. string.rep("<Left>", 4), "n", { silent = false }) -- substitute in quickfix list
 
 keymap("\\", ":vert sb<Cr><C-w>=")
 --

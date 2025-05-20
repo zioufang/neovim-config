@@ -24,15 +24,15 @@ return {
       auto_set_keymaps = true,
     },
     mappings = {
-      -- diff = {
-      --   ours = "co",
-      --   theirs = "ct",
-      --   all_theirs = "ca",
-      --   both = "cb",
-      --   cursor = "cc",
-      --   next = "]x",
-      --   prev = "[x",
-      -- },
+      diff = {
+        ours = nil,
+        theirs = nil,
+        all_theirs = nil,
+        both = nil,
+        cursor = nil,
+        next = "]a",
+        prev = "[a",
+      },
       -- suggestion = {
       --   accept = "<M-l>",
       --   next = "<M-]>",
