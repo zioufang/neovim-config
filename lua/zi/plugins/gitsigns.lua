@@ -1,7 +1,9 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
+    vesrion = "v1.0.*",
     keys = { { "<leader>hm", "<Cmd>Gitsigns change_base main<CR>", desc = "Gitsigns change base to main" } },
+    lazy = false,
     config = function()
       require('gitsigns').setup(
         {
