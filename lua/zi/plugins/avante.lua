@@ -6,18 +6,22 @@ return {
   keys = { { "<leader>aR", "<Cmd>AvanteClear<CR>", desc = "Avante Clear Chat History" } }, -- or type /clear and submit in chat
   opts = {
     provider = "openai",
-    openai = {
-      endpoint = "https://api.openai.com/v1",
-      model = "gpt-4.1-mini",
-      timeout = 30 * 000,
-      temperature = 0,
-      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
-    },
-    claude = {
-      endpoint = "https://api.anthropic.com",
-      model = "claude-3-7-sonnet-latest",
-      timeout = 30 * 000,
-      temperature = 0,
+    providers = {
+      openai = {
+        endpoint = "https://api.openai.com/v1",
+        model = "gpt-4.1-mini",
+        timeout = 30 * 000,
+        extra_request_body = {
+          temperature = 0,
+          max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+          reasoning_effort = "medium",  -- low|medium|high, only used for reasoning models
+        },
+      },
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-7-sonnet-latest",
+        timeout = 30 * 000,
+      },
     },
     behaviour = {
       use_cwd_as_project_root = true, -- this is required for getting file path right for sub directory
