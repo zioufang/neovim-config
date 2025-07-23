@@ -85,6 +85,16 @@ keymap("<leader>y", "<Cmd>Telescope neoclip<CR>")
 keymap("<leader>fhv", telescope.help_tags)
 keymap("<leader>fht", "<Cmd>Telescope terraform_doc full_name=hashicorp/google<CR>")
 
+-- register "a" copy and paste
+keymap("<M-y>", function()
+  local cnt = vim.v.count1
+  -- build a command like: "a{cnt}yy
+  vim.cmd('normal! "' .. 'a' .. cnt .. 'yy')
+end)
+keymap("<M-y>", '"ay', { "v" })
+keymap("<M-p>", '"ap')
+
+
 -- lsp
 -- See `:h vim.lsp.*`
 keymap("gd", vim.lsp.buf.definition)
@@ -152,6 +162,7 @@ local function open_current_buffer_in_github()
   vim.fn.execute("!open " .. github_file_url)
 end
 
+keymap("<leader>gr", "<Cmd>bufdo e!<Cr>")
 keymap("<leader>gc", telescope.git_branches)
 keymap("<leader>gl", open_current_buffer_in_github)
 

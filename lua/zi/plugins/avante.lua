@@ -2,8 +2,9 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
-  version = false,                                                                         -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-  keys = { { "<leader>aR", "<Cmd>AvanteClear<CR>", desc = "Avante Clear Chat History" } }, -- or type /clear and submit in chat
+  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  keys = { { "<leader>aR", "<Cmd>AvanteClear<CR>", desc = "Avante Clear Chat History" }, { "<leader>ap", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+  },               -- or type /clear and submit in chat
   opts = {
     provider = "openai",
     providers = {
@@ -24,9 +25,11 @@ return {
       },
     },
     behaviour = {
+      auto_suggestions = false,
       use_cwd_as_project_root = true, -- this is required for getting file path right for sub directory
       auto_set_keymaps = true,
     },
+    disabled_tools = { "bash" },
     mappings = {
       diff = {
         ours = nil,
