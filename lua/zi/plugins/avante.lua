@@ -10,12 +10,11 @@ return {
     providers = {
       openai = {
         endpoint = "https://api.openai.com/v1",
-        model = "gpt-4.1-mini",
-        timeout = 30 * 000,
+        model = "gpt-5",
+        timeout = 60 * 000,
         extra_request_body = {
-          temperature = 0,
-          max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-          reasoning_effort = "medium",  -- low|medium|high, only used for reasoning models
+          temperature = 1,
+          reasoning_effort = "high", -- low|medium|high, only used for reasoning models
         },
       },
       claude = {
@@ -75,7 +74,7 @@ return {
         reverse_switch_windows = "<S-Tab>",
         remove_file = "d",
         add_file = "@",
-        close = { "<Esc>", "q" },
+        close = { "q" },
         close_from_input = { normal = "q", insert = "<C-d>" }
       },
       files = {
