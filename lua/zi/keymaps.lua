@@ -105,7 +105,7 @@ keymap("<leader>ja", vim.lsp.buf.code_action)
 keymap("<leader>js", vim.lsp.buf.signature_help)
 keymap("<leader>jR", vim.lsp.buf.rename)
 keymap("<leader>jf", vim.lsp.buf.format)
-keymap("<leader>je", ":LspRestart<Cr>:sleep 1<Cr>:e<Cr>")                            -- TOOD: might be a better way
+keymap("<leader>je", ":LspRestart<Cr>")                                              -- TOOD: might be a better way
 keymap("<leader>jj", function() vim.diagnostic.open_float({ focusable = true }) end) -- <C-w><C-w> (or just w) to focus on the float window
 keymap("<leader>jn", function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end)
 keymap("<leader>jp", function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end)

@@ -57,7 +57,6 @@ vim.lsp.config("pyright", {
   end,
 
 })
-vim.lsp.enable("pyright")
 
 vim.lsp.config("helm_ls", {
   settings = {
@@ -101,15 +100,54 @@ vim.lsp.config("rust_analyzer", {
   },
 
 })
-vim.lsp.enable("rust_analyzer")
-vim.lsp.enable("ts_ls")
-vim.lsp.enable("gopls")
-vim.lsp.enable("lua_ls")
 
-vim.lsp.enable("bashls")
-vim.lsp.enable("jsonls")
-vim.lsp.enable("taplo")
-vim.lsp.enable("marksman")
+vim.lsp.enable({
+  "pyright",
+  "rust_analyzer",
+  "ts_ls",
+  "gopls",
+  "lua_ls",
+  "bashls",
+  "jsonls",
+  "taplo",
+  "marksman",
+  "helm_ls",
+  "terraformls",
+})
 
-vim.lsp.enable("helm_ls")
-vim.lsp.enable("terraformls")
+
+
+vim.api.nvim_create_user_command("LspRestart", function()
+  local detach_clients = {}
+  for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+    client:stop(true)
+    if vim.tbl_count(client.attached_buffers) > 0 then
+      detach_clients[client.name] = { client, vim.lsp.get_buffers_by_client_id(client.id) }
+    end
+  end
+  local timer = vim.uv.new_timer()
+  if not timer then
+    return vim.notify("Servers are stopped but havent been restarted")
+  end
+  timer:start(
+    100,
+    50,
+    vim.schedule_wrap(function()
+      for name, client in pairs(detach_clients) do
+        local client_id = vim.lsp.start(client[1].config, { attach = false })
+        if client_id then
+          for _, buf in ipairs(client[2]) do
+            vim.lsp.buf_attach_client(buf, client_id)
+          end
+          vim.notify(name .. ": restarted")
+        end
+        detach_clients[name] = nil
+      end
+      if next(detach_clients) == nil and not timer:is_closing() then
+        timer:close()
+      end
+    end)
+  )
+end, {
+  desc = "Restart all the language client(s) attached to the current buffer",
+})
