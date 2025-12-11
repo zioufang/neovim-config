@@ -1,5 +1,6 @@
 require("zi/lazy")
 require("zi/opts")
+require("zi/lsp")
 require("zi/terminal")
 require("zi/autocmd")
 require("zi/keymaps")
