@@ -101,19 +101,20 @@ vim.lsp.config("rust_analyzer", {
 
 })
 
-vim.lsp.enable({
-  "pyright",
-  "rust_analyzer",
-  "ts_ls",
-  "gopls",
-  "lua_ls",
-  "bashls",
-  "jsonls",
-  "taplo",
-  "marksman",
-  "helm_ls",
-  "terraformls",
-})
+-- NOTE: mason.nvim auto enable
+-- vim.lsp.enable({
+--   "pyright",
+--   "rust_analyzer",
+--   "ts_ls",
+--   "gopls",
+--   "lua_ls",
+--   "bashls",
+--   "jsonls",
+--   "taplo",
+--   "marksman",
+--   "helm_ls",
+--   "terraformls",
+-- })
 
 
 

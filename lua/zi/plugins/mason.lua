@@ -1,12 +1,7 @@
 return {
   {
-    'neovim/nvim-lspconfig'
-  },
-  { 'mason-org/mason.nvim', opts = {} },
-  {
     "mason-org/mason-lspconfig.nvim",
-    -- lazy = false,
-    -- NOTE: new lsp needs to be enabled in lsp.lua
+    lazy = false,
     opts = {
       ensure_installed = {
         "lua_ls",
@@ -23,6 +18,12 @@ return {
         "taplo",  -- toml
 
       },
+      automatic_enable = true
+    },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
     },
   }
+
 }
