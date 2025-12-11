@@ -78,9 +78,6 @@ end)
 keymap("<leader>p", function() require("zi.switch_repo").fd_projects(require("telescope.themes").get_ivy()) end)
 keymap("<leader>P", "<Cmd>Telescope repo<CR>")
 
--- neoclip
-keymap("<leader>y", "<Cmd>Telescope neoclip<CR>")
-
 -- docs
 keymap("<leader>fhv", telescope.help_tags)
 keymap("<leader>fht", "<Cmd>Telescope terraform_doc full_name=hashicorp/google<CR>")
