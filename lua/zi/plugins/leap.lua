@@ -1,6 +1,6 @@
 return {
   {
-    "ggandor/leap.nvim",
+    url = "https://codeberg.org/andyg/leap.nvim",
     config = function()
       require("leap").opts.safe_labels = {}
       require("leap").opts.labels =
