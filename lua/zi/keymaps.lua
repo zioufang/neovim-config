@@ -62,10 +62,6 @@ keymap("<leader>fc", telescope.command_history)
 keymap("<leader>ft", telescope.resume)
 keymap("<leader>fq", telescope.quickfixhistory)
 -- some keymaps are defined in lsp.lua, to utilize on_attach
-keymap("<leader>fe", function()
-  telescope.diagnostics({ bufnr = 0 })
-end)
-keymap("<leader>fE", telescope.diagnostics)
 
 keymap("<leader>r", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 keymap("<leader>R", function()
@@ -94,6 +90,7 @@ keymap("<M-p>", '"ap')
 
 -- lsp
 -- See `:h vim.lsp.*`
+keymap("<leader>jr", ":LspRestart<Cr>")
 keymap("gd", vim.lsp.buf.definition)
 keymap("gD", "<Cmd>vert sb<Cr><Cmd>lua vim.lsp.buf.definition()<Cr>")
 keymap("gr", vim.lsp.buf.references)
@@ -102,11 +99,11 @@ keymap("<leader>ja", vim.lsp.buf.code_action)
 keymap("<leader>js", vim.lsp.buf.signature_help)
 keymap("<leader>jR", vim.lsp.buf.rename)
 keymap("<leader>jf", vim.lsp.buf.format)
-keymap("<leader>je", ":LspRestart<Cr>")                                              -- TOOD: might be a better way
 keymap("<leader>jj", function() vim.diagnostic.open_float({ focusable = true }) end) -- <C-w><C-w> (or just w) to focus on the float window
 keymap("<leader>jn", function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end)
 keymap("<leader>jp", function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end)
-keymap("<leader>jr", telescope.lsp_references)
+keymap("<leader>je", function() telescope.diagnostics({ bufnr = 0 }) end)
+keymap("<leader>jE", telescope.diagnostics)
 
 
 -- disable inlay hint by default and toggle
