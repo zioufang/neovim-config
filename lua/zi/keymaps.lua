@@ -172,7 +172,7 @@ keymap("<leader>ss", "<Cmd>set hls<Cr>:.,$s///gc" .. string.rep("<Left>", 4), "n
 keymap("<leader>sS", "<Cmd>set hls<Cr>:.,$S///gc" .. string.rep("<Left>", 4), "n", { silent = false })   -- Subvert from vim-abolish
 keymap("<leader>sq", "<Cmd>set hls<Cr>:cdo %s///gc" .. string.rep("<Left>", 4), "n", { silent = false }) -- substitute in quickfix list
 
-keymap("\\", ":vert sb<Cr><C-w>=")
+keymap("\\", "<C-w>v<C-w>=")
 --
 keymap("Q", "@q")
 keymap("H", "^")
