@@ -258,10 +258,6 @@ keymap("<leader>qq", "<Cmd>call ToggleQuickfix()<Cr>")
 keymap("<leader>qv", "<Cmd>call ToggleVertQuickfix()<Cr>")
 keymap("<leader>qn", "<Cmd>silent! cnewer<Cr>")
 keymap("<leader>qp", "<Cmd>silent! colder<Cr>")
-keymap("<leader>qi", function()
-  require("replacer").run({ rename_files = false }) -- dont rename file in quickfix
-end)
-keymap("<leader>qI", require("replacer").run)       -- rename file in quickfix
 
 -- closing all buffers referenced in the qf list (after doing search replace etc.)
 -- cdo bd
