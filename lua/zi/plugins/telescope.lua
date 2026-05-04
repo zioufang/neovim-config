@@ -2,7 +2,11 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     version = '*',
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    },
+
     config = function()
       local lga_actions = require("telescope-live-grep-args.actions")
       local actions = require("telescope.actions")
@@ -143,15 +147,13 @@ return {
       })
 
       require("telescope").load_extension("live_grep_args")
-      require("telescope").load_extension("repo")
       require("telescope").load_extension("zf-native")
-      require("telescope").load_extension("terraform_doc")
+      require("telescope").load_extension("ui-select")
     end,
   },
 
   -- extensions
   { "nvim-telescope/telescope-live-grep-args.nvim" },
-  { 'cljoly/telescope-repo.nvim' },
+  { 'nvim-telescope/telescope-ui-select.nvim' },
   { 'natecraddock/telescope-zf-native.nvim' },
-  { 'ANGkeith/telescope-terraform-doc.nvim' }
 }

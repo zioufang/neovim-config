@@ -1,26 +1,4 @@
 return {
-  -- nicer default ui
-  {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
-    opts = {
-      input = {
-        insert_only = false,
-      },
-      mappings = {
-        n = {
-          ["<Esc>"] = "Close",
-          ["<CR>"] = "Confirm",
-        },
-        i = {
-          ["<C-c>"] = "Close",
-          ["<CR>"] = "Confirm",
-          ["<C-Up>"] = "HistoryPrev",
-          ["<C-Down>"] = "HistoryNext",
-        },
-      },
-    },
-  },
   -- scrollbar
   {
     "petertriho/nvim-scrollbar",
