@@ -48,6 +48,17 @@ keymap("<F12>", "<Cmd>call ToggleWindowMaximized()<Cr>")
 -- telescope
 local telescope = require("telescope.builtin")
 
+
+keymap("<leader>yf", function()
+  vim.fn.setreg("+", vim.fn.expand("%"))
+  print("Copied relative file path: " .. vim.fn.expand("%"))
+end)
+
+keymap("<leader>yF", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+  print("Copied full file path: " .. vim.fn.expand("%"))
+end)
+
 -- fa: arieal toggle
 keymap("<leader>ff", function()
   telescope.oldfiles({ only_cwd = true })

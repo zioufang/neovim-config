@@ -21,6 +21,7 @@ return {
               -- delete buffer, can multi select with Tab first
               ["<C-x>"] = actions.delete_buffer,
               ["<C-s>"] = actions.select_horizontal,
+              ["<C-v>"] = actions.select_vertical,
               ["<C-d>"] = actions.results_scrolling_down,
               ["<C-u>"] = actions.results_scrolling_up,
               ["<C-f>"] = actions.preview_scrolling_down,
@@ -33,6 +34,7 @@ return {
               ["<C-n>"] = actions.move_selection_next,
               ["<C-p>"] = actions.move_selection_previous,
               ["<C-s>"] = actions.select_horizontal,
+              ["<C-v>"] = actions.select_vertical,
               ["<C-d>"] = actions.results_scrolling_down,
               ["<C-u>"] = actions.results_scrolling_up,
               ["<C-f>"] = actions.preview_scrolling_down,

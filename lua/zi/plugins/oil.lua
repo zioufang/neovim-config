@@ -29,6 +29,24 @@ return {
         ["gx"] = "actions.open_external",
         ["gh"] = { "actions.toggle_hidden", mode = "n" },
         ["g\\"] = { "actions.toggle_trash", mode = "n" },
+        ["yf"] = {
+          callback = function()
+            -- copy relative path
+            local oil = require("oil")
+            local entry = oil.get_cursor_entry()
+            local dir = oil.get_current_dir()
+
+            if not entry or not dir then
+              return
+            end
+
+            local full_path = vim.fs.normalize(dir .. entry.name)
+            local relative_path = vim.fn.fnamemodify(full_path, ":.")
+            vim.fn.setreg("+", relative_path)
+          end,
+
+          mode = "n"
+        },
       },
     })
     vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
