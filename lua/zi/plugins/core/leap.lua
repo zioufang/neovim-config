@@ -1,6 +1,7 @@
 return {
   {
     url = "https://codeberg.org/andyg/leap.nvim",
+    event = "VeryLazy",
     config = function()
       require("leap").opts.safe_labels = {}
       require("leap").opts.labels =

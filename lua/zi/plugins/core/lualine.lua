@@ -5,7 +5,7 @@ return {
     -- show name of the lsp server for current buf
     local function lsp_provider()
       local clients = {}
-      local buf_clients = vim.lsp.buf_get_clients()
+      local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
       local client_cnt = vim.tbl_count(buf_clients)
       for _, client in pairs(buf_clients) do
         if client.name == "pyright" then

@@ -12,9 +12,4 @@ return {
       require('nvim-treesitter').install { "python", "rust", "lua", "javascript", "typescript", "go", "bash", "dockerfile", "yaml", "json", "toml", "sql" }
     end,
   },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    event = "VeryLazy",
-    dependencies = "nvim-treesitter",
-  },
 }

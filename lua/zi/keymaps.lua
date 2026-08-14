@@ -15,6 +15,11 @@ keymap("<leader><leader>", "<Cmd>tabnew | term lazygit<Cr>i")
 -- 2. will not save modified buffer (should use `ZZ` instead)
 keymap("<C-c>", "<Cmd>silent! close!<Cr>")
 
+-- folds
+keymap("zz", "za") -- toggle fold under cursor
+keymap("zO", "zR") -- open all folds
+keymap("zC", "zM") -- close all folds
+
 -- Lazy.nvim UI
 vim.keymap.set("n", "<leader>l", "<Cmd>Lazy<Cr>")
 
@@ -46,7 +51,14 @@ endfunction
 keymap("<F12>", "<Cmd>call ToggleWindowMaximized()<Cr>")
 
 -- telescope
-local telescope = require("telescope.builtin")
+-- lazy proxy: telescope only loads when a mapping is first invoked
+local telescope = setmetatable({}, {
+  __index = function(_, k)
+    return function(...)
+      return require("telescope.builtin")[k](...)
+    end
+  end,
+})
 
 
 keymap("<leader>yf", function()
@@ -204,6 +216,8 @@ function _G.GlowMarkdown()
 end
 
 keymap("<leader>vm", GlowMarkdown)
+-- markdown preview in browser (renders mermaid)
+keymap("<leader>vM", "<Cmd>MarkdownPreviewToggle<Cr>")
 
 -- toggle highlight
 keymap("<leader>h", "<Cmd>set hls!<Cr>")

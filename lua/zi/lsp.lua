@@ -101,20 +101,13 @@ vim.lsp.config("rust_analyzer", {
 
 })
 
--- NOTE: mason.nvim auto enable
--- vim.lsp.enable({
---   "pyright",
---   "rust_analyzer",
---   "ts_ls",
---   "gopls",
---   "lua_ls",
---   "bashls",
---   "jsonls",
---   "taplo",
---   "marksman",
---   "helm_ls",
---   "terraformls",
--- })
+-- NOTE: in the advanced (default) profile mason-lspconfig auto enables servers.
+-- nvim-min has no mason: reuse the server binaries mason installed for the
+-- default profile and enable them explicitly.
+if vim.env.NVIM_APPNAME == "nvim-min" then
+  vim.env.PATH = vim.fn.expand("~/.local/share/nvim/mason/bin") .. ":" .. vim.env.PATH
+  vim.lsp.enable(require("zi.lsp_servers"))
+end
 
 
 

@@ -2,6 +2,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     version = '*',
+    lazy = true, -- loaded on first require via the proxy in keymaps.lua
     dependencies = {
       "nvim-lua/plenary.nvim",
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
@@ -153,9 +154,4 @@ return {
       require("telescope").load_extension("ui-select")
     end,
   },
-
-  -- extensions
-  { "nvim-telescope/telescope-live-grep-args.nvim" },
-  { 'nvim-telescope/telescope-ui-select.nvim' },
-  { 'natecraddock/telescope-zf-native.nvim' },
 }

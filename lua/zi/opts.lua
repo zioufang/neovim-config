@@ -4,7 +4,12 @@ vim.opt.number = true
 -- vim.opt.relativenumber = true
 vim.opt.showmode = false            -- disable the redundant show mode on the last line
 vim.opt.lazyredraw = true           -- better macro performance
-vim.opt.clipboard = "unnamedplus"
+-- deferred: setting clipboard at startup blocks on detecting the system clipboard tool (~10ms)
+vim.schedule(function()
+  vim.opt.clipboard = "unnamedplus"
+end)
+-- deleted lines in diff views show as blank (DiffDelete-colored) lines instead of dashes
+vim.opt.fillchars:append({ diff = " " })
 vim.opt.shada = "!,'1000,<50,s10,h" -- increase edited file history to 500
 
 

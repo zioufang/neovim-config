@@ -16,7 +16,17 @@ vim.opt.rtp:prepend(lazypath)
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 
-require("lazy").setup("zi.plugins", {
+-- default (nvim) = advanced profile, NVIM_APPNAME=nvim-min = core only
+local is_min = vim.env.NVIM_APPNAME == "nvim-min"
+local spec = { { import = "zi.plugins.core" } }
+if not is_min then
+  table.insert(spec, { import = "zi.plugins.advanced" })
+end
+
+require("lazy").setup({
+  spec = spec,
+  -- separate lockfiles so the profiles don't clobber each other's pins
+  lockfile = vim.fn.stdpath("config") .. (is_min and "/lazy-lock-min.json" or "/lazy-lock.json"),
   defaults = { lazy = false },
   install = {
     -- install missing plugins on startup. This doesn't increase startup time.

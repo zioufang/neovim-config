@@ -13,5 +13,4 @@ return {
       vim.cmd("colorscheme gruvbox-material")
     end,
   },
-  { "folke/tokyonight.nvim" }, -- colorscheme, used by scrollbar.lua
 }
